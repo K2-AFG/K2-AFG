@@ -9,4 +9,6 @@
     <string name="emailBox">info@abbyshouse.org</string>
     <string name="phoneHeader">Phone:</string>
     <string name="phoneBox">508-756-5486</string>
+    <string name="specificHeader">Specifics:</string>
+    <string name="specificBox">For women and children</string>
 </resources>
