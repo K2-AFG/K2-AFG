@@ -2,7 +2,7 @@
     <string name="app_name">K2-AFG</string>
     <string name="Header1">Details</string>
     <string name="nameHeader">Name:</string>
-    <string name="nameBox">Abby's House</string>
+    <string name="nameBox">Abby\'s House</string>
     <string name="addressHeader">Address:</string>
     <string name="addressBox">52 High St., Worcester 01609</string>
     <string name="emailHeader">Email:</string>
@@ -11,4 +11,7 @@
     <string name="phoneBox">508-756-5486</string>
     <string name="specificHeader">Specifics:</string>
     <string name="specificBox">For women and children</string>
+    <string name="welcome">Welcome</string>
+    <string name="hiimabutton">Press here to start the app</string>
+    <string name="search">Enter your search here: </string>
 </resources>
