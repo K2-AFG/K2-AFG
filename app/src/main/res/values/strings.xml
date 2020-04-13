@@ -14,4 +14,11 @@
     <string name="welcome">Welcome</string>
     <string name="hiimabutton">Press here to start the app</string>
     <string name="search">Enter your search here: </string>
+    <string name="sheltersbuttontext">For Shelters</string>
+    <string name="pantrybuttontext">For Pantries</string>
+    <string name="manbuttontext">For Users</string>
+    <string name="shelterbuttonhint">Click here if you are from a shelter</string>
+    <string name="pantrybuttonhint">Click here if you are from a food pantry</string>
+    <string name="manbuttonhint">Click here if you are from a shelter</string>
+
 </resources>
