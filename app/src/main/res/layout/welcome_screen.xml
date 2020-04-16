@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/manButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:hint="@string/manbuttonhint"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pantryButton"
+        app:srcCompat="@drawable/man" />
+
+    <ImageButton
+        android:id="@+id/pantryButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:hint="@string/pantrybuttonhint"
+        android:scaleType="fitStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shelterButton"
+        app:srcCompat="@drawable/foodpantry" />
+
+    <TextView
+        android:id="@+id/welcometext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/adamina"
+        android:text="@string/welcome"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/shelterButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="5dp"
+        android:scaleType="fitStart"
+        android:hint="@string/shelterbuttonhint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcometext"
+        app:srcCompat="@drawable/shelter" />
+
+    <TextView
+        android:id="@+id/shelterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="14dp"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/shelterButton"
+        app:layout_constraintEnd_toEndOf="@+id/shelterButton"
+        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintStart_toStartOf="@+id/shelterButton"
+        app:layout_constraintTop_toTopOf="@+id/shelterButton"
+        app:layout_constraintVertical_bias="0.375"
+        tools:text="@string/sheltersbuttontext" />
+
+    <TextView
+        android:id="@+id/pantryText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="14dp"
+        android:text="@string/pantrybuttontext"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pantryButton"
+        app:layout_constraintEnd_toEndOf="@+id/shelterText"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="@+id/shelterText"
+        app:layout_constraintTop_toTopOf="@+id/pantryButton"
+        app:layout_constraintVertical_bias="0.416"
+        tools:text="@string/pantrybuttontext" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="14dp"
+        android:text="@string/manbuttontext"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/manButton"
+        app:layout_constraintEnd_toEndOf="@+id/pantryText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/pantryText"
+        app:layout_constraintTop_toTopOf="@+id/manButton"
+        app:layout_constraintVertical_bias="0.454" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
