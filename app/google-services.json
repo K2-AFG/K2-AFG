@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "78164687748",
+    "firebase_url": "https://k2afgapp.firebaseio.com",
+    "project_id": "k2afgapp",
+    "storage_bucket": "k2afgapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78164687748:android:0ddef0a5d5eebdf1917bd1",
+        "android_client_info": {
+          "package_name": "com.example.k2_afg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78164687748-72ksqjj4sfmqbss1hufeuk02us8mmcg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUupfyWT520dslPSPyvuZe6bu7WJ3Dr3k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78164687748-72ksqjj4sfmqbss1hufeuk02us8mmcg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
