@@ -2,7 +2,7 @@
     <string name="app_name">K2-AFG</string>
     <string name="Header1">Details</string>
     <string name="nameHeader">Name:</string>
-    <string name="nameBox">Abby's House</string>
+    <string name="nameBox">Abby\'s House</string>
     <string name="addressHeader">Address:</string>
     <string name="addressBox">52 High St., Worcester 01609</string>
     <string name="emailHeader">Email:</string>
@@ -11,4 +11,13 @@
     <string name="phoneBox">508-756-5486</string>
     <string name="specificHeader">Specifics:</string>
     <string name="specificBox">For women and children</string>
+    <string name="manbuttonhint">Click here if you are an user</string>
+    <string name="shelterbuttonhint">Click here if you are a shelter</string>
+    <string name="pantrybuttonhint">Click here if you are a food pantry</string>
+    <string name="welcome">Welcome</string>
+    <string name="sheltersbuttontext">For Shelters</string>
+    <string name="pantrybuttontext">For Pantries</string>
+    <string name="manbuttontext">For Users</string>
+    <string name="search">Search here for shelter</string>
+
 </resources>
