@@ -3,7 +3,6 @@ package com.example.k2_afg;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -13,8 +12,6 @@ import android.widget.TextView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
-
-import org.w3c.dom.Text;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -44,7 +41,7 @@ public class Location extends AppCompatActivity {
                     public void onSuccess(android.location.Location location) {
                         if(location!=null){
                             TextView textView = findViewById(R.id.Location);
-                            textView.setText(location.toString());
+                            textView.setText(location.getLatitude()+", "+location.getLongitude());
                         }
 
                     }
