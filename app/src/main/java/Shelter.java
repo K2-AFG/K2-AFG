@@ -1,6 +1,7 @@
 
 public class Shelter extends Organization{
 
+
 	/**
 	 * the number of vacant rooms a shelter has
 	 */
