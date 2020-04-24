@@ -6,29 +6,32 @@ public class Shelter extends Organization{
 	 * the number of vacant rooms a shelter has
 	 */
 	private int vacancies;
-	
+
 	/**
 	 * specific requirements a user must meet to be eligible for a shelter
 	 */
 	private String specifications;
-	
+
 	/**
-	 * Creates a new shelter with a name, address, phone number, website, description, vacancies, and shelter specifications
+	 * Creates a new shelter with a name, address, phone number, website, description, longitude, latitude, vacancies, and shelter specifications
 	 * @param name the name of the shelter
 	 * @param address the address of the shelter
 	 * @param phoneNum the phone number of the shelter
 	 * @param website the website of the shelter
 	 * @param description a brief description of the shelter
+	 * @param longitude the longitude that the shelter is located
+	 * @param latitude the latitude that the shelter is located
 	 * @param vacancies the number of vacancies in a shelter
 	 * @param specifics requirements of the shelter
 	 */
-	public Shelter (String name, String address, int phoneNum, String website, String description, 
-			int vacancies, String specifics) {
-		super(name, address, phoneNum, website, description);
+	public Shelter (String name, String address, int phoneNum, String website, String description,
+					double longitude, double latitude,
+					int vacancies, String specifics) {
+		super(name, address, phoneNum, website, description, longitude, latitude);
 		this.vacancies = vacancies;
 		specifications = specifics;
 	}
-	
+
 	/**
 	 * Creates a shelter with no vacancies or specifications
 	 */
@@ -37,8 +40,8 @@ public class Shelter extends Organization{
 		vacancies = 0;
 		specifications = "";
 	}
-	
-	
+
+
 	/**
 	 * gets the number of vacancies this shelter has
 	 * @return the number of vacancies
@@ -46,7 +49,7 @@ public class Shelter extends Organization{
 	public int getVacancies() {
 		return vacancies;
 	}
-	
+
 	/**
 	 * sets the number of vacancies to the given number
 	 * @param vacancies the number to set

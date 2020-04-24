@@ -19,5 +19,18 @@
     <string name="pantrybuttontext">For Pantries</string>
     <string name="manbuttontext">For Users</string>
     <string name="search">Search here for shelter</string>
+    <string name="vacancyText">Vacancy Description: </string>
+    <string name="vacancyDescription">Please enter vacancy description </string>
+    <string name="shelterName">Name: </string>
+    <string name="shelterNameText">Please enter shelter name</string>
+    <string name="emailText">Please enter email address</string>
+    <string name="addressText">Please enter address</string>
+    <string name="phoneText">Please enter phone number</string>
+    <string name="specificText">Please enter any specifications</string>
+    <string name="shelterInfo">Shelter Information</string>
+    <string name="pantryInfo">Pantry Information</string>
+    <string name="pantryNameText">Please enter pantry name</string>
+    <string name="foodType">Food Type</string>
+    <string name="foodTypeText">Please enter food offered</string>
 
 </resources>
