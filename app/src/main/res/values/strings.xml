@@ -32,5 +32,12 @@
     <string name="pantryNameText">Please enter pantry name</string>
     <string name="foodType">Food Type</string>
     <string name="foodTypeText">Please enter food offered</string>
+    <string name="applyFilter">Apply Filter</string>
+    <string name="searchImage">search image</string>
+    <string name="filterShelterNameTxt">Shelter by Name</string>
+    <string name="filterShelterDistanceTxt">Shelter by Distance</string>
+    <string name="filterShelterVacancyTxt">Shelter by Vacancy</string>
+    <string name="filterPantryNameTxt">Pantries by Name</string>
+    <string name="filterPantryDistanceTxt">Pantries by Distance</string>
 
 </resources>
