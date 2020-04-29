@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".searchpage" >
+        <activity android:name=".VacancySearch" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
