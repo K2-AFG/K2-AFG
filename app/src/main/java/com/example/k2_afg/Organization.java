@@ -1,3 +1,4 @@
+package com.example.k2_afg;
 
 public class Organization {
 

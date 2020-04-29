@@ -15,8 +15,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import static com.example.k2_afg.R.id.search;
 
-public class searchpage extends AppCompatActivity {
+
+public class VacancySearch extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter adapter;
@@ -31,7 +33,7 @@ public class searchpage extends AppCompatActivity {
 
 
         lv = (ListView) findViewById(R.id.searchpage);
-        sv = (SearchView) findViewById(R.id.search);
+        sv = (SearchView) findViewById(search);
         adapter = new ArrayAdapter(this,android.R.layout. simple_list_item_1, names);
         lv.setAdapter(adapter);
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -45,12 +47,14 @@ public class searchpage extends AppCompatActivity {
                 adapter.getFilter().filter(newText);
                 return false;
             }
+
         });
     }
 
     protected void onStart() {
         super.onStart();
         readData();
+        ifVacant();
     }
 
     private void readData() {
@@ -71,6 +75,18 @@ public class searchpage extends AppCompatActivity {
             Log.wtf("welcomeTag", "Error reading data on line");
         }
     }
+
+    private void ifVacant(){
+        ArrayList<String> vacant = new ArrayList<String>();
+        for(int i = 0; i < shelters.size(); i++){
+            if(shelters.get(i).getVacancies() >= 17) {
+                vacant.add(shelters.get(i).getName());
+                Log.v("welcomeTag", shelters.get(i).getName());
+            }
+        }
+
+    }
 }
+
 
 

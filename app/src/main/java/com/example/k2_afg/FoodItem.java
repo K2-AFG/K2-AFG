@@ -1,8 +1,9 @@
+package com.example.k2_afg;
 
 public class FoodItem {
 	
 	/**
-	 * The name of the type of food this FoodItem tracks
+	 * The name of the type of food this com.example.k2_afg.FoodItem tracks
 	 */
 	private String type;
 	
@@ -12,9 +13,9 @@ public class FoodItem {
 	private double amount;
 
 	/**
-	 * Creates a FoodItem with a given type and amount. 
+	 * Creates a com.example.k2_afg.FoodItem with a given type and amount.
 	 * @param type the type of food given
-	 * @param amount the amount of food this FoodItem contains 
+	 * @param amount the amount of food this com.example.k2_afg.FoodItem contains
 	 */
 	public FoodItem (String type, double amount) {
 		this.type = type;
@@ -58,7 +59,7 @@ public class FoodItem {
 	 * changes the food item into a String with the type of food and the amount of the food
 	 */
 	public String toString() {
-		return "FoodItem [type=" + type + ", amount=" + amount + "]";
+		return "com.example.k2_afg.FoodItem [type=" + type + ", amount=" + amount + "]";
 	}
 	
 	

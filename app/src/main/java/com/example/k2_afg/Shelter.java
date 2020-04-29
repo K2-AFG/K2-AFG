@@ -1,5 +1,6 @@
+package com.example.k2_afg;
 
-public class Shelter extends Organization{
+public class Shelter extends Organization {
 
 
 	/**

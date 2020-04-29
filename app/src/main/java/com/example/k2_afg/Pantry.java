@@ -1,3 +1,8 @@
+package com.example.k2_afg;
+
+import com.example.k2_afg.FoodItem;
+import com.example.k2_afg.Organization;
+
 import java.util.ArrayList;
 
 public class Pantry extends Organization {
