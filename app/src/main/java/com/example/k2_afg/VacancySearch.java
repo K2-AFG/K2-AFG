@@ -15,8 +15,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+import static com.example.k2_afg.R.id.search;
 
-public class searchpage extends AppCompatActivity {
+
+public class VacancySearch extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter adapter;
@@ -31,7 +33,7 @@ public class searchpage extends AppCompatActivity {
 
 
         lv = (ListView) findViewById(R.id.searchpage);
-        sv = (SearchView) findViewById(R.id.search);
+        sv = (SearchView) findViewById(search);
         adapter = new ArrayAdapter(this,android.R.layout. simple_list_item_1, names);
         lv.setAdapter(adapter);
         sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -45,6 +47,7 @@ public class searchpage extends AppCompatActivity {
                 adapter.getFilter().filter(newText);
                 return false;
             }
+
         });
     }
 
@@ -63,14 +66,26 @@ public class searchpage extends AppCompatActivity {
                 int values1 = Integer.parseInt(fields[1]);
                 Shelter nextShelter = new Shelter(fields[0], "address",
                         123, "website", "description", 1234, 4321, values1, "specifics");
-                shelters.add(nextShelter);
-                names.add(nextShelter.getName());
+                if(ifVacant(nextShelter)) {
+                    shelters.add(nextShelter);
+                    names.add(nextShelter.getName());
+                }
                 value = reader.readLine();
             }
         } catch (IOException e) {
             Log.wtf("welcomeTag", "Error reading data on line");
         }
     }
+
+    private boolean ifVacant(Shelter s){
+        if(s.getVacancies() >= 0) {
+            Log.v("welcomeTag", s.getName());
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
+
 
 

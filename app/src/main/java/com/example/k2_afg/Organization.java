@@ -1,3 +1,4 @@
+package com.example.k2_afg;
 
 public class Organization {
 
@@ -73,7 +74,7 @@ public class Organization {
 	 */
 	public Organization (String name, String address, int phoneNum,
 						 String website, String description,
-						 double longitude, double latitude) {
+						 double latitude, double longitude) {
 		this.name = name;
 		this.address = address;
 		this.phoneNum = phoneNum;
