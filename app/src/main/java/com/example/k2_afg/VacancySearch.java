@@ -54,7 +54,6 @@ public class VacancySearch extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         readData();
-        ifVacant();
     }
 
     private void readData() {
@@ -67,8 +66,10 @@ public class VacancySearch extends AppCompatActivity {
                 int values1 = Integer.parseInt(fields[1]);
                 Shelter nextShelter = new Shelter(fields[0], "address",
                         123, "website", "description", 1234, 4321, values1, "specifics");
-                shelters.add(nextShelter);
-                names.add(nextShelter.getName());
+                if(ifVacant(nextShelter)) {
+                    shelters.add(nextShelter);
+                    names.add(nextShelter.getName());
+                }
                 value = reader.readLine();
             }
         } catch (IOException e) {
@@ -76,15 +77,13 @@ public class VacancySearch extends AppCompatActivity {
         }
     }
 
-    private void ifVacant(){
-        ArrayList<String> vacant = new ArrayList<String>();
-        for(int i = 0; i < shelters.size(); i++){
-            if(shelters.get(i).getVacancies() >= 17) {
-                vacant.add(shelters.get(i).getName());
-                Log.v("welcomeTag", shelters.get(i).getName());
-            }
+    private boolean ifVacant(Shelter s){
+        if(s.getVacancies() >= 0) {
+            Log.v("welcomeTag", s.getName());
+            return true;
+        } else{
+            return false;
         }
-
     }
 }
 
