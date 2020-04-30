@@ -2,9 +2,11 @@ package com.example.k2_afg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,4 +91,18 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 //    }
+
+    public void performPantryInput(View v) {
+        setContentView(R.layout.activity_pantry_input);
+    }
+
+    public void performShelterInput(View v) {
+        setContentView(R.layout.activity_shelter_input);
+    }
+
+    public void performApplyFilter(View v) {
+        setContentView(R.layout.filter_selection);
+    }
+
+
 }
