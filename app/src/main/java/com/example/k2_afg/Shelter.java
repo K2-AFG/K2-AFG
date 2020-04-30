@@ -26,9 +26,9 @@ public class Shelter extends Organization {
 	 * @param specifics requirements of the shelter
 	 */
 	public Shelter (String name, String address, int phoneNum, String website, String description,
-					double longitude, double latitude,
+					double latitude, double longitude,
 					int vacancies, String specifics) {
-		super(name, address, phoneNum, website, description, longitude, latitude);
+		super(name, address, phoneNum, website, description, latitude, longitude);
 		this.vacancies = vacancies;
 		specifications = specifics;
 	}
