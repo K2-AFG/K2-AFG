@@ -64,12 +64,12 @@
         android:layout_marginTop="45dp"
         android:text="@string/addressHeader"
         android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText4"
+        app:layout_constraintEnd_toStartOf="@+id/addressInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/addressInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
@@ -89,12 +89,12 @@
         android:layout_marginTop="45dp"
         android:text="@string/phoneHeader"
         android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/editText5"
+        app:layout_constraintEnd_toStartOf="@+id/phoneInput"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/phoneInput"
         android:layout_width="200dp"
         android:layout_height="42dp"
         android:layout_marginTop="25dp"
@@ -104,7 +104,7 @@
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/addressInput" />
 
     <TextView
         android:id="@+id/Specifics"
@@ -129,7 +129,7 @@
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneInput" />
 
     <TextView
         android:id="@+id/textView11"
