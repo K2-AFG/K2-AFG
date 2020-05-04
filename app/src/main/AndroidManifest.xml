@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".VacancySearch"
+            android:name=".ShelterInput"
             android:exported="true">
 <!--        <activity-->
 <!--            android:name=".Location"-->
