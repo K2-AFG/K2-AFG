@@ -145,4 +145,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="67dp"
+        android:layout_height="40dp"
+        android:text="@string/backStr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView11" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

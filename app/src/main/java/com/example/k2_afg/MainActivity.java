@@ -92,17 +92,29 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
+    // changes the page to the pantry input page
     public void performPantryInput(View v) {
         setContentView(R.layout.activity_pantry_input);
     }
 
+    // goes to the shelter input page
     public void performShelterInput(View v) {
         setContentView(R.layout.activity_shelter_input);
     }
 
+    // goes to the filter application page
     public void performApplyFilter(View v) {
         setContentView(R.layout.filter_selection);
     }
 
+    // goes to the home page
+    public void performWelcome(View v){
+        setContentView(R.layout.activity_welcome);
+    }
+
+    // goes to the home page
+    public void performSearchPage(View v){
+        setContentView(R.layout.activity_welcome);
+    }
 
 }
