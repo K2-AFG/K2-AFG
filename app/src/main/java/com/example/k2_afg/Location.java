@@ -18,6 +18,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
@@ -35,6 +38,7 @@ public class Location extends AppCompatActivity{
     ListView lv;
     ArrayAdapter adapter;
     ArrayList<Shelter> shelters = new ArrayList<Shelter>();
+    ArrayList<CalculatingLocation> locations = new ArrayList<>();
     ArrayList<String> names = new ArrayList<String>();
     SearchView sv;
     double longitude;
@@ -42,6 +46,8 @@ public class Location extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getLocation();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
@@ -61,12 +67,12 @@ public class Location extends AppCompatActivity{
                 return false;
             }
         });
+
+        readData();
     }
 
     protected void onStart() {
         super.onStart();
-        getLocation();
-        readData();
     }
 
     private void readData() {
@@ -84,32 +90,46 @@ public class Location extends AppCompatActivity{
                         123, "website", "description", value2, value3, values1, "specifics");
                 CalculatingLocation c = new CalculatingLocation(nextShelter.getLatitude(), nextShelter.getLongitude(), latitude, longitude);
                 shelters.add(nextShelter);
-                names.add(nextShelter.getName()+" "+nextShelter.getLatitude()+" "+nextShelter.getLongitude()+" "+latitude+" "+longitude);
+                locations.add(c);
                 value = reader.readLine();
             }
+            while(shelters.size()>0) {
+                int count = 0;
+                for (int i = 0; i < shelters.size(); i++) {
+                    if (locations.get(i).calcDistance() < locations.get(count).calcDistance()) {
+                        count = i;
+                    }
+                }
+                names.add(shelters.get(count).getName() + " " + locations.get(count).calcDistance()+" "+"miles");
+                shelters.remove(count);
+                locations.remove(count);
+            }
+
+
+
         } catch (IOException e) {
             Log.wtf("welcomeTag", "Error reading data on line");
         }
     }
 
     private void getLocation(){
-        requestPermission();
+        GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(Location.this);
 
-        client = LocationServices.getFusedLocationProviderClient(this);
-        if (ActivityCompat.checkSelfPermission(Location.this, ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
-            return;
+        /**
+         * Set GPS Location fetched address
+         */
+        if (mGpsLocationTracker.canGetLocation())
+        {
+            latitude = mGpsLocationTracker.getLatitude();
+            longitude = mGpsLocationTracker.getLongitude();
+            Log.v("Latitude", String.format("latitude: %s", latitude));
+            Log.v("Latitude", String.format("longitude: %s", longitude));
+
         }
-
-        client.getLastLocation().addOnSuccessListener(Location.this, new OnSuccessListener<android.location.Location>() {
-            @Override
-            public void onSuccess(android.location.Location location) {
-                if (location != null) {
-                    longitude = location.getLongitude();
-                    latitude = location.getLatitude();
-                    Log.v("hi", String.valueOf(location.getLatitude()));
-                }
-            }
-        });
+        else
+        {
+            mGpsLocationTracker.showSettingsAlert();
+        }
     }
 
     private void requestPermission(){

@@ -23,8 +23,10 @@ public class CalculatingLocation {
 		
 		double haversine = Math.sin(cdeg1/2)*Math.asin(cdeg1/2)+Math.cos(deg1)*Math.cos(deg2)*Math.sin(cdeg2/2)*Math.sin(cdeg2/2);
 		double x = 2*Math.atan2(Math.sqrt(haversine), Math.sqrt(1-haversine));
-		
-		return r*x;
+
+		double distance = r*x*0.621371;
+        distance = (int)(distance*100+0.5)/100.0;
+        return distance;
 		
 	}
 	
