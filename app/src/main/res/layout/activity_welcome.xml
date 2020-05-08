@@ -13,7 +13,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="5dp"
         android:hint="@string/manbuttonhint"
-        android:onClick="performApplyFilter"
+        android:onClick="performSearchPage"
         android:scaleType="fitStart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

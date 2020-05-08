@@ -40,5 +40,6 @@
     <string name="filterPantryNameTxt">Pantries by Name</string>
     <string name="filterPantryDistanceTxt">Pantries by Distance</string>
     <string name="backStr">Back</string>
+    <string name="submit">Submit</string>
 
 </resources>

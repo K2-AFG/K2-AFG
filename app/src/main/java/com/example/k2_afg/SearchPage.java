@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
-public class searchpage extends AppCompatActivity {
+public class SearchPage extends AppCompatActivity {
 
     ListView lv;
     ArrayAdapter adapter;

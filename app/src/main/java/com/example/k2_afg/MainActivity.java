@@ -4,22 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
 //    private Scanner x;
@@ -92,29 +78,5 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //    }
 
-    // changes the page to the pantry input page
-    public void performPantryInput(View v) {
-        setContentView(R.layout.activity_pantry_input);
-    }
-
-    // goes to the shelter input page
-    public void performShelterInput(View v) {
-        setContentView(R.layout.activity_shelter_input);
-    }
-
-    // goes to the filter application page
-    public void performApplyFilter(View v) {
-        setContentView(R.layout.filter_selection);
-    }
-
-    // goes to the home page
-    public void performWelcome(View v){
-        setContentView(R.layout.activity_welcome);
-    }
-
-    // goes to the home page
-    public void performSearchPage(View v){
-        setContentView(R.layout.activity_welcome);
-    }
 
 }

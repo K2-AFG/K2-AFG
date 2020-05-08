@@ -149,6 +149,7 @@
         android:id="@+id/backButton"
         android:layout_width="67dp"
         android:layout_height="40dp"
+        android:onClick="performWelcome"
         android:text="@string/backStr"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView11" />

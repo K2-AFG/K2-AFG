@@ -3,6 +3,7 @@ package com.example.k2_afg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.view.View;
@@ -45,6 +46,11 @@ Shelter shelter1;
                 Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
             }
         });
+    }
 
+    // goes to the home page
+    public void performWelcome(View v){
+        Intent intent = new Intent(this, Welcome.class);
+        startActivity(intent);
     }
 }
