@@ -183,13 +183,4 @@
         app:layout_constraintStart_toEndOf="@+id/emailBox"
         app:layout_constraintTop_toBottomOf="@+id/addressBox" />
 
-    <Button
-        android:id="@+id/backButton"
-        android:layout_width="67dp"
-        android:layout_height="42dp"
-        android:onClick="performSearchPage"
-        android:text="@string/backStr"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
