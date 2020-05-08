@@ -179,8 +179,11 @@
         android:id="@+id/showData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Show"
-        app:layout_constraintStart_toEndOf="@+id/emailBox"
-        app:layout_constraintTop_toBottomOf="@+id/addressBox" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specificHeader" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
