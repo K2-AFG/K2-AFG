@@ -14,12 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".SearchPage"
-            android:exported="true">
 <!--        <activity-->
-<!--            android:name=".Location"-->
+<!--            android:name=".SearchPage"-->
 <!--            android:exported="true">-->
+        <activity
+            android:name=".welcome"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,9 +28,12 @@
         </activity>
 
         <activity android:name=".PantryInput"></activity>
-<!--        <activity android:name=".SearchPage"></activity>-->
+        <activity android:name=".ShelterInput"></activity>
+        <activity android:name=".SearchPage"></activity>
         <activity android:name=".VacancySearch"></activity>
         <activity android:name=".ApplyFilter"></activity>
+        <activity android:name=".ShelterDetails"></activity>
+<!--        <activity android:name=".welcome"></activity>-->
 
         <meta-data
             android:name="preloaded_fonts"
