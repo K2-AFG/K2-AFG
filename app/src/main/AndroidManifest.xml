@@ -30,6 +30,7 @@
         <activity android:name=".PantryInput"></activity>
 <!--        <activity android:name=".SearchPage"></activity>-->
         <activity android:name=".VacancySearch"></activity>
+        <activity android:name=".ShelterDetails"> </activity>
         <activity android:name=".ApplyFilter"></activity>
 
         <meta-data

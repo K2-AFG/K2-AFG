@@ -2,6 +2,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
+
     <EditText
         android:id="@+id/search"
         android:layout_width="match_parent"
@@ -15,11 +16,32 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecycler"
         android:layout_width="match_parent"
-        android:layout_height="690dp"
-        android:layout_below="@+id/search"
+        android:layout_height="863dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="0dp" />
+        android:layout_marginBottom="-2dp" />
+
+    <Button
+        android:id="@+id/forShelter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="81dp"
+        android:layout_toStartOf="@+id/forPantries"
+        android:background="#01C4DD"
+        android:shadowColor="#D1D1D1"
+        android:text="@string/shelters" />
+
+    <Button
+        android:id="@+id/forPantries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="153dp"
+        android:background="#B7DC8D"
+        android:text="@string/pantry" />
 
 
 </RelativeLayout>

@@ -38,7 +38,7 @@ DatabaseReference reference;
             @Override
             public void onClick(View v) {
                 Log.v("welcome", "test1");
-                reference = FirebaseDatabase.getInstance().getReference().child("Shelter").child("-M70RSZHMqX6CfpicTf7");
+                reference = FirebaseDatabase.getInstance().getReference().child("Shelter").child("-M78nGrj8jppQ0dbnOLR");
                 Log.v("welcome", "test2");
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
