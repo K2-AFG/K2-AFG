@@ -23,6 +23,7 @@ Shelter shelter1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shelter_input);
+
         ShelterName2 = (EditText) findViewById(R.id.ShelterName2);
         vacancyDescription2 = (EditText) findViewById(R.id.vacancyDescription2);
         EmailText = (EditText) findViewById(R.id.EmailText);
@@ -43,14 +44,14 @@ Shelter shelter1;
                 shelter1.setPhoneNum(phoneN);
                 shelter1.setSpecifications(SpecificText.getText().toString().trim());
                 reference.push().setValue(shelter1);
-                Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
+               Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     // goes to the home page
     public void performWelcome(View v){
-        Intent intent = new Intent(this, Welcome.class);
+        Intent intent = new Intent(this, welcome.class);
         startActivity(intent);
     }
 }

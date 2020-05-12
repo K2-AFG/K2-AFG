@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Welcome"
+            android:name=".SearchPage"
             android:exported="true">
 <!--        <activity-->
 <!--            android:name=".Location"-->
@@ -28,8 +28,7 @@
         </activity>
 
         <activity android:name=".PantryInput"></activity>
-        <activity android:name=".ShelterInput"></activity>
-        <activity android:name=".SearchPage"></activity>
+<!--        <activity android:name=".SearchPage"></activity>-->
         <activity android:name=".VacancySearch"></activity>
         <activity android:name=".ApplyFilter"></activity>
 

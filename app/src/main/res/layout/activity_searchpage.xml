@@ -2,22 +2,24 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <SearchView
+    <EditText
         android:id="@+id/search"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:background="#d3d3d3"
         android:iconifiedByDefault="false"
-        android:queryHint="@string/search"
-        android:background="#d3d3d3">
+        android:queryHint="@string/search">
 
-        <requestFocus />
-    </SearchView>
+    </EditText>
 
-    <ListView
-        android:id="@+id/searchpage"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="690dp"
         android:layout_below="@+id/search"
-        android:scrollbarSize="10sp" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
+
 
 </RelativeLayout>

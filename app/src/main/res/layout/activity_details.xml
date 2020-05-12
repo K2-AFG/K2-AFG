@@ -26,15 +26,16 @@
 
     <TextView
         android:id="@+id/nameHeader"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="35dp"
         android:layout_marginTop="200dp"
-        android:layout_marginEnd="336dp"
         android:fontFamily="@font/abel"
         android:text="@string/nameHeader"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.449" />
 
@@ -51,8 +52,10 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.246"
         app:layout_constraintStart_toEndOf="@+id/nameHeader"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/addressHeader"
@@ -74,8 +77,8 @@
 
     <TextView
         android:id="@+id/addressBox"
-        android:layout_width="302dp"
-        android:layout_height="35dp"
+        android:layout_width="234dp"
+        android:layout_height="33dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="21dp"
         android:layout_marginBottom="542dp"
@@ -103,11 +106,9 @@
 
     <TextView
         android:id="@+id/emailBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="11dp"
+        android:layout_width="261dp"
+        android:layout_height="45dp"
         android:layout_marginTop="17dp"
-        android:layout_marginEnd="125dp"
         android:layout_marginBottom="490dp"
         android:fontFamily="@font/abel"
         android:text="@string/emailBox"
@@ -134,15 +135,16 @@
 
     <TextView
         android:id="@+id/phoneBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="293dp"
+        android:layout_height="42dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="184dp"
         android:fontFamily="@font/abel"
         android:text="@string/phoneBox"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.005"
         app:layout_constraintStart_toEndOf="@+id/phoneHeader"
         app:layout_constraintTop_toBottomOf="@+id/emailBox" />
 
@@ -152,26 +154,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="304dp"
         android:fontFamily="@font/abel"
         android:text="@string/specificHeader"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
 
     <TextView
         android:id="@+id/specificBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="276dp"
+        android:layout_height="35dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="73dp"
         android:fontFamily="@font/abel"
         android:text="@string/specificBox"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/specificHeader"
         app:layout_constraintTop_toBottomOf="@+id/phoneBox" />
 

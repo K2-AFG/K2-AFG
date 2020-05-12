@@ -16,7 +16,7 @@ public class PantryInput extends AppCompatActivity {
 
     // goes to the home page
     public void performWelcome(View v){
-        Intent intent = new Intent(this, Welcome.class);
+        Intent intent = new Intent(this, welcome.class);
         startActivity(intent);
     }
 }
