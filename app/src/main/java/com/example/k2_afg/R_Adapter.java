@@ -15,10 +15,13 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+
 import java.util.ArrayList;
 
 public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
-
+    public String name;
+    public String address;
     public Context c;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
 
@@ -26,7 +29,10 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
         this.c = c;
         this.arrayList = arrayList;
     }
-//
+
+    public R_Adapter() { }
+
+
     @Override
     public int getItemCount() {
         return arrayList.size();
@@ -48,13 +54,21 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Log.v("welcome","onClick: clicked on");
-                Toast.makeText(c, arrayList.get(position).getName(), Toast.LENGTH_LONG).show();
+                name = holder.t2.getText().toString();
+                Log.v("welcome", name);
                 Intent intent = new Intent(c, ShelterDetails.class);
+                intent.putExtra("name",name);
+                Log.v("welcome", "after intent " + name);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t2.setText(arrayList.get(position).getName());
             }
         });
+    }
+
+    public String getName(){
+        Log.v("welcome", "getName method" + name);
+        return name;
     }
 
 //    public class R_AdapterViewHolder extends ViewHolder {

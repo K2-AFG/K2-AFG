@@ -33,7 +33,7 @@ public class SearchPage extends AppCompatActivity {
     private RecyclerView rV;
     FirebaseRecyclerOptions<Shelter> options;
     FirebaseRecyclerAdapter<Shelter, SheltersViewHolder> adapter;
-    ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
+    public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
     private DatabaseReference databaseReference;
 
     @Override
@@ -59,10 +59,19 @@ public class SearchPage extends AppCompatActivity {
                 arrayList.clear();
                 while(items.hasNext()){
                     DataSnapshot item = items.next();
-                    String name;
-                    String specifics = null; int vacancies = 0; double longitude = 0; double latitude = 0; String description = null; String website = null; int phoneNum = 0; String address = null;
+                    //Log.v("welcome", item.getKey());
+                    String name; String specifics; int vacancies; double longitude; double latitude; String description; String website; int phoneNum; String address;
                     name = item.child("name").getValue().toString();
-                    Shelter shelter = new Shelter( name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  specifics);
+                    specifics = item.child("specifications").getValue().toString();
+                    vacancies = ((Long) item.child("vacancies").getValue()).intValue();
+                    longitude = ((Long) item.child("longitude").getValue()).doubleValue();
+                    latitude = ((Long) item.child("latitude").getValue()).doubleValue();
+                    description = item.child("description").getValue().toString();
+                    website = item.child("website").getValue().toString();
+                    phoneNum = ((Long)item.child("phoneNum").getValue()).intValue();
+
+
+                    Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
                     arrayList.add(shelter);
                 } rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
             }
@@ -104,11 +113,10 @@ public class SearchPage extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if (!s.toString().isEmpty()) {
                     Log.v("welcome", "test1 " + s.toString());
-                    //search(s.toString());
+                    search(s.toString());
                 } else {
-                    //search("");
+                    search("");
                 }
-
             }
         });
     }
