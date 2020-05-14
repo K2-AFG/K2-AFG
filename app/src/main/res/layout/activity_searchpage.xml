@@ -7,41 +7,68 @@
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="41dp"
+        android:layout_alignTop="@+id/searchRecycler"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="449dp"
         android:background="#d3d3d3"
-        android:iconifiedByDefault="false"
-        android:queryHint="@string/search">
+        android:iconifiedByDefault="false">
 
     </EditText>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecycler"
         android:layout_width="match_parent"
-        android:layout_height="863dp"
+        android:layout_height="789dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-2dp" />
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="8dp" />
 
     <Button
         android:id="@+id/forShelter"
-        android:layout_width="wrap_content"
+        android:layout_width="215dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="81dp"
-        android:layout_toStartOf="@+id/forPantries"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="391dp"
+        android:layout_marginEnd="185dp"
         android:background="#01C4DD"
         android:shadowColor="#D1D1D1"
         android:text="@string/shelters" />
 
     <Button
         android:id="@+id/forPantries"
-        android:layout_width="wrap_content"
+        android:layout_width="144dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="153dp"
+        android:layout_marginTop="398dp"
+        android:layout_marginEnd="29dp"
         android:background="#B7DC8D"
         android:text="@string/pantry" />
+
+    <Button
+        android:id="@+id/shelterByVacancy"
+        android:layout_width="168dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/search"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="45dp"
+        android:text="@string/shelterV" />
+
+    <Button
+        android:id="@+id/addShelter"
+        android:layout_width="150dp"
+        android:layout_height="61dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="315dp"
+        android:text="@string/addShelter" />
 
 
 </RelativeLayout>

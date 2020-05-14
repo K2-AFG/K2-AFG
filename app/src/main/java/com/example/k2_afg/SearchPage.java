@@ -1,5 +1,7 @@
 package com.example.k2_afg;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +17,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -45,7 +48,8 @@ public class SearchPage extends AppCompatActivity {
     private DatabaseReference databaseReference;
     public static Context context;
     private R_Adapter rAdapter = new R_Adapter(context, arrayList);
-    private RecyclerView.LayoutManager xLayoutManager;
+    Button btn;
+    Button addShelter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,9 +58,25 @@ public class SearchPage extends AppCompatActivity {
 
         context = this;
         searchField = findViewById(R.id.search);
+
+        addShelter = (Button) findViewById(R.id.addShelter);
+        Log.v("querySearch", "from search page" + welcome.ifClicked);
+        if(welcome.ifClicked == true){
+            addShelter.setVisibility(View.VISIBLE);
+        } else{
+            addShelter.setVisibility(View.INVISIBLE);
+        }
+
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
+//        btn = (Button) findViewById(R.id.forShelter);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                search()
+//            }
+//        });
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -114,6 +134,8 @@ public class SearchPage extends AppCompatActivity {
 
     private void search(String text) {
         ArrayList<Shelter> cList = new ArrayList<>();
+        searchField.setHint("Search Shelters by Name");
+        searchField.setTextColor(Color.parseColor("#FF0000"));
         for (Shelter item : arrayList) {
             if (item.getName().toLowerCase().contains(text.toLowerCase())) {
                 cList.add(item);
@@ -121,6 +143,7 @@ public class SearchPage extends AppCompatActivity {
             }
         } rV.setAdapter(new R_Adapter(getApplicationContext(), cList));
     }
+
 
 
 

@@ -39,9 +39,11 @@
     <string name="filterShelterVacancyTxt">Shelter by Vacancy</string>
     <string name="filterPantryNameTxt">Pantries by Name</string>
     <string name="filterPantryDistanceTxt">Pantries by Distance</string>
-    <string name="shelters">Shelters</string>
+    <string name="shelters">Search Shelters by Name</string>
     <string name="pantry">Pantries</string>
     <string name="vacancy">Vacancy</string>
+    <string name="shelterV">Search Shelters by Vacancy</string>
+    <string name="addShelter">Add New Shelter</string>
     <string name="backStr">Back</string>
     <string name="submit">Submit</string>
 
