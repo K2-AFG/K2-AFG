@@ -44,6 +44,9 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
 
     public void filterList(ArrayList<Shelter> cList) {
         arrayList = cList;
+        for(int i = 0; i < arrayList.size(); i ++) {
+            Log.v("querySearch", "array list is " + arrayList.get(i).getName());
+        }
         notifyDataSetChanged();
     }
 

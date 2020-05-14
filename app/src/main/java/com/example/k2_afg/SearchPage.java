@@ -47,7 +47,6 @@ public class SearchPage extends AppCompatActivity {
     private R_Adapter rAdapter = new R_Adapter(context, arrayList);
     private RecyclerView.LayoutManager xLayoutManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,6 @@ public class SearchPage extends AppCompatActivity {
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
-
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -79,19 +77,17 @@ public class SearchPage extends AppCompatActivity {
                     website = item.child("website").getValue().toString();
                     phoneNum = ((Long)item.child("phoneNum").getValue()).intValue();
 
-
                     Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
                     arrayList.add(shelter);
-                } buildRV();
-
+                }
                 rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
                 Collections.sort(arrayList);
+
                 }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
 
         searchField = (EditText) findViewById(R.id.search);
         searchField.addTextChangedListener(new TextWatcher() {
@@ -108,7 +104,6 @@ public class SearchPage extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 if (!s.toString().isEmpty()) {
-                    Log.v("welcome", "test1 " + s.toString());
                     search(s.toString());
                 } else {
                     search("");
@@ -122,11 +117,11 @@ public class SearchPage extends AppCompatActivity {
         for (Shelter item : arrayList) {
             if (item.getName().toLowerCase().contains(text.toLowerCase())) {
                 cList.add(item);
-                Log.v("querySearch", "item is " + item.getName());
+                rAdapter.filterList(cList);
             }
-        }
-        rAdapter.filterList(cList);
+        } rV.setAdapter(new R_Adapter(getApplicationContext(), cList));
     }
+
 
 
     @Override
@@ -148,14 +143,5 @@ public class SearchPage extends AppCompatActivity {
         super.onResume();
         if(adapter!=null)
             adapter.startListening();
-    }
-
-    private void buildRV() {
-        rV = findViewById(R.id.searchRecycler);
-        rV.setHasFixedSize(true);
-        xLayoutManager = new LinearLayoutManager(this);
-        rAdapter = new R_Adapter(getApplicationContext(),arrayList);
-        rV.setLayoutManager(xLayoutManager);
-        rV.setAdapter(rAdapter);
     }
 }
