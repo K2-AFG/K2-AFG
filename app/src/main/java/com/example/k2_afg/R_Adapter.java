@@ -25,13 +25,11 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
     public Context c;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
 
+
     public R_Adapter(Context c, ArrayList<Shelter> arrayList) {
         this.c = c;
         this.arrayList = arrayList;
     }
-
-    public R_Adapter() { }
-
 
     @Override
     public int getItemCount() {
@@ -41,10 +39,12 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout, parent, false);
-        //ViewHolder holder = new ViewHolder(v);
-        //Log.v("welcome", "holder: " + holder.t2.toString());
         return new ViewHolder(parent);
+    }
+
+    public void filterList(ArrayList<Shelter> cList) {
+        arrayList = cList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -62,36 +62,31 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t2.setText(arrayList.get(position).getName());
+                holder.tVacancy.setText(Integer.toString(arrayList.get(position).getVacancies()));
             }
         });
     }
+
+
 
     public String getName(){
         Log.v("welcome", "getName method" + name);
         return name;
     }
 
-//    public class R_AdapterViewHolder extends ViewHolder {
-//
-//        public TextView t1;
-//        RelativeLayout parent_layout;
-//
-//        public R_AdapterViewHolder(View itemView) {
-//            super(itemView);
-//            t1 = (TextView)itemView.findViewById(R.id.listName);
-//            parent_layout = itemView.findViewById(R.id.parent_layout);
-//        }
-//    }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView t2;
+        private TextView tVacancy;
 
         ViewHolder(ViewGroup container) {
             super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.list_layout, container, false));
             t2 = itemView.findViewById(R.id.listName);
+            tVacancy = itemView.findViewById(R.id.listVacancy);
         }
         public void bind(Shelter shelter){
             t2.setText(shelter.getName());
+            tVacancy.setText(Integer.toString(shelter.getVacancies()));
         }
     }
 }

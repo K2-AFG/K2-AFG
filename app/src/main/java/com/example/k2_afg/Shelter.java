@@ -1,6 +1,8 @@
 package com.example.k2_afg;
 
-public class Shelter extends Organization {
+import java.util.Comparator;
+
+public class Shelter extends Organization implements Comparable{
 
 
 	/**
@@ -15,19 +17,20 @@ public class Shelter extends Organization {
 
 	/**
 	 * Creates a new shelter with a name, address, phone number, website, description, longitude, latitude, vacancies, and shelter specifications
-	 * @param name the name of the shelter
-	 * @param address the address of the shelter
-	 * @param phoneNum the phone number of the shelter
-	 * @param website the website of the shelter
+	 *
+	 * @param name        the name of the shelter
+	 * @param address     the address of the shelter
+	 * @param phoneNum    the phone number of the shelter
+	 * @param website     the website of the shelter
 	 * @param description a brief description of the shelter
-	 * @param longitude the longitude that the shelter is located
-	 * @param latitude the latitude that the shelter is located
-	 * @param vacancies the number of vacancies in a shelter
-	 * @param specifics requirements of the shelter
+	 * @param longitude   the longitude that the shelter is located
+	 * @param latitude    the latitude that the shelter is located
+	 * @param vacancies   the number of vacancies in a shelter
+	 * @param specifics   requirements of the shelter
 	 */
-	public Shelter (String name, String address, int phoneNum, String website, String description,
-					double latitude, double longitude,
-					int vacancies, String specifics) {
+	public Shelter(String name, String address, int phoneNum, String website, String description,
+				   double latitude, double longitude,
+				   int vacancies, String specifics) {
 		super(name, address, phoneNum, website, description, latitude, longitude);
 		this.vacancies = vacancies;
 		specifications = specifics;
@@ -36,7 +39,7 @@ public class Shelter extends Organization {
 	/**
 	 * Creates a shelter with no vacancies or specifications
 	 */
-	public Shelter () {
+	public Shelter() {
 		super();
 		vacancies = 0;
 		specifications = "";
@@ -45,6 +48,7 @@ public class Shelter extends Organization {
 
 	/**
 	 * gets the number of vacancies this shelter has
+	 *
 	 * @return the number of vacancies
 	 */
 	public int getVacancies() {
@@ -53,6 +57,7 @@ public class Shelter extends Organization {
 
 	/**
 	 * sets the number of vacancies to the given number
+	 *
 	 * @param vacancies the number to set
 	 */
 	public void setVacancies(int vacancies) {
@@ -61,6 +66,7 @@ public class Shelter extends Organization {
 
 	/**
 	 * gets the specifications of a shelter
+	 *
 	 * @return the shelter specifications
 	 */
 	public String getSpecifications() {
@@ -69,10 +75,17 @@ public class Shelter extends Organization {
 
 	/**
 	 * sets the specifications of the shelter to this description
+	 *
 	 * @param specifications the specifications to set
 	 */
 	public void setSpecifications(String specifications) {
 		this.specifications = specifications;
+	}
+
+
+	@Override
+	public int compareTo(Object s) {
+		return ((Shelter)s).getVacancies() - this.vacancies;
 	}
 
 }

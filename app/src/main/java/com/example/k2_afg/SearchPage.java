@@ -1,9 +1,12 @@
 package com.example.k2_afg;
+import android.content.Context;
+import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+
+import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class SearchPage extends AppCompatActivity {
@@ -35,24 +43,25 @@ public class SearchPage extends AppCompatActivity {
     FirebaseRecyclerAdapter<Shelter, SheltersViewHolder> adapter;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
     private DatabaseReference databaseReference;
+    public static Context context;
+    private R_Adapter rAdapter = new R_Adapter(context, arrayList);
+    private RecyclerView.LayoutManager xLayoutManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchpage);
 
+        context = this;
         searchField = findViewById(R.id.search);
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
 
-//        for(int i = 0; i < 10; i++){
-//            Shelter shelter = new Shelter();
-//            shelter.setName("Shelter " + i);
-//            arrayList.add(shelter);
-//        }
 
         databaseReference.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
@@ -73,29 +82,16 @@ public class SearchPage extends AppCompatActivity {
 
                     Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
                     arrayList.add(shelter);
-                } rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
-            }
+                } buildRV();
+
+                rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
+                Collections.sort(arrayList);
+                }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
 
-
-
-//        options = new FirebaseRecyclerOptions.Builder<Shelter>().setQuery(databaseReference, Shelter.class).build();
-//        adapter = new FirebaseRecyclerAdapter<Shelter, SheltersViewHolder>(options) {
-//
-//            @Override
-//            protected void onBindViewHolder(@NonNull SheltersViewHolder holder, int position, @NonNull Shelter model) {
-//                holder.t1.setText(model.getName());
-//            }
-//            @NonNull
-//            @Override
-//            public SheltersViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_layout, parent, false);
-//                return new SheltersViewHolder(view);
-//            }
-//        }; rV.setHasFixedSize(true);
 
         searchField = (EditText) findViewById(R.id.search);
         searchField.addTextChangedListener(new TextWatcher() {
@@ -121,31 +117,17 @@ public class SearchPage extends AppCompatActivity {
         });
     }
 
-    private void search(String s) {
-        Query query = databaseReference.orderByChild("name")
-                .startAt(s)
-                .endAt(s + "\uf8ff");
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.hasChildren()){
-                    arrayList.clear();
-                    for(DataSnapshot dss: dataSnapshot.getChildren()){
-                        final Shelter shelter = dss.getValue(Shelter.class);
-                        arrayList.add(shelter);
-                    }
-                    R_Adapter R_Adapter = new R_Adapter(getApplicationContext(), arrayList);
-                    rV.setAdapter(R_Adapter);
-                    R_Adapter.notifyDataSetChanged();
-                }
+    private void search(String text) {
+        ArrayList<Shelter> cList = new ArrayList<>();
+        for (Shelter item : arrayList) {
+            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+                cList.add(item);
+                Log.v("querySearch", "item is " + item.getName());
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-        adapter.startListening();
-        rV.setAdapter(adapter);
+        }
+        rAdapter.filterList(cList);
     }
+
 
     @Override
     protected void onStart(){
@@ -168,5 +150,12 @@ public class SearchPage extends AppCompatActivity {
             adapter.startListening();
     }
 
-
+    private void buildRV() {
+        rV = findViewById(R.id.searchRecycler);
+        rV.setHasFixedSize(true);
+        xLayoutManager = new LinearLayoutManager(this);
+        rAdapter = new R_Adapter(getApplicationContext(),arrayList);
+        rV.setLayoutManager(xLayoutManager);
+        rV.setAdapter(rAdapter);
+    }
 }

@@ -3,6 +3,7 @@ package com.example.k2_afg;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class ShelterDetails extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
 
                         Shelter shelter = dataSnapshot1.getValue(Shelter.class);
+                        Log.v("welcome", "shelter is " + shelter.getName());
                         name1.setText(shelter.getName());
                         address1.setText(shelter.getAddress());
                         phone1.setText(Integer.toString(shelter.getPhoneNum()));

@@ -76,7 +76,8 @@ public class Location extends AppCompatActivity{
     }
 
     private void readData() {
-
+        SearchPage sp = new SearchPage();
+        ArrayList<Shelter> shelters = sp.arrayList;
         InputStream is = getResources().openRawResource(R.raw.shelters);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         try {
