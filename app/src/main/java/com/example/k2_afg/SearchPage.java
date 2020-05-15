@@ -96,7 +96,7 @@ public class SearchPage extends AppCompatActivity {
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = ((Long)item.child("phoneNum").getValue()).intValue();
-
+                    Log.v("hello", item.child("name").getValue().toString());
                     Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
                     arrayList.add(shelter);
                 }
