@@ -60,12 +60,21 @@ public class SearchPage extends AppCompatActivity {
         searchField = findViewById(R.id.search);
 
         addShelter = (Button) findViewById(R.id.addShelter);
-        Log.v("querySearch", "from search page" + welcome.ifClicked);
         if(welcome.ifClicked == true){
             addShelter.setVisibility(View.VISIBLE);
+            addShelter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.v("querySearch", " visible");
+                    Intent intent = new Intent(getApplicationContext(), ShelterInput.class);
+                    startActivity(intent);
+                }
+            });
         } else{
             addShelter.setVisibility(View.INVISIBLE);
         }
+
+
 
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));

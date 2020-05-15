@@ -19,7 +19,7 @@
     <string name="pantrybuttontext">For Pantries</string>
     <string name="manbuttontext">For Users</string>
     <string name="search">Search here for shelter</string>
-    <string name="vacancyText">Vacancy Description: </string>
+    <string name="vacancyText">Vacancy:</string>
     <string name="vacancyDescription">Please enter vacancy description </string>
     <string name="shelterName">Name: </string>
     <string name="shelterNameText">Please enter shelter name</string>
@@ -44,7 +44,11 @@
     <string name="vacancy">Vacancy</string>
     <string name="shelterV">Search Shelters by Vacancy</string>
     <string name="addShelter">Add New Shelter</string>
+    <string name="editShelter">Edit</string>
+    <string name="submitChanges">Submit Changes</string>
     <string name="backStr">Back</string>
     <string name="submit">Submit</string>
+
+
 
 </resources>

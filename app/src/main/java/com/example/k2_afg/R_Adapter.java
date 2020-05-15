@@ -70,8 +70,6 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
         });
     }
 
-
-
     public String getName(){
         Log.v("welcome", "getName method" + name);
         return name;

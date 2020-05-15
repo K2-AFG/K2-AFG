@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +24,13 @@ import com.google.firebase.database.ValueEventListener;
 public class ShelterDetails extends AppCompatActivity {
     String clickName;
     SearchPage sp = new SearchPage();
-    TextView name1, address1, email1, phone1, specifics1;
-
+    TextView name1, address1, email1, phone1, specifics1, vacancy1;
+    Button editShelter, submitChanges;
+    EditText ShelterName2, vacancyDescription2, EmailText, addressInput, phoneInput, SpecificText;
     DatabaseReference reference;
+    Shelter shelter1;
+    int vacancy = 0;
+    int phoneN = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,119 @@ public class ShelterDetails extends AppCompatActivity {
         address1 = (TextView) findViewById(R.id.addressBox);
         phone1 = (TextView) findViewById(R.id.phoneBox);
         specifics1 = findViewById(R.id.specificBox);
+        email1 = findViewById(R.id.emailBox);
+        vacancy1 = findViewById(R.id.vacancyBox);
+        editShelter = findViewById(R.id.editData);
+
+        ShelterName2 = (EditText) findViewById(R.id.editName);
+        ShelterName2.setVisibility(View.INVISIBLE);
+        vacancyDescription2 = (EditText) findViewById(R.id.editVacancy);
+        vacancyDescription2.setVisibility(View.INVISIBLE);
+        EmailText = (EditText) findViewById(R.id.editEmail);
+        EmailText.setVisibility(View.INVISIBLE);
+        addressInput = (EditText) findViewById(R.id.editAddress);
+        addressInput.setVisibility(View.INVISIBLE);
+        phoneInput = (EditText) findViewById(R.id.editPhone);
+        phoneInput.setVisibility(View.INVISIBLE);
+        SpecificText = (EditText) findViewById(R.id.editSpecifics);
+        SpecificText.setVisibility(View.INVISIBLE);
+        submitChanges = (Button) findViewById(R.id.submitChanges);
+        submitChanges.setVisibility(View.INVISIBLE);
+        shelter1 = new Shelter();
+        reference = FirebaseDatabase.getInstance().getReference().child("Shelter");
+
+
+        if(welcome.ifClicked == true){
+            editShelter.setVisibility(View.VISIBLE);
+            Log.v("querySearch", "in edit shelter !");
+            editShelter.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    submitChanges.setVisibility(View.VISIBLE);
+                    editShelter.setVisibility(View.INVISIBLE);
+
+
+                    name1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            name1.setVisibility(View.INVISIBLE);
+                            ShelterName2.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+                    vacancy1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            vacancy1.setVisibility(View.INVISIBLE);
+                            vacancyDescription2.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+                    email1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            email1.setVisibility(View.INVISIBLE);
+                            EmailText.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+                    address1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            address1.setVisibility(View.INVISIBLE);
+                            addressInput.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+                    phone1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            phone1.setVisibility(View.INVISIBLE);
+                            phoneInput.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+                    specifics1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            specifics1.setVisibility(View.INVISIBLE);
+                            SpecificText.setVisibility(View.VISIBLE);
+                        }
+                    });
+
+                    submitChanges.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                            vacancy = Integer.parseInt(vacancyDescription2.getText().toString().trim());
+                            phoneN = Integer.parseInt(phoneInput.getText().toString().trim());
+
+                            try{
+                                int i = Integer.parseInt(String.valueOf(vacancy));
+                            } catch(NumberFormatException ex){
+                                Log.v("querySearch", "error L");
+                            }
+
+                            try{
+                                int j = Integer.parseInt(String.valueOf(phoneN));
+                            } catch(NumberFormatException ex){
+                                Log.v("querySearch", "error L");
+                            }
+
+                            shelter1.setName(ShelterName2.getText().toString().trim());
+                            shelter1.setVacancies(vacancy);
+                            shelter1.setAddress(addressInput.getText().toString().trim());
+                            shelter1.setPhoneNum(phoneN);
+                            shelter1.setSpecifications(SpecificText.getText().toString().trim());
+                            reference.push().setValue(shelter1);
+                            Toast.makeText(ShelterDetails.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            });
+        } else{
+            editShelter.setVisibility(View.INVISIBLE);
+        }
 
         reference = FirebaseDatabase.getInstance().getReference();
         Query query = reference.child("Shelter").orderByChild("name").equalTo(clickName);
@@ -50,6 +170,7 @@ public class ShelterDetails extends AppCompatActivity {
                         address1.setText(shelter.getAddress());
                         phone1.setText(Integer.toString(shelter.getPhoneNum()));
                         specifics1.setText(shelter.getSpecifications());
+                        vacancy1.setText(Integer.toString(shelter.getVacancies()));
                     }
             }
 
