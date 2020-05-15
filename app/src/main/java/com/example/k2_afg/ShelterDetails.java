@@ -37,8 +37,8 @@ public class ShelterDetails extends AppCompatActivity {
     DatabaseReference reference;
     Shelter shelter1;
     String key;
-    int vacancy = 0;
-    int phoneN = 0;
+    boolean nameB = false; boolean vacancyB = false; boolean emailB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +79,7 @@ public class ShelterDetails extends AppCompatActivity {
             editShelter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     submitChanges.setVisibility(View.VISIBLE);
                     editShelter.setVisibility(View.INVISIBLE);
 
@@ -87,6 +88,7 @@ public class ShelterDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             name1.setVisibility(View.INVISIBLE);
                             ShelterName2.setVisibility(View.VISIBLE);
+                            nameB = true;
                         }
                     });
 
@@ -95,6 +97,7 @@ public class ShelterDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             vacancy1.setVisibility(View.INVISIBLE);
                             vacancyDescription2.setVisibility(View.VISIBLE);
+                            vacancyB = true;
                         }
                     });
 
@@ -103,6 +106,7 @@ public class ShelterDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             email1.setVisibility(View.INVISIBLE);
                             EmailText.setVisibility(View.VISIBLE);
+                            emailB = true;
                         }
                     });
 
@@ -111,6 +115,7 @@ public class ShelterDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             address1.setVisibility(View.INVISIBLE);
                             addressInput.setVisibility(View.VISIBLE);
+                            addressB = true;
                         }
                     });
 
@@ -119,6 +124,7 @@ public class ShelterDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             phone1.setVisibility(View.INVISIBLE);
                             phoneInput.setVisibility(View.VISIBLE);
+                            phoneB = true;
                         }
                     });
 
@@ -127,56 +133,45 @@ public class ShelterDetails extends AppCompatActivity {
                         public void onClick(View v) {
                             specifics1.setVisibility(View.INVISIBLE);
                             SpecificText.setVisibility(View.VISIBLE);
+                            specificsB = true;
                         }
                     });
 
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if(!(ShelterName2.getText().toString().trim().equals(name1.getText()))) {
+                            if(nameB == true) {
+                                Log.v("querySearch", "in if" + ShelterName2.getText().toString().trim().equals(name1.getText()));
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "name", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 
-                            if(!(vacancyDescription2.getText().toString().trim().equals(vacancy1.getText()))) {
+                            if(vacancyB == true) {
+                                Log.v("querySearch", "in if" + vacancyDescription2.getText().toString().trim().equals(vacancy1.getText()));
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "vacancies", vacancyDescription2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
-                            if(!(addressInput.getText().toString().trim().equals(address1.getText()))) {
+//
+                            if(addressB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "address", addressInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
-                            if(!(phoneInput.getText().toString().trim().equals(phone1.getText()))) {
+//
+                            if(phoneB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
-                            if(!(SpecificText.getText().toString().trim().equals(specifics1.getText()))) {
+//
+                            if(specificsB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "specifications", SpecificText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 
-//                            vacancy = Integer.parseInt(vacancyDescription2.getText().toString().trim());
-//                            phoneN = Integer.parseInt(phoneInput.getText().toString().trim());
-//
-//                            try{
-//                                int i = Integer.parseInt(String.valueOf(vacancy));
-//                            } catch(NumberFormatException ex){
-//                                Log.v("querySearch", "error L");
-//                            }
-//
-//                            try{
-//                                int j = Integer.parseInt(String.valueOf(phoneN));
-//                            } catch(NumberFormatException ex){
-//                                Log.v("querySearch", "error L");
-//                            }
 
                             //shelter1.setName(ShelterName2.getText().toString().trim());
 //                            shelter1.setVacancies(vacancy);

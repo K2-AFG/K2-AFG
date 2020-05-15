@@ -74,8 +74,6 @@ public class SearchPage extends AppCompatActivity {
             addShelter.setVisibility(View.INVISIBLE);
         }
 
-
-
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
