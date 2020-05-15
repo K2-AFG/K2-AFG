@@ -65,7 +65,7 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t2.setText(arrayList.get(position).getName());
-                holder.tVacancy.setText(Integer.toString(arrayList.get(position).getVacancies()));
+                holder.tVacancy.setText(arrayList.get(position).getVacancies());
             }
         });
     }
@@ -87,7 +87,7 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
         }
         public void bind(Shelter shelter){
             t2.setText(shelter.getName());
-            tVacancy.setText(Integer.toString(shelter.getVacancies()));
+            tVacancy.setText(shelter.getVacancies());
         }
     }
 }

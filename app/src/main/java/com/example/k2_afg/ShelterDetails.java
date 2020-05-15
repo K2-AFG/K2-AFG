@@ -1,9 +1,13 @@
 package com.example.k2_afg;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 
 public class ShelterDetails extends AppCompatActivity {
@@ -29,6 +36,7 @@ public class ShelterDetails extends AppCompatActivity {
     EditText ShelterName2, vacancyDescription2, EmailText, addressInput, phoneInput, SpecificText;
     DatabaseReference reference;
     Shelter shelter1;
+    String key;
     int vacancy = 0;
     int phoneN = 0;
 
@@ -73,7 +81,6 @@ public class ShelterDetails extends AppCompatActivity {
                 public void onClick(View v) {
                     submitChanges.setVisibility(View.VISIBLE);
                     editShelter.setVisibility(View.INVISIBLE);
-
 
                     name1.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -126,28 +133,57 @@ public class ShelterDetails extends AppCompatActivity {
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-                            vacancy = Integer.parseInt(vacancyDescription2.getText().toString().trim());
-                            phoneN = Integer.parseInt(phoneInput.getText().toString().trim());
-
-                            try{
-                                int i = Integer.parseInt(String.valueOf(vacancy));
-                            } catch(NumberFormatException ex){
-                                Log.v("querySearch", "error L");
+                            if(!(ShelterName2.getText().toString().trim().equals(name1.getText()))) {
+                                HashMap map = new HashMap();
+                                map.put("Shelter/" + key + "/" + "name", ShelterName2.getText().toString().trim());
+                                reference.updateChildren(map);
                             }
 
-                            try{
-                                int j = Integer.parseInt(String.valueOf(phoneN));
-                            } catch(NumberFormatException ex){
-                                Log.v("querySearch", "error L");
+                            if(!(vacancyDescription2.getText().toString().trim().equals(vacancy1.getText()))) {
+                                HashMap map = new HashMap();
+                                map.put("Shelter/" + key + "/" + "vacancies", vacancyDescription2.getText().toString().trim());
+                                reference.updateChildren(map);
                             }
 
-                            shelter1.setName(ShelterName2.getText().toString().trim());
-                            shelter1.setVacancies(vacancy);
-                            shelter1.setAddress(addressInput.getText().toString().trim());
-                            shelter1.setPhoneNum(phoneN);
-                            shelter1.setSpecifications(SpecificText.getText().toString().trim());
-                            reference.push().setValue(shelter1);
+                            if(!(addressInput.getText().toString().trim().equals(address1.getText()))) {
+                                HashMap map = new HashMap();
+                                map.put("Shelter/" + key + "/" + "address", addressInput.getText().toString().trim());
+                                reference.updateChildren(map);
+                            }
+
+                            if(!(phoneInput.getText().toString().trim().equals(phone1.getText()))) {
+                                HashMap map = new HashMap();
+                                map.put("Shelter/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
+                                reference.updateChildren(map);
+                            }
+
+                            if(!(SpecificText.getText().toString().trim().equals(specifics1.getText()))) {
+                                HashMap map = new HashMap();
+                                map.put("Shelter/" + key + "/" + "specifications", SpecificText.getText().toString().trim());
+                                reference.updateChildren(map);
+                            }
+
+//                            vacancy = Integer.parseInt(vacancyDescription2.getText().toString().trim());
+//                            phoneN = Integer.parseInt(phoneInput.getText().toString().trim());
+//
+//                            try{
+//                                int i = Integer.parseInt(String.valueOf(vacancy));
+//                            } catch(NumberFormatException ex){
+//                                Log.v("querySearch", "error L");
+//                            }
+//
+//                            try{
+//                                int j = Integer.parseInt(String.valueOf(phoneN));
+//                            } catch(NumberFormatException ex){
+//                                Log.v("querySearch", "error L");
+//                            }
+
+                            //shelter1.setName(ShelterName2.getText().toString().trim());
+//                            shelter1.setVacancies(vacancy);
+//                            shelter1.setAddress(addressInput.getText().toString().trim());
+//                            shelter1.setPhoneNum(phoneN);
+//                            shelter1.setSpecifications(SpecificText.getText().toString().trim());
+                            //reference.updateChildren("S")
                             Toast.makeText(ShelterDetails.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -165,12 +201,13 @@ public class ShelterDetails extends AppCompatActivity {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
 
                         Shelter shelter = dataSnapshot1.getValue(Shelter.class);
+                        key = dataSnapshot1.getKey();
                         Log.v("welcome", "shelter is " + shelter.getName());
                         name1.setText(shelter.getName());
                         address1.setText(shelter.getAddress());
-                        phone1.setText(Integer.toString(shelter.getPhoneNum()));
+                        phone1.setText(shelter.getPhoneNum());
                         specifics1.setText(shelter.getSpecifications());
-                        vacancy1.setText(Integer.toString(shelter.getVacancies()));
+                        vacancy1.setText(shelter.getVacancies());
                     }
             }
 
@@ -179,5 +216,9 @@ public class ShelterDetails extends AppCompatActivity {
 
             }
         });
-    }}
+    }
+
+
+
+}
 

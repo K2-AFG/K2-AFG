@@ -1,8 +1,5 @@
 package com.example.k2_afg;
 
-import com.example.k2_afg.FoodItem;
-import com.example.k2_afg.Organization;
-
 import java.util.ArrayList;
 
 public class Pantry extends Organization {
@@ -36,7 +33,7 @@ public class Pantry extends Organization {
 	 * @param longitude the longitude of the pantry
 	 * @param latitude the latitude of the pantry
 	 */
-	public Pantry (String name, String address, int phoneNum, String website, String description, double longitude, double latitude) {
+	public Pantry (String name, String address, String phoneNum, String website, String description, double longitude, double latitude) {
 		super(name, address, phoneNum, website, description, longitude, latitude);
 		foods = new ArrayList<FoodItem>();
 		variety = 0;

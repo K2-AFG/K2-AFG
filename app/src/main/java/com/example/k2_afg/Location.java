@@ -92,7 +92,7 @@ public class Location extends AppCompatActivity{
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = ((Long)item.child("phoneNum").getValue()).intValue();
-                    Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
+                    Shelter shelter = new Shelter(name,  null,  "phoneNum",  null, null, latitude,  longitude, "vacancies",  null);
                     arrayList.add(shelter);
                 }
                 Collections.sort(arrayList);

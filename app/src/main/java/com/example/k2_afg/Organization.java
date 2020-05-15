@@ -13,9 +13,9 @@ public class Organization {
 	private String address;
 
 	/**
-	 * int value that holds the phone number of the organization
+	 * String value that holds the phone number of the organization
 	 */
-	private int phoneNum;
+	private String phoneNum;
 
 	/**
 	 * String value that holds the link to the organization's website 
@@ -45,7 +45,7 @@ public class Organization {
 		address ="";
 		website = "";
 		description = "";
-		phoneNum = 0;
+		phoneNum = "";
 	}
 
 	/**
@@ -57,7 +57,7 @@ public class Organization {
 		address ="";
 		website = "";
 		description = "";
-		phoneNum = 0;
+		phoneNum = "";
 		longitude = 0;
 		latitude = 0;
 	}
@@ -72,7 +72,7 @@ public class Organization {
 	 * @param longitude the longitude where the organization is located
 	 * @param latitude the latitude where the organization is located
 	 */
-	public Organization (String name, String address, int phoneNum,
+	public Organization (String name, String address, String phoneNum,
 						 String website, String description,
 						 double latitude, double longitude) {
 		this.name = name;
@@ -120,7 +120,7 @@ public class Organization {
 	 * gets the phone number of this organization
 	 * @return the phone number of the organization as a int
 	 */
-	public int getPhoneNum() {
+	public String getPhoneNum() {
 		return phoneNum;
 	}
 
@@ -128,7 +128,7 @@ public class Organization {
 	 * sets the phone number of the organization to this
 	 * @param phoneNum the given phone number to set
 	 */
-	public void setPhoneNum(int phoneNum) {
+	public void setPhoneNum(String phoneNum) {
 		this.phoneNum = phoneNum;
 	}
 

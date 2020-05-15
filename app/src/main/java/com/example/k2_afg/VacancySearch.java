@@ -65,7 +65,7 @@ public class VacancySearch extends AppCompatActivity {
                 String[] fields = value.split(",");
                 int values1 = Integer.parseInt(fields[1]);
                 Shelter nextShelter = new Shelter(fields[0], "address",
-                        123, "website", "description", 1234, 4321, values1, "specifics");
+                        "123", "website", "description", 1234, 4321, "32", "specifics");
                 if(ifVacant(nextShelter)) {
                     shelters.add(nextShelter);
                     names.add(nextShelter.getName());
@@ -78,7 +78,8 @@ public class VacancySearch extends AppCompatActivity {
     }
 
     private boolean ifVacant(Shelter s){
-        if(s.getVacancies() >= 0) {
+        int v = Integer.valueOf(s.getVacancies());
+        if(v >= 0) {
             Log.v("welcomeTag", s.getName());
             return true;
         } else{

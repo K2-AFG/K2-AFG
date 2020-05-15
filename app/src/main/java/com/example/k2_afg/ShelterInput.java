@@ -36,8 +36,8 @@ Shelter shelter1;
         submitData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int vacancyD = Integer.parseInt(vacancyDescription2.getText().toString().trim());
-                int phoneN = Integer.parseInt(phoneInput.getText().toString().trim());
+                String vacancyD = vacancyDescription2.getText().toString().trim();
+                String phoneN = phoneInput.getText().toString().trim();
                 shelter1.setName(ShelterName2.getText().toString().trim());
                 shelter1.setVacancies(vacancyD);
                 shelter1.setAddress(addressInput.getText().toString().trim());

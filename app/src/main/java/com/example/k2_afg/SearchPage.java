@@ -96,15 +96,15 @@ public class SearchPage extends AppCompatActivity {
                 while(items.hasNext()){
                     DataSnapshot item = items.next();
                     //Log.v("welcome", item.getKey());
-                    String name; String specifics; int vacancies; double longitude; double latitude; String description; String website; int phoneNum; String address;
+                    String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
                     name = item.child("name").getValue().toString();
                     specifics = item.child("specifications").getValue().toString();
-                    vacancies = ((Long) item.child("vacancies").getValue()).intValue();
+                    vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
                     latitude = ((Long) item.child("latitude").getValue()).doubleValue();
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
-                    phoneNum = ((Long)item.child("phoneNum").getValue()).intValue();
+                    phoneNum = item.child("phoneNum").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
                     Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
                     arrayList.add(shelter);

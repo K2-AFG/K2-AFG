@@ -1,14 +1,12 @@
 package com.example.k2_afg;
 
-import java.util.Comparator;
-
 public class Shelter extends Organization implements Comparable{
 
 
 	/**
 	 * the number of vacant rooms a shelter has
 	 */
-	private int vacancies;
+	private String vacancies1;
 
 	/**
 	 * specific requirements a user must meet to be eligible for a shelter
@@ -28,11 +26,11 @@ public class Shelter extends Organization implements Comparable{
 	 * @param vacancies   the number of vacancies in a shelter
 	 * @param specifics   requirements of the shelter
 	 */
-	public Shelter(String name, String address, int phoneNum, String website, String description,
+	public Shelter(String name, String address, String phoneNum, String website, String description,
 				   double latitude, double longitude,
-				   int vacancies, String specifics) {
+				   String vacancies, String specifics) {
 		super(name, address, phoneNum, website, description, latitude, longitude);
-		this.vacancies = vacancies;
+		vacancies1 = vacancies;
 		specifications = specifics;
 	}
 
@@ -41,7 +39,7 @@ public class Shelter extends Organization implements Comparable{
 	 */
 	public Shelter() {
 		super();
-		vacancies = 0;
+		vacancies1 = "";
 		specifications = "";
 	}
 
@@ -51,17 +49,15 @@ public class Shelter extends Organization implements Comparable{
 	 *
 	 * @return the number of vacancies
 	 */
-	public int getVacancies() {
-		return vacancies;
-	}
+	public String getVacancies() { return vacancies1; }
 
 	/**
 	 * sets the number of vacancies to the given number
 	 *
 	 * @param vacancies the number to set
 	 */
-	public void setVacancies(int vacancies) {
-		this.vacancies = vacancies;
+	public void setVacancies(String vacancies) {
+		this.vacancies1 = vacancies;
 	}
 
 	/**
@@ -85,7 +81,8 @@ public class Shelter extends Organization implements Comparable{
 
 	@Override
 	public int compareTo(Object s) {
-		return ((Shelter)s).getVacancies() - this.vacancies;
+		String v = ((Shelter)s).getVacancies();
+		return Integer.valueOf(v) - Integer.valueOf(this.vacancies1);
 	}
 
 }
