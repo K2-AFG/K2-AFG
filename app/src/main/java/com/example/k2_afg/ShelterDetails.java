@@ -151,19 +151,19 @@ public class ShelterDetails extends AppCompatActivity {
                                 map.put("Shelter/" + key + "/" + "website", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-//
+
                             if(addressB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "address", addressInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-//
+
                             if(phoneB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-//
+
                             if(specificsB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "description", SpecificText.getText().toString().trim());
