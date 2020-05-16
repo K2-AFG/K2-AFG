@@ -28,12 +28,14 @@
         </activity>
         <activity android:name=".PantryInput" />
         <activity android:name=".ShelterInput" />
-        <activity android:name=".ShelterDetails"></activity>
+        <activity android:name=".ShelterDetails"/>
         <activity android:name=".ApplyFilter" />
         <activity android:name=".SearchPage" />
         <activity android:name=".SearchByVacancy" />
         <activity android:name=".PantryDetails" />
         <activity android:name=".SearchByNamePantry" />
+        <activity android:name=".Location"/>
+        <activity android:name=".PantryLocation"/>
 
         <meta-data
             android:name="preloaded_fonts"

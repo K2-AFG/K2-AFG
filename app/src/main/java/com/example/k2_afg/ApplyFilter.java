@@ -54,5 +54,15 @@ public class ApplyFilter extends AppCompatActivity {
             }
         });
 
+        pDistance = (Button) findViewById(R.id.pantryDistanceFilter);
+        pDistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("querySearch", "click search by distance");
+                Intent intent = new Intent(getApplicationContext(), PantryLocation.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

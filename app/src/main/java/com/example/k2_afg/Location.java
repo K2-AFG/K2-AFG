@@ -39,6 +39,7 @@ public class Location extends AppCompatActivity{
     private RecyclerView rV;
     double longitude;
     double latitude;
+    private R_LocationAdapter rAdapter = new R_LocationAdapter(context, arrayList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +91,6 @@ public class Location extends AppCompatActivity{
 
                 rV.setAdapter(new R_LocationAdapter(getApplicationContext(), names));
                 Log.v("querySearch", "array " + names.size());
-                Collections.sort(arrayList);
 
             }
             @Override
