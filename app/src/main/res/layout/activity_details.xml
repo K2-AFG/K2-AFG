@@ -4,293 +4,269 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="194dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="352dp"
-        android:layout_marginBottom="32dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/holtwood_one_sc"
+        android:gravity="center"
         android:text="@string/Header1"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameHeader"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#04CCFF"
         android:fontFamily="@font/abel"
+        android:gravity="center"
         android:text="@string/nameHeader"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/nameBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:fontFamily="@font/abel"
+        android:padding="4dp"
         android:text="@string/nameBox"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104" />
-
-    <TextView
-        android:id="@+id/addressHeader"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="317dp"
-        android:layout_marginBottom="542dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/addressHeader"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameHeader"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/addressBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="21dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/addressBox"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintTop_toBottomOf="@+id/nameHeader" />
 
     <TextView
         android:id="@+id/websiteHeader"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="490dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#04CCFF"
         android:fontFamily="@font/abel"
+        android:gravity="center"
         android:text="@string/websiteHeader"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressHeader"
-        app:layout_constraintVertical_bias="0.01" />
-
-    <TextView
-        android:id="@+id/websiteBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="26dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/websiteBox"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
-
-    <TextView
-        android:id="@+id/phoneHeader"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="437dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/phoneHeader"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/websiteHeader"
-        app:layout_constraintVertical_bias="0.182" />
-
-    <TextView
-        android:id="@+id/phoneBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="292dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/phoneBox"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/specificHeader"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/specificHeader"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
-
-    <TextView
-        android:id="@+id/specificBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="360dp"
-        android:fontFamily="@font/abel"
-        android:text="@string/specificBox"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <Button
-        android:id="@+id/editData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="540dp"
-        android:text="@string/editShelter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/submitChanges"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="540dp"
-        android:text="@string/submitChanges"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editName"
-        android:layout_width="302dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="96dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-    android:id="@+id/editAddress"
-    android:layout_width="302dp"
-    android:layout_height="43dp"
-    android:layout_marginStart="164dp"
-    android:layout_marginTop="160dp"
-    android:ems="10"
-    android:inputType="textPersonName"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/editName" />
 
     <EditText
         android:id="@+id/editWebsite"
-        android:layout_width="302dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="228dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:padding="4dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/websiteBox"
+        app:layout_constraintTop_toBottomOf="@+id/websiteHeader" />
+
+    <TextView
+        android:id="@+id/websiteBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abel"
+        android:padding="4dp"
+        android:text="@string/websiteBox"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/websiteHeader" />
+
+
+    <TextView
+        android:id="@+id/specificHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#04CCFF"
+        android:fontFamily="@font/abel"
+        android:gravity="center"
+        android:text="@string/specificHeader"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/vacancyBox"
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <TextView
+        android:id="@+id/specificBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abel"
+        android:padding="4dp"
+        android:text="@string/specificBox"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/specificHeader" />
+
+    <Button
+        android:id="@+id/editData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/editShelter"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/submitChanges"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/submitChanges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submitChanges"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameHeader" />
+
+    <TextView
+        android:id="@+id/addressBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abel"
+        android:padding="4dp"
+        android:text="@string/addressBox"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressHeader" />
+
+    <TextView
+        android:id="@+id/addressHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#04CCFF"
+        android:fontFamily="@font/abel"
+        android:gravity="center"
+        android:text="@string/addressHeader"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editWebsite" />
+
+    <EditText
+        android:id="@+id/editAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:padding="4dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressHeader" />
 
     <EditText
         android:id="@+id/editSpecifics"
-        android:layout_width="302dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="360dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="4dp"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/specificHeader"
+        tools:layout_editor_absoluteX="-16dp" />
 
     <EditText
         android:id="@+id/editPhone"
-        android:layout_width="302dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="292dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="4dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/phoneBox"
+        app:layout_constraintStart_toStartOf="@+id/phoneBox"
+        app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
 
     <TextView
-        android:id="@+id/VacancyHeader"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="80dp"
+        android:id="@+id/phoneHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#04CCFF"
         android:fontFamily="@font/abel"
-        android:text="@string/vacancyText"
+        android:gravity="center"
+        android:text="@string/phoneHeader"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editAddress" />
+
+    <TextView
+        android:id="@+id/phoneBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abel"
+        android:padding="4dp"
+        android:text="@string/phoneBox"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
 
     <TextView
-        android:id="@+id/vacancyBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="420dp"
+        android:id="@+id/VacancyHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#04CCFF"
         android:fontFamily="@font/abel"
-        android:text="@string/specificBox"
+        android:gravity="center"
+        android:text="@string/vacancyText"
         android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.534"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/editPhone"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/vacancyBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/abel"
+        android:padding="4dp"
+        android:text="@string/specificBox"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/VacancyHeader"
+        tools:layout_editor_absoluteX="0dp" />
 
     <EditText
         android:id="@+id/editVacancy"
-        android:layout_width="302dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="420dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="4dp"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/VacancyHeader"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

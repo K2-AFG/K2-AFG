@@ -48,7 +48,13 @@
     <string name="submitChanges">Submit Changes</string>
     <string name="backStr">Back</string>
     <string name="submit">Submit</string>
-    <string name="food">Food</string>
+    <string name="food">Food:</string>
+    <string name="distance">Distance: </string>
+    <string name="pantryName">Pantry Name: </string>
+    <string name="shelterNameName">Shelter Name: </string>
+    <string name="shelterVacancy">Vacancy: </string>
+
+
 
 
 </resources>
