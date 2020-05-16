@@ -3,55 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentLeft="true"
+    app:layout_constrainedWidth="true"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="194dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="352dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="188dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/holtwood_one_sc"
         android:text="@string/Header1"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameHeader"
         android:layout_width="120dp"
         android:layout_height="45dp"
-        android:layout_marginTop="200dp"
+        android:layout_alignParentLeft="true"
         android:fontFamily="@font/abel"
         android:text="@string/nameHeader"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintVertical_bias="0.143" />
 
     <TextView
         android:id="@+id/nameBox"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/abel"
         android:text="@string/nameBox"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="@+id/editName"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.104" />
 
@@ -75,19 +70,19 @@
 
     <TextView
         android:id="@+id/addressBox"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginStart="15dp"
         android:layout_marginTop="21dp"
         android:fontFamily="@font/abel"
         android:text="@string/addressBox"
+        android:textAlignment="viewEnd"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="@+id/editAddress"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.182" />
+        app:layout_constraintVertical_bias="0.18" />
 
     <TextView
         android:id="@+id/websiteHeader"
@@ -106,7 +101,7 @@
 
     <TextView
         android:id="@+id/websiteBox"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginTop="26dp"
         android:fontFamily="@font/abel"
@@ -114,10 +109,10 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.002"
+        app:layout_constraintStart_toStartOf="@+id/editWebsite"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
+        app:layout_constraintVertical_bias="0.273" />
 
     <TextView
         android:id="@+id/phoneHeader"
@@ -136,24 +131,24 @@
 
     <TextView
         android:id="@+id/phoneBox"
-        android:layout_width="300dp"
+        android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="288dp"
         android:fontFamily="@font/abel"
         android:text="@string/phoneBox"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editPhone"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/specificHeader"
         android:layout_width="120dp"
         android:layout_height="45dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/abel"
         android:text="@string/food"
         android:textSize="30sp"
@@ -164,18 +159,16 @@
 
     <TextView
         android:id="@+id/specificBox"
-        android:layout_width="300dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="360dp"
         android:fontFamily="@font/abel"
         android:text="@string/specificBox"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editSpecifics"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <Button
         android:id="@+id/editData"
@@ -200,10 +193,11 @@
 
     <EditText
         android:id="@+id/editName"
-        android:layout_width="302dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginStart="164dp"
+        android:layout_marginStart="172dp"
         android:layout_marginTop="96dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -211,10 +205,11 @@
 
     <EditText
         android:id="@+id/editAddress"
-        android:layout_width="302dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginStart="164dp"
+        android:layout_marginStart="172dp"
         android:layout_marginTop="160dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -222,10 +217,11 @@
 
     <EditText
         android:id="@+id/editWebsite"
-        android:layout_width="302dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="232dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -233,10 +229,11 @@
 
     <EditText
         android:id="@+id/editSpecifics"
-        android:layout_width="302dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="360dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="364dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
@@ -244,10 +241,11 @@
 
     <EditText
         android:id="@+id/editPhone"
-        android:layout_width="302dp"
+        android:layout_width="wrap_content"
         android:layout_height="43dp"
-        android:layout_marginStart="164dp"
+        android:layout_marginStart="172dp"
         android:layout_marginTop="292dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
