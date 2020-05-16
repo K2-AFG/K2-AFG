@@ -18,7 +18,7 @@
 <!--            android:name=".SearchPage"-->
 <!--            android:exported="true">-->
         <activity
-            android:name=".Location"
+            android:name=".welcome"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,6 +34,7 @@
         <activity android:name=".SearchPage"></activity>
         <activity android:name=".SearchByVacancy"></activity>
         <activity android:name=".Location"></activity>
+        <activity android:name=".PantryDetails"></activity>
         <activity android:name=".SearchByNamePantry"></activity>
 
         <meta-data

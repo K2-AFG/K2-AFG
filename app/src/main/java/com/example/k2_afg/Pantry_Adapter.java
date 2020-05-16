@@ -60,7 +60,7 @@ public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHold
                 Log.v("welcome", "onClick: clicked on");
                 name = holder.t2.getText().toString();
                 Log.v("welcome", name);
-                Intent intent = new Intent(c, ShelterDetails.class);
+                Intent intent = new Intent(c, PantryDetails.class);
                 intent.putExtra("name", name);
                 Log.v("welcome", "after intent " + name);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -79,7 +79,7 @@ public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHold
         private TextView t2;
 
         ViewHolder(ViewGroup container) {
-            super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.list_layout, container, false));
+            super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.list_layout_pantry, container, false));
             t2 = itemView.findViewById(R.id.listName);
         }
 

@@ -17,7 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ShelterInput extends AppCompatActivity {
 EditText ShelterName2, vacancyDescription2, EmailText, addressInput, phoneInput, SpecificText;
 Button submitData;
-DatabaseReference reference;
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference reference = database.getReference();
 Shelter shelter1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

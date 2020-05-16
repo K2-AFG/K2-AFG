@@ -58,7 +58,7 @@ public class SearchByNamePantry extends AppCompatActivity {
         context = this;
         searchField = findViewById(R.id.search);
 
-        addPantry = (Button) findViewById(R.id.addShelter);
+        addPantry = (Button) findViewById(R.id.addPantry);
         if(welcome.ifClickedPantry == true){
             Log.v("querySearch","clicked pantry");
             addPantry.setVisibility(View.VISIBLE);
@@ -86,21 +86,18 @@ public class SearchByNamePantry extends AppCompatActivity {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
                 arrayList.clear();
                 while(items.hasNext()){
+                    Log.v("querySearch", "test");
                     DataSnapshot item = items.next();
-                    //Log.v("welcome", item.getKey());
-                    String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address; String foods;
+                    String name; double longitude; double latitude; String description; String website; String phoneNum; String address; String foods;
                     name = item.child("name").getValue().toString();
                     address = item.child("address").getValue().toString();
-                    specifics = item.child("specifications").getValue().toString();
-                    vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
                     latitude = ((Long) item.child("latitude").getValue()).doubleValue();
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
-                    foods = item.child("foods").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude, foods);
+                    Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude);
                     arrayList.add(pantry);
                 }
                 rV.setAdapter(new Pantry_Adapter(getApplicationContext(), arrayList));

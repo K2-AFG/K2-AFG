@@ -21,8 +21,8 @@ public class welcome extends AppCompatActivity {
     // changes the page to the pantry input page
     public void performPantryInput(View v) {
         Intent intent = new Intent(this, SearchByNamePantry.class);
-        ifClicked = true;
-        ifClickedPantry = false;
+        ifClicked = false;
+        ifClickedPantry = true;
         startActivity(intent);
     }
 
@@ -30,8 +30,8 @@ public class welcome extends AppCompatActivity {
     public void performShelterInput(View v) {
         Intent intent = new Intent(this, SearchPage.class);
         Log.v("querySearch", "clicked Shelter");
-        ifClickedPantry = true;
-        ifClicked = false;
+        ifClickedPantry = false;
+        ifClicked = true;
         Log.v("querySearch", "ifClicked is " + ifClickedPantry);
         startActivity(intent);
     }

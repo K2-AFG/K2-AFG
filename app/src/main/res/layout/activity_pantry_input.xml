@@ -2,28 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".ShelterInput">
 
     <TextView
         android:id="@+id/ShelterName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="145dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="132dp"
         android:text="@string/shelterName"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/ShelterName2"
+        app:layout_constraintHorizontal_bias="0.723"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView11" />
 
     <EditText
-        android:id="@+id/ShelterName2"
+        android:id="@+id/pantryName"
         android:layout_width="210dp"
         android:layout_height="38dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="104dp"
         android:ems="10"
         android:hint="@string/pantryNameText"
         android:inputType="textPersonName"
@@ -35,24 +36,25 @@
         android:id="@+id/EmailText"
         android:layout_width="191dp"
         android:layout_height="38dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="120dp"
         android:ems="10"
         android:hint="@string/emailText"
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ShelterName2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="56dp"
         android:text="@string/emailHeader"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/EmailText"
+        app:layout_constraintHorizontal_bias="0.73"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ShelterName" />
 
@@ -61,10 +63,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="56dp"
         android:text="@string/addressHeader"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/addressInput"
+        app:layout_constraintHorizontal_bias="0.713"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Email" />
 
@@ -72,24 +75,25 @@
         android:id="@+id/addressInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="61dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="132dp"
         android:ems="10"
         android:hint="@string/addressText"
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="52dp"
         android:text="@string/phoneHeader"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/phoneInput"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address" />
 
@@ -97,24 +101,25 @@
         android:id="@+id/phoneInput"
         android:layout_width="200dp"
         android:layout_height="42dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginEnd="112dp"
         android:ems="10"
         android:hint="@string/phoneText"
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressInput" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Specifics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="68dp"
         android:text="@string/foodType"
         android:textSize="15sp"
         app:layout_constraintEnd_toStartOf="@+id/SpecificText"
+        app:layout_constraintHorizontal_bias="0.704"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -122,26 +127,37 @@
         android:id="@+id/SpecificText"
         android:layout_width="229dp"
         android:layout_height="44dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="84dp"
         android:ems="10"
         android:hint="@string/foodTypeText"
         android:inputType="textPersonName"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneInput" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="10dp"
         android:fontFamily="@font/holtwood_one_sc"
         android:text="@string/pantryInfo"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/submitData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="224dp"
+        android:layout_marginTop="556dp"
+        android:text="@string/submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -44,10 +44,12 @@
     <string name="vacancy">Vacancy</string>
     <string name="shelterV">Search Shelters by Vacancy</string>
     <string name="addShelter">Add New Shelter</string>
+    <string name="addPantry">Add New Pantry</string>
     <string name="editShelter">Edit</string>
     <string name="submitChanges">Submit Changes</string>
     <string name="backStr">Back</string>
     <string name="submit">Submit</string>
+    <string name="food">Food</string>
 
 
 
