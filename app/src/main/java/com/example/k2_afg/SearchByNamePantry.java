@@ -91,13 +91,13 @@ public class SearchByNamePantry extends AppCompatActivity {
                     String name; double longitude; double latitude; String description; String website; String phoneNum; String address; String foods;
                     name = item.child("name").getValue().toString();
                     address = item.child("address").getValue().toString();
-                    longitude = ((Long) item.child("longitude").getValue()).doubleValue();
-                    latitude = ((Long) item.child("latitude").getValue()).doubleValue();
+                    longitude = (double) Float.valueOf(item.child("longitude").getValue().toString());
+                    latitude =  (double) Float.valueOf(item.child("latitude").getValue().toString());
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude);
+                    Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, longitude,  latitude);
                     arrayList.add(pantry);
                 }
                 rV.setAdapter(new Pantry_Adapter(getApplicationContext(), arrayList));
