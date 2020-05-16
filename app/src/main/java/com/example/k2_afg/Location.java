@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
@@ -48,17 +49,19 @@ import java.util.TimerTask;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class Location extends AppCompatActivity{
-
+    private EditText searchField;
     private FusedLocationProviderClient client;
     ListView lv;
     ArrayList<Shelter> shelters = new ArrayList<Shelter>();
     ArrayList<CalculatingLocation> locations = new ArrayList<>();
-    ArrayList<String> names = new ArrayList<String>();
+    ArrayList<Shelter> names = new ArrayList<Shelter>();
+    ArrayList<CalculatingLocation> calc = new ArrayList<CalculatingLocation>();
     SearchView sv;
     ArrayAdapter adapter;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
     private DatabaseReference databaseReference;
     public static Context context;
+    private RecyclerView rV;
     private R_Adapter rAdapter = new R_Adapter(context, arrayList);
     double longitude;
     double latitude;
@@ -70,9 +73,10 @@ public class Location extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
 
-        lv = (ListView) findViewById(R.id.searchpagelocation);
-        sv = (SearchView) findViewById(R.id.searchlocation);
-
+        context = this;
+        searchField = findViewById(R.id.searchLocation);
+        rV = findViewById(R.id.searchLocationRecycler);
+        rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -83,70 +87,49 @@ public class Location extends AppCompatActivity{
                 while(items.hasNext()){
                     DataSnapshot item = items.next();
                     //Log.v("welcome", item.getKey());
-                    String name; String specifics; int vacancies; double longitude; double latitude; String description; String website; int phoneNum; String address;
+                    String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
                     name = item.child("name").getValue().toString();
                     specifics = item.child("specifications").getValue().toString();
-                    vacancies = ((Long) item.child("vacancies").getValue()).intValue();
+                    vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
                     latitude = ((Long) item.child("latitude").getValue()).doubleValue();
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
-                    phoneNum = ((Long)item.child("phoneNum").getValue()).intValue();
-                    Shelter shelter = new Shelter(name,  null,  "phoneNum",  null, null, latitude,  longitude, "vacancies",  null);
+                    phoneNum = item.child("phoneNum").getValue().toString();
+                    Log.v("hello", item.child("name").getValue().toString());
+                    Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
                     arrayList.add(shelter);
                 }
+                for(int i=0; i<arrayList.size(); i++) {
+                    CalculatingLocation c = new CalculatingLocation(arrayList.get(i).getLatitude(), arrayList.get(i).getLongitude(), latitude, longitude);
+                    shelters.add(arrayList.get(i));
+                    locations.add(c);
+                }
+
+                while(shelters.size()>0) {
+                    int count = 0;
+                    for (int i = 0; i < shelters.size(); i++) {
+                        if (locations.get(i).calcDistance() < locations.get(count).calcDistance()) {
+                            count = i;
+                        }
+                    }
+                    names.add(shelters.get(count));
+                    shelters.remove(count);
+                    locations.remove(count);
+                }
+
+                rV.setAdapter(new R_Adapter(getApplicationContext(), names));
                 Collections.sort(arrayList);
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        Log.v("hello", String.valueOf(arrayList.size()));
-
-        adapter = new ArrayAdapter(this,android.R.layout. simple_list_item_1, names);
-        lv.setAdapter(adapter);
-        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-
-        readData();
     }
 
     protected void onStart() {
         super.onStart();
-    }
-
-    private void readData() {
-        SearchPage sp = new SearchPage();
-
-        for(int i=0; i<arrayList.size(); i++) {
-                CalculatingLocation c = new CalculatingLocation(arrayList.get(i).getLatitude(), arrayList.get(i).getLongitude(), latitude, longitude);
-                Log.v("stupid", String.valueOf(c.calcDistance()));
-                shelters.add(arrayList.get(i));
-                locations.add(c);
-        }
-
-        while(shelters.size()>0) {
-            int count = 0;
-            for (int i = 0; i < shelters.size(); i++) {
-                if (locations.get(i).calcDistance() < locations.get(count).calcDistance()) {
-                    count = i;
-                }
-            }
-            names.add(shelters.get(count).getName() + " " + locations.get(count).calcDistance()+" "+"miles");
-            shelters.remove(count);
-            locations.remove(count);
-        }
     }
 
     private void getLocation(){

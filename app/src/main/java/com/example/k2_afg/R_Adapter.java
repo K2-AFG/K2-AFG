@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
@@ -19,11 +20,14 @@ import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+
 public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
     public String name;
     public String address;
     public Context c;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
+    public ArrayList<CalculatingLocation> locations = new ArrayList<CalculatingLocation>();
 
 
     public R_Adapter(Context c, ArrayList<Shelter> arrayList) {
@@ -90,4 +94,44 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
             tVacancy.setText(shelter.getVacancies());
         }
     }
+
+    class ViewLocation extends RecyclerView.ViewHolder{
+        private TextView t3;
+        private TextView tLocation;
+
+        ViewLocation(ViewGroup container){
+            super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.activity_list_layout_location, container, false));
+            t3 = itemView.findViewById(R.id.listShelterName);
+            tLocation = itemView.findViewById(R.id.listShelterDistance);
+        }
+        public void bind(Shelter shelter){
+            t3.setText(shelter.getName());
+            tLocation.setText()
+        }
+    }
+
+    private void getLocation(){
+        GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(Location.this);
+
+        /**
+         * Set GPS Location fetched address
+         */
+        if (mGpsLocationTracker.canGetLocation())
+        {
+            latitude = mGpsLocationTracker.getLatitude();
+            longitude = mGpsLocationTracker.getLongitude();
+            Log.v("Latitude", String.format("latitude: %s", latitude));
+            Log.v("Latitude", String.format("longitude: %s", longitude));
+
+        }
+        else
+        {
+            mGpsLocationTracker.showSettingsAlert();
+        }
+    }
+
+    private void requestPermission(){
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
+    }
+
 }

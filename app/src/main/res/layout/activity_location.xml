@@ -2,22 +2,33 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <SearchView
-        android:id="@+id/searchlocation"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="@string/search"
-        android:background="#d3d3d3">
 
-        <requestFocus />
-    </SearchView>
+    <EditText
+        android:id="@+id/searchLocation"
+        android:layout_width="match_parent"
+        android:layout_height="41dp"
+        android:layout_alignTop="@+id/searchRecycler"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:background="#d3d3d3"
+        android:iconifiedByDefault="false">
 
-    <ListView
-        android:id="@+id/searchpagelocation"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/searchlocation"
-        android:scrollbarSize="10sp" />
+    </EditText>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchLocationRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/searchLocation"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
+
 
 </RelativeLayout>
+
