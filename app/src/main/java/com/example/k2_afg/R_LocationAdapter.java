@@ -56,7 +56,7 @@ public class R_LocationAdapter extends RecyclerView.Adapter<R_LocationAdapter.Vi
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t3.setText(arrayList.get(position).getName());
-                holder.tLocation.setText(arrayList.get(position).getVacancies());
+                holder.tLocation.setText(arrayList.get(position).getDistance());
             }
         });
     }
