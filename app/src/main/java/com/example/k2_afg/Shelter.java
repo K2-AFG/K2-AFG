@@ -56,6 +56,12 @@ public class Shelter extends Organization implements Comparable{
 
 	@Override
 	public int compareTo(Object s) {
+		if(((Shelter)s).getVacancies().equals("")){
+			((Shelter)s).setVacancies("0");
+		}
+		if(this.vacancies1.equals("")){
+			this.setVacancies("0");
+		}
 		String v = ((Shelter)s).getVacancies();
 		return Integer.valueOf(v) - Integer.valueOf(this.vacancies1);
 	}
