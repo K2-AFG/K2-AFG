@@ -11,6 +11,7 @@ import android.widget.Button;
 
 public class welcome extends AppCompatActivity {
     public static boolean ifClicked;
+    public static boolean ifClickedPantry;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +20,9 @@ public class welcome extends AppCompatActivity {
 
     // changes the page to the pantry input page
     public void performPantryInput(View v) {
-        Intent intent = new Intent(this, PantryInput.class);
+        Intent intent = new Intent(this, SearchByNamePantry.class);
+        ifClicked = true;
+        ifClickedPantry = false;
         startActivity(intent);
     }
 
@@ -27,8 +30,9 @@ public class welcome extends AppCompatActivity {
     public void performShelterInput(View v) {
         Intent intent = new Intent(this, SearchPage.class);
         Log.v("querySearch", "clicked Shelter");
-        ifClicked = true;
-        Log.v("querySearch", "ifClicked is " + ifClicked);
+        ifClickedPantry = true;
+        ifClicked = false;
+        Log.v("querySearch", "ifClicked is " + ifClickedPantry);
         startActivity(intent);
     }
 
@@ -36,6 +40,7 @@ public class welcome extends AppCompatActivity {
     public void performSearchPage(View v){
         Intent intent = new Intent(this, ApplyFilter.class);
         ifClicked = false;
+        ifClickedPantry = false;
         startActivity(intent);
     }
 }

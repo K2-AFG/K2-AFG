@@ -43,7 +43,7 @@ public class SearchPage extends AppCompatActivity {
     private EditText searchField;
     private RecyclerView rV;
     FirebaseRecyclerOptions<Shelter> options;
-    FirebaseRecyclerAdapter<Shelter, SheltersViewHolder> adapter;
+    FirebaseRecyclerAdapter<Shelter, ViewHolder> adapter;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
     private DatabaseReference databaseReference;
     public static Context context;
@@ -107,7 +107,6 @@ public class SearchPage extends AppCompatActivity {
                     arrayList.add(shelter);
                 }
                 rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
-                Collections.sort(arrayList);
 
                 }
             @Override

@@ -7,10 +7,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SheltersViewHolder extends RecyclerView.ViewHolder {
+public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView t1;
 
-        public SheltersViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
             t1 = (TextView)itemView.findViewById(R.id.listName);
         }

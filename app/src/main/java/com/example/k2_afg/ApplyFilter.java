@@ -18,7 +18,18 @@ public class ApplyFilter extends AppCompatActivity {
         sName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.v("querySearch", "click search by name");
                 Intent intent = new Intent(getApplicationContext(), SearchPage.class);
+                startActivity(intent);
+            }
+        });
+
+        sVacancy = (Button) findViewById(R.id.shelterVacanciesFilter);
+        sVacancy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("querySearch", "click search by vacancy");
+                Intent intent = new Intent(getApplicationContext(), SearchByVacancy.class);
                 startActivity(intent);
             }
         });
@@ -27,8 +38,8 @@ public class ApplyFilter extends AppCompatActivity {
         sDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", " visible");
-                Intent intent = new Intent(getApplicationContext(), SearchByVacancy.class);
+                Log.v("querySearch", "click search by distance");
+                Intent intent = new Intent(getApplicationContext(), Location.class);
                 startActivity(intent);
             }
         });

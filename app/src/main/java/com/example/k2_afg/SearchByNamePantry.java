@@ -38,44 +38,46 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
-public class SearchByVacancy extends AppCompatActivity {
+public class SearchByNamePantry extends AppCompatActivity {
 
     private EditText searchField;
     private RecyclerView rV;
-    FirebaseRecyclerOptions<Shelter> options;
-    FirebaseRecyclerAdapter<Shelter, ViewHolder> adapter;
-    public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
+    FirebaseRecyclerOptions<Pantry> options;
+    FirebaseRecyclerAdapter<Pantry, ViewHolder> adapter;
+    public ArrayList<Pantry> arrayList = new ArrayList<Pantry>();
     private DatabaseReference databaseReference;
-    public static Context context;
-    private R_Adapter rAdapter = new R_Adapter(context, arrayList);
-    Button addShelter;
+    public Context context;
+    private Pantry_Adapter pAdapter = new Pantry_Adapter(context, arrayList);
+    Button addPantry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_searchbyvacancy);
+        setContentView(R.layout.activity_searchpantry);
 
         context = this;
         searchField = findViewById(R.id.search);
 
-        addShelter = (Button) findViewById(R.id.addShelter);
-        if(welcome.ifClicked == true){
-            addShelter.setVisibility(View.VISIBLE);
-            addShelter.setOnClickListener(new View.OnClickListener() {
+        addPantry = (Button) findViewById(R.id.addShelter);
+        if(welcome.ifClickedPantry == true){
+            Log.v("querySearch","clicked pantry");
+            addPantry.setVisibility(View.VISIBLE);
+            addPantry.setText("Add Pantry");
+            addPantry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.v("querySearch", " visible");
-                    Intent intent = new Intent(getApplicationContext(), ShelterInput.class);
+                    Intent intent = new Intent(getApplicationContext(), PantryInput.class);
                     startActivity(intent);
                 }
             });
         } else{
-            addShelter.setVisibility(View.INVISIBLE);
+            addPantry.setVisibility(View.INVISIBLE);
         }
+
 
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
-        databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Pantry");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
@@ -86,8 +88,9 @@ public class SearchByVacancy extends AppCompatActivity {
                 while(items.hasNext()){
                     DataSnapshot item = items.next();
                     //Log.v("welcome", item.getKey());
-                    String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
+                    String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address; String foods;
                     name = item.child("name").getValue().toString();
+                    address = item.child("address").getValue().toString();
                     specifics = item.child("specifications").getValue().toString();
                     vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
@@ -95,12 +98,12 @@ public class SearchByVacancy extends AppCompatActivity {
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
+                    foods = item.child("foods").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
-                    arrayList.add(shelter);
+                    Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude, foods);
+                    arrayList.add(pantry);
                 }
-                rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
-                Collections.sort(arrayList);
+                rV.setAdapter(new Pantry_Adapter(getApplicationContext(), arrayList));
 
             }
             @Override
@@ -132,38 +135,14 @@ public class SearchByVacancy extends AppCompatActivity {
     }
 
     private void search(String text) {
-        ArrayList<Shelter> cList = new ArrayList<>();
-        searchField.setHint("Search Shelters by Vacancy");
+        ArrayList<Pantry> cList = new ArrayList<>();
+        searchField.setHint("Search Shelters by Name");
         searchField.setTextColor(Color.parseColor("#FF0000"));
-        for (Shelter item : arrayList) {
-            if (Integer.valueOf(item.getVacancies()) <= Integer.valueOf(text) ) {
+        for (Pantry item : arrayList) {
+            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
                 cList.add(item);
-                rAdapter.filterList(cList);
-            } else if(searchField.getText().equals("")){
-                Shelter s = new Shelter();
-                cList.add(s);
+                pAdapter.filterList(cList);
             }
-        } rV.setAdapter(new R_Adapter(getApplicationContext(), cList));
+        } rV.setAdapter(new Pantry_Adapter(getApplicationContext(), cList));
     }
-
-//    @Override
-//    protected void onStart(){
-//        super.onStart();
-//        if(adapter!=null)
-//            adapter.startListening();
-//    }
-//
-//    @Override
-//    protected void onStop(){
-//        if(adapter!=null)
-//            adapter.stopListening();
-//        super.onStop();
-//    }
-//
-//    @Override
-//    protected void onResume(){
-//        super.onResume();
-//        if(adapter!=null)
-//            adapter.startListening();
-//    }
 }

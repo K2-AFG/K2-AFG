@@ -22,15 +22,15 @@ import java.util.ArrayList;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
+public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHolder> {
     public String name;
     public String address;
     public Context c;
-    public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
+    public ArrayList<Pantry> arrayList = new ArrayList<Pantry>();
     public ArrayList<CalculatingLocation> locations = new ArrayList<CalculatingLocation>();
     int itemNum;
 
-    public R_Adapter(Context c, ArrayList<Shelter> arrayList) {
+    public Pantry_Adapter(Context c, ArrayList<Pantry> arrayList) {
         this.c = c;
         this.arrayList = arrayList;
     }
@@ -46,7 +46,7 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
         return new ViewHolder(parent);
     }
 
-    public void filterList(ArrayList<Shelter> cList) {
+    public void filterList(ArrayList<Pantry> cList) {
         arrayList = cList;
         notifyDataSetChanged();
     }
@@ -66,7 +66,6 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t2.setText(arrayList.get(position).getName());
-                holder.tVacancy.setText(arrayList.get(position).getVacancies());
             }
         });
     }
@@ -76,20 +75,16 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
         return name;
     }
 
-
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView t2;
-        private TextView tVacancy;
 
         ViewHolder(ViewGroup container) {
             super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.list_layout, container, false));
             t2 = itemView.findViewById(R.id.listName);
-            tVacancy = itemView.findViewById(R.id.listVacancy);
         }
 
-        public void bind(Shelter shelter) {
-            t2.setText(shelter.getName());
-            tVacancy.setText(shelter.getVacancies());
+        public void bind(Pantry pantry) {
+            t2.setText(pantry.getName());
         }
     }
 
