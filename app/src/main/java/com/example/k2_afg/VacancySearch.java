@@ -1,4 +1,4 @@
-package com.example.k2_afg;
+/*package com.example.k2_afg;
 
 import android.provider.ContactsContract;
 import android.util.Log;
@@ -86,7 +86,7 @@ public class VacancySearch extends AppCompatActivity {
             return false;
         }
     }
-}
+}*/
 
 
 
