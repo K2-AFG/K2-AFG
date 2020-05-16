@@ -95,7 +95,6 @@ public class Location extends AppCompatActivity{
                     }
                     names.add(shelters.get(count));
                     shelters.remove(count);
-                    locations.remove(count);
                 }
 
                 rV.setAdapter(new R_LocationAdapter(getApplicationContext(), names));
