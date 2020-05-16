@@ -14,11 +14,12 @@ public class ApplyFilter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_selection);
+        sName = (Button) findViewById(R.id.shelterNameFilter);
         sName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.v("querySearch", " visible");
-                Intent intent = new Intent(getApplicationContext(), ShelterInput.class);
+                Intent intent = new Intent(getApplicationContext(), SearchPage.class);
                 startActivity(intent);
             }
         });

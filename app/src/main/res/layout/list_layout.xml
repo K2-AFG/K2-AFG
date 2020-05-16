@@ -13,7 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="1dp"
         android:clickable="true"
-        android:text="Name"
+        android:focusable="true"
+        android:text="@string/nameHeader"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.108"
@@ -21,14 +22,15 @@
 
     <TextView
         android:id="@+id/listVacancy"
-        android:layout_width="114dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+id/listName"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="482dp"
-        android:layout_marginEnd="4dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="462dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="-50dp"
         android:text="@string/vacancy"
-        android:textSize="30dp" />
+        android:textSize="30sp" />
 </RelativeLayout>

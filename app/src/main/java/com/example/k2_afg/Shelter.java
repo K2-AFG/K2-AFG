@@ -84,5 +84,4 @@ public class Shelter extends Organization implements Comparable{
 		String v = ((Shelter)s).getVacancies();
 		return Integer.valueOf(v) - Integer.valueOf(this.vacancies1);
 	}
-
 }
