@@ -3,7 +3,11 @@ package com.example.k2_afg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,12 +39,18 @@ Shelter shelter1;
         submitData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phoneN = phoneInput.getText().toString().trim();
+                if (TextUtils.isEmpty(ShelterName2.getText())) {
+                    Log.v("querySearch", "name is empty");
+                    ShelterName2.setHintTextColor(Color.RED);
+                    ShelterName2.setHint("Name of shelter is required.");
+                    //Toast.makeText(ShelterInput.this, "Name of shelter is required.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 shelter1.setName(ShelterName2.getText().toString().trim());
                 shelter1.setVacancies(vacancyDescription2.getText().toString().trim());
                 shelter1.setWebsite(WebText.getText().toString().trim());
                 shelter1.setAddress(addressInput.getText().toString().trim());
-                shelter1.setPhoneNum(phoneN);
+                shelter1.setPhoneNum(phoneInput.getText().toString().trim());
                 shelter1.setDescription(SpecificText.getText().toString().trim());
                 reference.push().setValue(shelter1);
                Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
