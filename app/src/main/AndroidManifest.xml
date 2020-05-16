@@ -33,7 +33,6 @@
         <activity android:name=".ApplyFilter"></activity>
         <activity android:name=".SearchPage"></activity>
         <activity android:name=".SearchByVacancy"></activity>
-        <activity android:name=".Location"></activity>
         <activity android:name=".PantryDetails"></activity>
         <activity android:name=".SearchByNamePantry"></activity>
 

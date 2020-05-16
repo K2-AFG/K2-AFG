@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/parent_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="4dp">
 
-    <TextView
-        android:id="@+id/listName"
+    <RelativeLayout
+        android:id="@+id/card1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="1dp"
-        android:clickable="true"
-        android:focusable="true"
-        android:text="@string/nameHeader"
-        android:textSize="40sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_height="100dp"
+        android:layout_margin="4dp">
 
-    <TextView
-        android:id="@+id/listVacancy"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/listName"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="462dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="-50dp"
-        android:text="@string/vacancy"
-        android:textSize="30sp" />
-</RelativeLayout>
+        <TextView
+            android:id="@+id/listName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:gravity="center"
+            android:text="Shelter Name"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/listVacancy"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/listName"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="50dp"
+            android:gravity="center"
+            android:text="Distance"
+            android:textSize="30dp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
