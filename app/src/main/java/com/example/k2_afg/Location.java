@@ -30,7 +30,6 @@ import java.util.Iterator;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class Location extends AppCompatActivity{
-    private EditText searchField;
     private FusedLocationProviderClient client;
     ListView lv;
     ArrayList<Shelter> shelters = new ArrayList<Shelter>();
@@ -55,7 +54,6 @@ public class Location extends AppCompatActivity{
         setContentView(R.layout.activity_location);
 
         context = this;
-        searchField = findViewById(R.id.searchLocation);
         rV = findViewById(R.id.searchLocationRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
