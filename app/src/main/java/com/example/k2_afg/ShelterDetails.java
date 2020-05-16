@@ -172,13 +172,6 @@ public class ShelterDetails extends AppCompatActivity {
                                 reference.updateChildren(map);
                             }
 
-
-                            //shelter1.setName(ShelterName2.getText().toString().trim());
-//                            shelter1.setVacancies(vacancy);
-//                            shelter1.setAddress(addressInput.getText().toString().trim());
-//                            shelter1.setPhoneNum(phoneN);
-//                            shelter1.setSpecifications(SpecificText.getText().toString().trim());
-                            //reference.updateChildren("S")
                             Toast.makeText(ShelterDetails.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -212,8 +205,5 @@ public class ShelterDetails extends AppCompatActivity {
             }
         });
     }
-
-
-
 }
 

@@ -48,7 +48,6 @@ public class SearchPage extends AppCompatActivity {
     private DatabaseReference databaseReference;
     public static Context context;
     private R_Adapter rAdapter = new R_Adapter(context, arrayList);
-    Button btn;
     Button addShelter;
 
     @Override
@@ -63,12 +62,12 @@ public class SearchPage extends AppCompatActivity {
         if(welcome.ifClicked == true){
             addShelter.setVisibility(View.VISIBLE);
             addShelter.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.v("querySearch", " visible");
-                    Intent intent = new Intent(getApplicationContext(), ShelterInput.class);
-                    startActivity(intent);
-                }
+                    @Override
+                    public void onClick(View v) {
+                        Log.v("querySearch", " visible");
+                        Intent intent = new Intent(getApplicationContext(), ShelterInput.class);
+                        startActivity(intent);
+                    }
             });
         } else{
             addShelter.setVisibility(View.INVISIBLE);
@@ -150,9 +149,6 @@ public class SearchPage extends AppCompatActivity {
             }
         } rV.setAdapter(new R_Adapter(getApplicationContext(), cList));
     }
-
-
-
 
     @Override
     protected void onStart(){

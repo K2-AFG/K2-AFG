@@ -36,6 +36,10 @@ public class Organization {
 	 * double value that holds the latitude of the location of the organization
 	 */
 	private double latitude;
+	/**
+	 * String value that holds the distance from the user to the shelter
+	 */
+	private String distance;
 
 	/**
 	 * Creates an organization with no name, address, website, description, or phone number
@@ -82,6 +86,7 @@ public class Organization {
 		this.description = description;
 		this.longitude = longitude;
 		this.latitude = latitude;
+		distance = "0";
 	}
 
 	/**
@@ -196,6 +201,36 @@ public class Organization {
 		this.latitude = latitude;
 	}
 
+	/**
+	 * gets the distance of this organization
+	 * @return the distance of this organization
+	 */
+	public String getDistance() {
+		return distance;
+	}
 
+	/**
+	 * sets the distance of the organization to this distance
+	 * @param name the distance given to set
+	 */
+	public void setDistance(String name) {
+		this.distance = distance;
+	}
+
+	public String calcDistance(double lat1, double long1) {
+		int r = 6371;
+		double deg1 = lat1*Math.PI/180;
+		double deg2 = latitude*Math.PI/180;
+		double cdeg1 = (latitude-lat1)*Math.PI/180;
+		double cdeg2 = (longitude-long1)*Math.PI/180;
+
+		double haversine = Math.sin(cdeg1/2)*Math.asin(cdeg1/2)+Math.cos(deg1)*Math.cos(deg2)*Math.sin(cdeg2/2)*Math.sin(cdeg2/2);
+		double x = 2*Math.atan2(Math.sqrt(haversine), Math.sqrt(1-haversine));
+
+		double distance1 = r*x*0.621371;
+		distance1 = (int)(distance1*100+0.5)/100.0;
+		distance = String.valueOf(distance1);
+		return distance;
+	}
 
 }

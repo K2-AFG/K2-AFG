@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 
 public class welcome extends AppCompatActivity {
@@ -33,10 +34,8 @@ public class welcome extends AppCompatActivity {
 
     // goes to the search page
     public void performSearchPage(View v){
-        Intent intent = new Intent(this, SearchPage.class);
-        Log.v("querySearch","clicked User");
+        Intent intent = new Intent(this, ApplyFilter.class);
         ifClicked = false;
         startActivity(intent);
     }
-
 }
