@@ -8,10 +8,6 @@ public class Shelter extends Organization implements Comparable{
 	 */
 	private String vacancies1;
 
-	/**
-	 * specific requirements a user must meet to be eligible for a shelter
-	 */
-	private String specifications;
 
 	/**
 	 * Creates a new shelter with a name, address, phone number, website, description, longitude, latitude, vacancies, and shelter specifications
@@ -24,14 +20,12 @@ public class Shelter extends Organization implements Comparable{
 	 * @param longitude   the longitude that the shelter is located
 	 * @param latitude    the latitude that the shelter is located
 	 * @param vacancies   the number of vacancies in a shelter
-	 * @param specifics   requirements of the shelter
 	 */
 	public Shelter(String name, String address, String phoneNum, String website, String description,
 				   double latitude, double longitude,
-				   String vacancies, String specifics) {
+				   String vacancies) {
 		super(name, address, phoneNum, website, description, latitude, longitude);
 		vacancies1 = vacancies;
-		specifications = specifics;
 	}
 
 	/**
@@ -40,7 +34,6 @@ public class Shelter extends Organization implements Comparable{
 	public Shelter() {
 		super();
 		vacancies1 = "";
-		specifications = "";
 	}
 
 
@@ -58,24 +51,6 @@ public class Shelter extends Organization implements Comparable{
 	 */
 	public void setVacancies(String vacancies) {
 		this.vacancies1 = vacancies;
-	}
-
-	/**
-	 * gets the specifications of a shelter
-	 *
-	 * @return the shelter specifications
-	 */
-	public String getSpecifications() {
-		return specifications;
-	}
-
-	/**
-	 * sets the specifications of the shelter to this description
-	 *
-	 * @param specifications the specifications to set
-	 */
-	public void setSpecifications(String specifications) {
-		this.specifications = specifications;
 	}
 
 

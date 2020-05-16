@@ -1,13 +1,9 @@
 package com.example.k2_afg;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,13 +26,13 @@ import java.util.HashMap;
 public class PantryDetails extends AppCompatActivity {
     String clickName;
     SearchPage sp = new SearchPage();
-    TextView name1, address1, email1, phone1, specifics1, vacancy1;
+    TextView name1, address1, website1, phone1, specifics1, vacancy1;
     Button editPantry, submitChanges;
-    EditText pantryName, EmailText, addressInput, phoneInput, SpecificText;
+    EditText pantryName, WebsiteText, addressInput, phoneInput, SpecificText;
     DatabaseReference reference;
     Pantry pantry1;
     String key;
-    boolean nameB = false; boolean vacancyB = false; boolean emailB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
+    boolean nameB = false; boolean vacancyB = false; boolean websiteB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
 
 
     @Override
@@ -51,14 +46,14 @@ public class PantryDetails extends AppCompatActivity {
         address1 = (TextView) findViewById(R.id.addressBox);
         phone1 = (TextView) findViewById(R.id.phoneBox);
         specifics1 = findViewById(R.id.specificBox);
-        email1 = findViewById(R.id.emailBox);
+        website1 = findViewById(R.id.websiteBox);
         vacancy1 = findViewById(R.id.vacancyBox);
         editPantry = findViewById(R.id.editData);
 
         pantryName = (EditText) findViewById(R.id.editName);
         pantryName.setVisibility(View.INVISIBLE);
-        EmailText = (EditText) findViewById(R.id.editEmail);
-        EmailText.setVisibility(View.INVISIBLE);
+        WebsiteText = (EditText) findViewById(R.id.editWebsite);
+        WebsiteText.setVisibility(View.INVISIBLE);
         addressInput = (EditText) findViewById(R.id.editAddress);
         addressInput.setVisibility(View.INVISIBLE);
         phoneInput = (EditText) findViewById(R.id.editPhone);
@@ -90,12 +85,12 @@ public class PantryDetails extends AppCompatActivity {
                         }
                     });
 
-                    email1.setOnClickListener(new View.OnClickListener() {
+                    website1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            email1.setVisibility(View.INVISIBLE);
-                            EmailText.setVisibility(View.VISIBLE);
-                            emailB = true;
+                            website1.setVisibility(View.INVISIBLE);
+                            WebsiteText.setVisibility(View.VISIBLE);
+                            websiteB = true;
                         }
                     });
 
@@ -130,25 +125,30 @@ public class PantryDetails extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             if(nameB == true) {
-                                Log.v("querySearch", "in if" + pantryName.getText().toString().trim().equals(name1.getText()));
                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "name", pantryName.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 
-//
+                            if(nameB == true) {
+                                HashMap map = new HashMap();
+                                map.put("Pantry/" + key + "/" + "website", pantryName.getText().toString().trim());
+                                reference.updateChildren(map);
+                            }
+
+
                             if(addressB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "address", addressInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-//
+
                             if(phoneB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-//
+
                             if(specificsB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "description", SpecificText.getText().toString().trim());
@@ -178,6 +178,7 @@ public class PantryDetails extends AppCompatActivity {
                     address1.setText(pantry.getAddress());
                     phone1.setText(pantry.getPhoneNum());
                     specifics1.setText(pantry.getDescription());
+                    website1.setText(pantry.getWebsite());
                 }
             }
 

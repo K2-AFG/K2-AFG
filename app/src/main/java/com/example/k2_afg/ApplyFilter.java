@@ -43,5 +43,16 @@ public class ApplyFilter extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        pName = (Button) findViewById(R.id.pantryNameFilter);
+        pName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("querySearch", "click search by distance");
+                Intent intent = new Intent(getApplicationContext(), SearchByNamePantry.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

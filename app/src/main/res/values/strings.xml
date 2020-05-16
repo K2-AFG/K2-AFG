@@ -5,8 +5,8 @@
     <string name="nameBox"/>
     <string name="addressHeader">Address:</string>
     <string name="addressBox" />
-    <string name="emailHeader">Email:</string>
-    <string name="emailBox"/>
+    <string name="websiteHeader">Website:</string>
+    <string name="websiteBox"/>
     <string name="phoneHeader">Phone:</string>
     <string name="phoneBox" />
     <string name="specificHeader">Specifics:</string>
@@ -23,7 +23,7 @@
     <string name="vacancyDescription">Please enter vacancy description </string>
     <string name="shelterName">Name: </string>
     <string name="shelterNameText">Please enter shelter name</string>
-    <string name="emailText">Please enter email address</string>
+    <string name="webText">Please enter website</string>
     <string name="addressText">Please enter address</string>
     <string name="phoneText">Please enter phone number</string>
     <string name="specificText">Please enter any specifications</string>

@@ -85,10 +85,9 @@ public class SearchByVacancy extends AppCompatActivity {
                 arrayList.clear();
                 while(items.hasNext()){
                     DataSnapshot item = items.next();
-                    //Log.v("welcome", item.getKey());
-                    String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
+                    String name; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
                     name = item.child("name").getValue().toString();
-                    specifics = item.child("specifications").getValue().toString();
+                    address = item.child("address").getValue().toString();
                     vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
                     latitude = ((Long) item.child("latitude").getValue()).doubleValue();
@@ -96,7 +95,7 @@ public class SearchByVacancy extends AppCompatActivity {
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
+                    Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
                     arrayList.add(shelter);
                 }
                 rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
@@ -125,7 +124,8 @@ public class SearchByVacancy extends AppCompatActivity {
                 if (!s.toString().isEmpty()) {
                     search(s.toString());
                 } else {
-                    search("");
+                    search("0");
+                    rV.setAdapter(new R_Adapter(getApplication(), arrayList));
                 }
             }
         });
@@ -139,31 +139,10 @@ public class SearchByVacancy extends AppCompatActivity {
             if (Integer.valueOf(item.getVacancies()) <= Integer.valueOf(text) ) {
                 cList.add(item);
                 rAdapter.filterList(cList);
-            } else if(searchField.getText().equals("")){
-                Shelter s = new Shelter();
-                cList.add(s);
+            } else {
+                rAdapter.filterList(cList);
             }
         } rV.setAdapter(new R_Adapter(getApplicationContext(), cList));
     }
 
-//    @Override
-//    protected void onStart(){
-//        super.onStart();
-//        if(adapter!=null)
-//            adapter.startListening();
-//    }
-//
-//    @Override
-//    protected void onStop(){
-//        if(adapter!=null)
-//            adapter.stopListening();
-//        super.onStop();
-//    }
-//
-//    @Override
-//    protected void onResume(){
-//        super.onResume();
-//        if(adapter!=null)
-//            adapter.startListening();
-//    }
 }

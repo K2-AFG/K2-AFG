@@ -1,13 +1,9 @@
 package com.example.k2_afg;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -31,13 +26,13 @@ import java.util.HashMap;
 public class ShelterDetails extends AppCompatActivity {
     String clickName;
     SearchPage sp = new SearchPage();
-    TextView name1, address1, email1, phone1, specifics1, vacancy1;
+    TextView name1, address1, website1, phone1, specifics1, vacancy1;
     Button editShelter, submitChanges;
-    EditText ShelterName2, vacancyDescription2, EmailText, addressInput, phoneInput, SpecificText;
+    EditText ShelterName2, vacancyDescription2, WebText, addressInput, phoneInput, SpecificText;
     DatabaseReference reference;
     Shelter shelter1;
     String key;
-    boolean nameB = false; boolean vacancyB = false; boolean emailB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
+    boolean nameB = false; boolean vacancyB = false; boolean websiteB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
 
 
     @Override
@@ -51,7 +46,7 @@ public class ShelterDetails extends AppCompatActivity {
         address1 = (TextView) findViewById(R.id.addressBox);
         phone1 = (TextView) findViewById(R.id.phoneBox);
         specifics1 = findViewById(R.id.specificBox);
-        email1 = findViewById(R.id.emailBox);
+        website1 = findViewById(R.id.websiteBox);
         vacancy1 = findViewById(R.id.vacancyBox);
         editShelter = findViewById(R.id.editData);
 
@@ -59,8 +54,8 @@ public class ShelterDetails extends AppCompatActivity {
         ShelterName2.setVisibility(View.INVISIBLE);
         vacancyDescription2 = (EditText) findViewById(R.id.editVacancy);
         vacancyDescription2.setVisibility(View.INVISIBLE);
-        EmailText = (EditText) findViewById(R.id.editEmail);
-        EmailText.setVisibility(View.INVISIBLE);
+        WebText = (EditText) findViewById(R.id.editWebsite);
+        WebText.setVisibility(View.INVISIBLE);
         addressInput = (EditText) findViewById(R.id.editAddress);
         addressInput.setVisibility(View.INVISIBLE);
         phoneInput = (EditText) findViewById(R.id.editPhone);
@@ -75,7 +70,6 @@ public class ShelterDetails extends AppCompatActivity {
 
         if(welcome.ifClicked == true){
             editShelter.setVisibility(View.VISIBLE);
-            Log.v("querySearch", "in edit shelter !");
             editShelter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -101,12 +95,12 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
-                    email1.setOnClickListener(new View.OnClickListener() {
+                    website1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            email1.setVisibility(View.INVISIBLE);
-                            EmailText.setVisibility(View.VISIBLE);
-                            emailB = true;
+                            website1.setVisibility(View.INVISIBLE);
+                            WebText.setVisibility(View.VISIBLE);
+                            websiteB = true;
                         }
                     });
 
@@ -141,16 +135,20 @@ public class ShelterDetails extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             if(nameB == true) {
-                                Log.v("querySearch", "in if" + ShelterName2.getText().toString().trim().equals(name1.getText()));
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "name", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 
                             if(vacancyB == true) {
-                                Log.v("querySearch", "in if" + vacancyDescription2.getText().toString().trim().equals(vacancy1.getText()));
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "vacancies", vacancyDescription2.getText().toString().trim());
+                                reference.updateChildren(map);
+                            }
+
+                            if(websiteB == true) {
+                                HashMap map = new HashMap();
+                                map.put("Shelter/" + key + "/" + "website", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 //
@@ -168,7 +166,7 @@ public class ShelterDetails extends AppCompatActivity {
 //
                             if(specificsB == true) {
                                 HashMap map = new HashMap();
-                                map.put("Shelter/" + key + "/" + "specifications", SpecificText.getText().toString().trim());
+                                map.put("Shelter/" + key + "/" + "description", SpecificText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 
@@ -194,8 +192,9 @@ public class ShelterDetails extends AppCompatActivity {
                         name1.setText(shelter.getName());
                         address1.setText(shelter.getAddress());
                         phone1.setText(shelter.getPhoneNum());
-                        specifics1.setText(shelter.getSpecifications());
+                        specifics1.setText(shelter.getDescription());
                         vacancy1.setText(shelter.getVacancies());
+                        website1.setText(shelter.getWebsite());
                     }
             }
 

@@ -95,7 +95,7 @@ public class SearchPage extends AppCompatActivity {
                     //Log.v("welcome", item.getKey());
                     String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
                     name = item.child("name").getValue().toString();
-                    specifics = item.child("specifications").getValue().toString();
+                    address = item.child("address").getValue().toString();
                     vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
                     latitude = ((Long) item.child("latitude").getValue()).doubleValue();
@@ -103,7 +103,7 @@ public class SearchPage extends AppCompatActivity {
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Shelter shelter = new Shelter(name,  null,  phoneNum,  null, null, latitude,  longitude, vacancies,  null);
+                    Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
                     arrayList.add(shelter);
                 }
                 rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
