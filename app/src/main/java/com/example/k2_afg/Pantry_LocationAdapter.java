@@ -22,14 +22,14 @@ import java.util.ArrayList;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHolder> {
+public class Pantry_LocationAdapter extends RecyclerView.Adapter<Pantry_LocationAdapter.ViewHolder> {
     public String name;
     public String address;
     public Context c;
     public ArrayList<Pantry> arrayList = new ArrayList<Pantry>();
     int itemNum;
 
-    public Pantry_Adapter(Context c, ArrayList<Pantry> arrayList) {
+    public Pantry_LocationAdapter(Context c, ArrayList<Pantry> arrayList) {
         this.c = c;
         this.arrayList = arrayList;
     }
@@ -65,6 +65,7 @@ public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHold
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t2.setText(arrayList.get(position).getName());
+                holder.tLocation.setText(arrayList.get(position).getDistance());
             }
         });
     }
@@ -76,14 +77,17 @@ public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHold
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView t2;
+        private TextView tLocation;
 
         ViewHolder(ViewGroup container) {
-            super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.list_layout_pantry, container, false));
-            t2 = itemView.findViewById(R.id.listName);
+            super(LayoutInflater.from(c.getApplicationContext()).inflate(R.layout.activity_list_layout_pantries_location, container, false));
+            t2 = itemView.findViewById(R.id.listPantryName);
+            tLocation = itemView.findViewById(R.id.listPantryDistance);
         }
 
         public void bind(Pantry pantry) {
             t2.setText(pantry.getName());
+            tLocation.setText(pantry.getDistance());
         }
     }
 

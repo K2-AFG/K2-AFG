@@ -29,11 +29,11 @@ import java.util.Iterator;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
-public class Location extends AppCompatActivity{
+public class PantryLocation extends AppCompatActivity{
     private FusedLocationProviderClient client;
-    ArrayList<Shelter> shelters = new ArrayList<Shelter>();
-    ArrayList<Shelter> names = new ArrayList<Shelter>();
-    public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
+    ArrayList<Pantry> pantries = new ArrayList<Pantry>();
+    ArrayList<Pantry> names = new ArrayList<Pantry>();
+    public ArrayList<Pantry> arrayList = new ArrayList<Pantry>();
     private DatabaseReference databaseReference;
     public static Context context;
     private RecyclerView rV;
@@ -45,12 +45,12 @@ public class Location extends AppCompatActivity{
         getLocation();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_location);
+        setContentView(R.layout.activity_pantry_location);
 
         context = this;
-        rV = findViewById(R.id.searchLocationRecycler);
+        rV = findViewById(R.id.searchPantryLocationRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
-        databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Pantry");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
@@ -62,36 +62,31 @@ public class Location extends AppCompatActivity{
                     String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
                     name = item.child("name").getValue().toString();
                     address = item.child("address").getValue().toString();
-                    vacancies = item.child("vacancies").getValue().toString();
                     longitude = ((Long) item.child("longitude").getValue()).doubleValue();
                     latitude = ((Long) item.child("latitude").getValue()).doubleValue();
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
-                    arrayList.add(shelter);
+                    Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude);
+                    arrayList.add(pantry);
                 }
                 for(int i=0; i<arrayList.size(); i++) {
-                    shelters.add(arrayList.get(i));
-                    shelters.get(i).calcDistance(latitude, longitude);
+                    pantries.add(arrayList.get(i));
+                    pantries.get(i).calcDistance(latitude, longitude);
                 }
 
-                while(shelters.size()>0) {
+                while(pantries.size()>0) {
                     int count = 0;
-                    for (int i = 0; i < shelters.size(); i++) {
-                        if (Double.valueOf(shelters.get(i).getDistance()) < Double.valueOf(shelters.get(count).getDistance())) {
+                    for (int i = 0; i < pantries.size(); i++) {
+                        if (Double.valueOf(pantries.get(i).getDistance()) < Double.valueOf(pantries.get(count).getDistance())) {
                             count = i;
                         }
                     }
-                    names.add(shelters.get(count));
-                    shelters.remove(count);
+                    names.add(pantries.get(count));
+                    pantries.remove(count);
                 }
-
-                rV.setAdapter(new R_LocationAdapter(getApplicationContext(), names));
-                Log.v("querySearch", "array " + names.size());
-                Collections.sort(arrayList);
-
+                rV.setAdapter(new Pantry_LocationAdapter(getApplicationContext(), names));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -104,7 +99,7 @@ public class Location extends AppCompatActivity{
     }
 
     private void getLocation(){
-        GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(Location.this);
+        GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(PantryLocation.this);
 
         /**
          * Set GPS Location fetched address

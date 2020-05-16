@@ -9,7 +9,8 @@
         android:id="@+id/card1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:background="#FFFFFF">
 
         <TextView
             android:id="@+id/listName"
@@ -27,7 +28,6 @@
             android:id="@+id/listVacancy"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@+id/listName"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="50dp"
             android:gravity="center"

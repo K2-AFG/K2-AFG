@@ -2,15 +2,15 @@
     <string name="app_name">K2-AFG</string>
     <string name="Header1">Details</string>
     <string name="nameHeader">Name:</string>
-    <string name="nameBox"/>
+    <string name="nameBox" />
     <string name="addressHeader">Address:</string>
     <string name="addressBox" />
     <string name="websiteHeader">Website:</string>
-    <string name="websiteBox"/>
+    <string name="websiteBox" />
     <string name="phoneHeader">Phone:</string>
     <string name="phoneBox" />
     <string name="specificHeader">Specifics:</string>
-    <string name="specificBox"/>
+    <string name="specificBox" />
     <string name="manbuttonhint">Click here if you are an user</string>
     <string name="shelterbuttonhint">Click here if you are a shelter</string>
     <string name="pantrybuttonhint">Click here if you are a food pantry</string>
@@ -49,7 +49,6 @@
     <string name="backStr">Back</string>
     <string name="submit">Submit</string>
     <string name="food">Food</string>
-
 
 
 </resources>

@@ -14,9 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity-->
-<!--            android:name=".SearchPage"-->
-<!--            android:exported="true">-->
+        <!-- <activity -->
+        <!-- android:name=".SearchPage" -->
+        <!-- android:exported="true"> -->
         <activity
             android:name=".welcome"
             android:exported="true">
@@ -26,15 +26,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".PantryInput"></activity>
-        <activity android:name=".ShelterInput"></activity>
-        <activity android:name=".ShelterDetails"> </activity>
-        <activity android:name=".ApplyFilter"></activity>
-        <activity android:name=".SearchPage"></activity>
-        <activity android:name=".SearchByVacancy"></activity>
-        <activity android:name=".PantryDetails"></activity>
-        <activity android:name=".SearchByNamePantry"></activity>
+        <activity android:name=".PantryInput" />
+        <activity android:name=".ShelterInput" />
+        <activity android:name=".ShelterDetails"></activity>
+        <activity android:name=".ApplyFilter" />
+        <activity android:name=".SearchPage" />
+        <activity android:name=".SearchByVacancy" />
+        <activity android:name=".PantryDetails" />
+        <activity android:name=".SearchByNamePantry" />
 
         <meta-data
             android:name="preloaded_fonts"

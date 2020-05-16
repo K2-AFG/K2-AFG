@@ -13,19 +13,19 @@
         android:background="#FFFFFF">
 
         <TextView
-            android:id="@+id/listShelterName"
+            android:id="@+id/listPantryName"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_marginStart="30dp"
             android:gravity="center"
-            android:text="Shelter Name"
+            android:text="Pantry Name"
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/listShelterDistance"
+            android:id="@+id/listPantryDistance"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_above="@+id/listName"
