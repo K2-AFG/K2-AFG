@@ -1,8 +1,10 @@
 package com.example.k2_afg;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -131,7 +133,12 @@ public class PantryDetails extends AppCompatActivity {
                             }
 
                             if(nameB == true) {
-                                HashMap map = new HashMap();
+                                if (TextUtils.isEmpty(pantryName.getText()) && TextUtils.isEmpty(pantry1.getName())) {
+                                    Log.v("querySearch", "name is empty");
+                                    pantryName.setHintTextColor(Color.RED);
+                                    pantryName.setHint("Name of shelter is required.");
+                                    return;
+                                } HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "website", pantryName.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
@@ -144,7 +151,13 @@ public class PantryDetails extends AppCompatActivity {
                             }
 
                             if(phoneB == true) {
-                                HashMap map = new HashMap();
+                                if (isNoLetters(phoneInput.getText().toString().trim()) == false && isNoLetters(pantry1.getPhoneNum())) {
+                                    phoneInput.setText("");
+                                    Log.v("querySearch", "phoneN has letters");
+                                    phoneInput.setHintTextColor(Color.RED);
+                                    phoneInput.setHint("This field cannot have letters.");
+                                    return;
+                                } HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
@@ -187,6 +200,16 @@ public class PantryDetails extends AppCompatActivity {
 
             }
         });
+    }
+
+    public boolean isNoLetters(String phoneN) {
+        char[] characters = phoneN.toCharArray();
+        for (char c : characters) {
+            if(Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

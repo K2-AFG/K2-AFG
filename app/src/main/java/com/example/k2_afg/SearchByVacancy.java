@@ -137,7 +137,7 @@ public class SearchByVacancy extends AppCompatActivity {
         searchField.setHint("Search Shelters by Vacancy");
         searchField.setTextColor(Color.parseColor("#FF0000"));
         for (Shelter item : arrayList) {
-            if (Integer.valueOf(item.getVacancies()) <= Integer.valueOf(text) ) {
+            if (Integer.valueOf(item.getVacancies()) >= Integer.valueOf(text) ) {
                 cList.add(item);
                 rAdapter.filterList(cList);
             } else {
