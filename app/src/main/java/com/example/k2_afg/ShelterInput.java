@@ -39,10 +39,24 @@ Shelter shelter1;
         submitData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (isStringInt(vacancyDescription2.getText().toString().trim()) == false){
+                    vacancyDescription2.setText("");
+                    Log.v("querySearch", "vacancy is not numbers");
+                    vacancyDescription2.setHintTextColor(Color.RED);
+                    vacancyDescription2.setHint("Please enter a number.");
+                    return;
+                }
                 if (TextUtils.isEmpty(ShelterName2.getText())) {
                     Log.v("querySearch", "name is empty");
                     ShelterName2.setHintTextColor(Color.RED);
                     ShelterName2.setHint("Name of shelter is required.");
+                    return;
+                }
+                if (isNoLetters(phoneInput.getText().toString().trim()) == false) {
+                    phoneInput.setText("");
+                    Log.v("querySearch", "phoneN has letters");
+                    phoneInput.setHintTextColor(Color.RED);
+                    phoneInput.setHint("This field cannot have letters.");
                     return;
                 }
                 shelter1.setName(ShelterName2.getText().toString().trim());
@@ -55,6 +69,25 @@ Shelter shelter1;
                Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    public boolean isStringInt(String vacancy) {
+        try {
+            Integer.parseInt(vacancy);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    public boolean isNoLetters(String phoneN) {
+        char[] characters = phoneN.toCharArray();
+        for (char c : characters) {
+            if(Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     // goes to the home page

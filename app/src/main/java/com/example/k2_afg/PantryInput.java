@@ -3,7 +3,10 @@ package com.example.k2_afg;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,6 +37,12 @@ public class PantryInput extends AppCompatActivity {
         submitData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TextUtils.isEmpty(pantryName.getText())) {
+                    Log.v("querySearch", "name is empty");
+                    pantryName.setHintTextColor(Color.RED);
+                    pantryName.setHint("Name of pantry is required.");
+                    return;
+                }
                 pantry1.setName(pantryName.getText().toString().trim());
                 pantry1.setWebsite(WebText.getText().toString().trim());
                 pantry1.setAddress(addressInput.getText().toString().trim());

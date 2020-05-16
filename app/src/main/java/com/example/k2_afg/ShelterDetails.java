@@ -1,6 +1,7 @@
 package com.example.k2_afg;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.text.TextUtils;
@@ -135,6 +136,12 @@ public class ShelterDetails extends AppCompatActivity {
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            if (TextUtils.isEmpty(ShelterName2.getText())) {
+                                Log.v("querySearch", "name is empty");
+                                ShelterName2.setHintTextColor(Color.RED);
+                                ShelterName2.setHint("Name of shelter is required.");
+                                return;
+                            }
                             if(nameB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "name", ShelterName2.getText().toString().trim());
