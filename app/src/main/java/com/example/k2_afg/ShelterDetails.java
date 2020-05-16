@@ -136,7 +136,14 @@ public class ShelterDetails extends AppCompatActivity {
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (TextUtils.isEmpty(ShelterName2.getText())) {
+                            if (isStringInt(vacancyDescription2.getText().toString().trim()) == false || TextUtils.isEmpty(shelter1.getVacancies())){
+                                vacancyDescription2.setText("");
+                                Log.v("querySearch", "vacancy is not numbers");
+                                vacancyDescription2.setHintTextColor(Color.RED);
+                                vacancyDescription2.setHint("Please enter a number.");
+                                return;
+                            }
+                            if (TextUtils.isEmpty(ShelterName2.getText()) || TextUtils.isEmpty(shelter1.getName())) {
                                 Log.v("querySearch", "name is empty");
                                 ShelterName2.setHintTextColor(Color.RED);
                                 ShelterName2.setHint("Name of shelter is required.");
@@ -211,6 +218,15 @@ public class ShelterDetails extends AppCompatActivity {
 
             }
         });
+    }
+
+    public boolean isStringInt(String vacancy) {
+        try {
+            Integer.parseInt(vacancy);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 }
 
