@@ -43,7 +43,6 @@ Shelter shelter1;
                     Log.v("querySearch", "name is empty");
                     ShelterName2.setHintTextColor(Color.RED);
                     ShelterName2.setHint("Name of shelter is required.");
-                    //Toast.makeText(ShelterInput.this, "Name of shelter is required.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 shelter1.setName(ShelterName2.getText().toString().trim());
