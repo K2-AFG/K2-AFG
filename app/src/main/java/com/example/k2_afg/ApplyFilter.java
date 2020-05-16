@@ -18,8 +18,17 @@ public class ApplyFilter extends AppCompatActivity {
         sName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", " visible");
                 Intent intent = new Intent(getApplicationContext(), SearchPage.class);
+                startActivity(intent);
+            }
+        });
+
+        sDistance = (Button) findViewById(R.id.shelterDistanceFilter);
+        sDistance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("querySearch", " visible");
+                Intent intent = new Intent(getApplicationContext(), SearchByVacancy.class);
                 startActivity(intent);
             }
         });
