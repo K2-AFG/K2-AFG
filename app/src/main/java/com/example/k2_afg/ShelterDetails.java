@@ -136,27 +136,25 @@ public class ShelterDetails extends AppCompatActivity {
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            if (isStringInt(vacancyDescription2.getText().toString().trim()) == false || TextUtils.isEmpty(shelter1.getVacancies())){
-                                vacancyDescription2.setText("");
-                                Log.v("querySearch", "vacancy is not numbers");
-                                vacancyDescription2.setHintTextColor(Color.RED);
-                                vacancyDescription2.setHint("Please enter a number.");
-                                return;
-                            }
-                            if (TextUtils.isEmpty(ShelterName2.getText()) || TextUtils.isEmpty(shelter1.getName())) {
-                                Log.v("querySearch", "name is empty");
-                                ShelterName2.setHintTextColor(Color.RED);
-                                ShelterName2.setHint("Name of shelter is required.");
-                                return;
-                            }
                             if(nameB == true) {
-                                HashMap map = new HashMap();
+                                if (TextUtils.isEmpty(ShelterName2.getText()) && TextUtils.isEmpty(shelter1.getName())) {
+                                    Log.v("querySearch", "name is empty");
+                                    ShelterName2.setHintTextColor(Color.RED);
+                                    ShelterName2.setHint("Name of shelter is required.");
+                                    return;
+                                } HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "name", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
 
                             if(vacancyB == true) {
-                                HashMap map = new HashMap();
+                                if (isStringInt(vacancyDescription2.getText().toString().trim()) == false && TextUtils.isEmpty(shelter1.getVacancies())){
+                                    vacancyDescription2.setText("");
+                                    Log.v("querySearch", "vacancy is not numbers");
+                                    vacancyDescription2.setHintTextColor(Color.RED);
+                                    vacancyDescription2.setHint("Please enter a number.");
+                                    return;
+                                } HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "vacancies", vacancyDescription2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
@@ -174,7 +172,13 @@ public class ShelterDetails extends AppCompatActivity {
                             }
 
                             if(phoneB == true) {
-                                HashMap map = new HashMap();
+                                if (isNoLetters(phoneInput.getText().toString().trim()) == false && isNoLetters(shelter1.getPhoneNum())) {
+                                    phoneInput.setText("");
+                                    Log.v("querySearch", "phoneN has letters");
+                                    phoneInput.setHintTextColor(Color.RED);
+                                    phoneInput.setHint("This field cannot have letters.");
+                                    return;
+                                } HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
@@ -184,7 +188,6 @@ public class ShelterDetails extends AppCompatActivity {
                                 map.put("Shelter/" + key + "/" + "description", SpecificText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
                             Toast.makeText(ShelterDetails.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -227,6 +230,16 @@ public class ShelterDetails extends AppCompatActivity {
         } catch (NumberFormatException ex) {
             return false;
         }
+    }
+
+    public boolean isNoLetters(String phoneN) {
+        char[] characters = phoneN.toCharArray();
+        for (char c : characters) {
+            if(Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 

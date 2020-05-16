@@ -30,7 +30,7 @@
     <string name="shelterInfo">Shelter Information</string>
     <string name="pantryInfo">Pantry Information</string>
     <string name="pantryNameText">Please enter pantry name</string>
-    <string name="foodType">Food Type</string>
+    <string name="foodType">Description:</string>
     <string name="foodTypeText">Please enter food offered</string>
     <string name="applyFilter">Apply Filter</string>
     <string name="searchImage">search image</string>

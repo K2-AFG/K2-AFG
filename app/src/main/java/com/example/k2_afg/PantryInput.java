@@ -43,6 +43,13 @@ public class PantryInput extends AppCompatActivity {
                     pantryName.setHint("Name of pantry is required.");
                     return;
                 }
+                if (isNoLetters(phoneInput.getText().toString().trim()) == false) {
+                    phoneInput.setText("");
+                    Log.v("querySearch", "phoneN has letters");
+                    phoneInput.setHintTextColor(Color.RED);
+                    phoneInput.setHint("This field cannot have letters.");
+                    return;
+                }
                 pantry1.setName(pantryName.getText().toString().trim());
                 pantry1.setWebsite(WebText.getText().toString().trim());
                 pantry1.setAddress(addressInput.getText().toString().trim());
@@ -58,5 +65,15 @@ public class PantryInput extends AppCompatActivity {
     public void performWelcome(View v){
         Intent intent = new Intent(this, welcome.class);
         startActivity(intent);
+    }
+
+    public boolean isNoLetters(String phoneN) {
+        char[] characters = phoneN.toCharArray();
+        for (char c : characters) {
+            if(Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

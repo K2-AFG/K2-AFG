@@ -81,7 +81,7 @@
         android:background="#04CCFF"
         android:fontFamily="@font/abel"
         android:gravity="center|center_vertical"
-        android:text="@string/food"
+        android:text="@string/foodType"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

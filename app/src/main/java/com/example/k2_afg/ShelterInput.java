@@ -52,7 +52,7 @@ Shelter shelter1;
                     ShelterName2.setHint("Name of shelter is required.");
                     return;
                 }
-                if (isNoLetters(phoneInput.getText().toString().trim()) == false || isNoLetters(shelter1.getPhoneNum())) {
+                if (isNoLetters(phoneInput.getText().toString().trim()) == false) {
                     phoneInput.setText("");
                     Log.v("querySearch", "phoneN has letters");
                     phoneInput.setHintTextColor(Color.RED);
