@@ -62,8 +62,8 @@ public class PantryLocation extends AppCompatActivity{
                     String name; String specifics; String vacancies; double longitude; double latitude; String description; String website; String phoneNum; String address;
                     name = item.child("name").getValue().toString();
                     address = item.child("address").getValue().toString();
-                    longitude = ((Long) item.child("longitude").getValue()).doubleValue();
-                    latitude = ((Long) item.child("latitude").getValue()).doubleValue();
+                    longitude = (double) Float.valueOf(item.child("longitude").getValue().toString());
+                    latitude =  (double) Float.valueOf(item.child("latitude").getValue().toString());
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
@@ -100,7 +100,7 @@ public class PantryLocation extends AppCompatActivity{
 
     private void getLocation(){
         GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(PantryLocation.this);
-
+        requestPermission();
         /**
          * Set GPS Location fetched address
          */

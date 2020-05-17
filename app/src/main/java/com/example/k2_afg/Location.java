@@ -105,6 +105,7 @@ public class Location extends AppCompatActivity{
 
     private void getLocation(){
         GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(Location.this);
+        requestPermission();
 
         /**
          * Set GPS Location fetched address
