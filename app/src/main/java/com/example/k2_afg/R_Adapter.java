@@ -27,7 +27,6 @@ public class R_Adapter extends RecyclerView.Adapter<R_Adapter.ViewHolder> {
     public String address;
     public Context c;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
-    public ArrayList<CalculatingLocation> locations = new ArrayList<CalculatingLocation>();
     int itemNum;
 
     public R_Adapter(Context c, ArrayList<Shelter> arrayList) {

@@ -20,14 +20,23 @@ public class R_LocationAdapter extends RecyclerView.Adapter<R_LocationAdapter.Vi
     public Context c;
 
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
-    public ArrayList<CalculatingLocation> locations = new ArrayList<CalculatingLocation>();
     int itemNum;
 
+    /**
+     * Constructor that initializes R_LocationAdapter
+     * @param c context
+     * @param arrayList arrayList of shelters passed in
+     */
     public R_LocationAdapter(Context c, ArrayList<Shelter> arrayList) {
         this.c = c;
         this.arrayList = arrayList;
     }
 
+
+    /**
+     * Gives total item in arrayList
+     * @return total number of things in arraylist
+     */
     @Override
     public int getItemCount() {
         return arrayList.size();
@@ -66,6 +75,9 @@ public class R_LocationAdapter extends RecyclerView.Adapter<R_LocationAdapter.Vi
         return name;
     }
 
+    /**
+     * Sorts through the whole arrayList displaying shelter name in t3 and shelter distance in textview tLocation
+     */
 
     class ViewHolder extends RecyclerView.ViewHolder {
         private TextView t3;

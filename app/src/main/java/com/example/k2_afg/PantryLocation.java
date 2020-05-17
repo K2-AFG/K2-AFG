@@ -30,7 +30,6 @@ import java.util.Iterator;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class PantryLocation extends AppCompatActivity{
-    private FusedLocationProviderClient client;
     ArrayList<Pantry> pantries = new ArrayList<Pantry>();
     ArrayList<Pantry> names = new ArrayList<Pantry>();
     public ArrayList<Pantry> arrayList = new ArrayList<Pantry>();
@@ -42,19 +41,23 @@ public class PantryLocation extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //gets location of device
         getLocation();
 
         super.onCreate(savedInstanceState);
+        //sets view
         setContentView(R.layout.activity_pantry_location);
 
         context = this;
         rV = findViewById(R.id.searchPantryLocationRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
+        //gets pantries from fire base
         databaseReference = FirebaseDatabase.getInstance().getReference("Pantry");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //loops through the pantries in fire base and store them in an Array List called arrayList
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
                 arrayList.clear();
                 while(items.hasNext()){
@@ -71,11 +74,15 @@ public class PantryLocation extends AppCompatActivity{
                     Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude);
                     arrayList.add(pantry);
                 }
+
+                //this for loop adds the items in arrayList to another arrayList called pantries. Distance between pantry and user is initialized to the actual value between them
                 for(int i=0; i<arrayList.size(); i++) {
                     pantries.add(arrayList.get(i));
                     pantries.get(i).calcDistance(latitude, longitude);
                 }
 
+                //this while loop sorts the pantries in ascending order by comparing between the two distances and storing them in another arrayList called names. This process repeats
+                //until pantries has no more shelters left in it
                 while(pantries.size()>0) {
                     int count = 0;
                     for (int i = 0; i < pantries.size(); i++) {
@@ -98,8 +105,12 @@ public class PantryLocation extends AppCompatActivity{
         super.onStart();
     }
 
+    /**
+     * This method gets the location of the user
+     */
     private void getLocation(){
         GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(PantryLocation.this);
+        //request permission if permission not enabled
         requestPermission();
         /**
          * Set GPS Location fetched address
@@ -118,6 +129,9 @@ public class PantryLocation extends AppCompatActivity{
         }
     }
 
+    /**
+     * check if permission is enabled or not. If not, it will be enabled.
+     */
     private void requestPermission(){
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
     }

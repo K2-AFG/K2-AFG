@@ -30,7 +30,6 @@ import java.util.Iterator;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class Location extends AppCompatActivity{
-    private FusedLocationProviderClient client;
     ArrayList<Shelter> shelters = new ArrayList<Shelter>();
     ArrayList<Shelter> names = new ArrayList<Shelter>();
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
@@ -39,23 +38,30 @@ public class Location extends AppCompatActivity{
     private RecyclerView rV;
     double longitude;
     double latitude;
-    private R_LocationAdapter rAdapter = new R_LocationAdapter(context, arrayList);
 
+    /**
+     * This method sorts shelters so that the distances will be in ascending orders. Then it puts it into the Adapter so it can be displayed.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //gets the location of the device
         getLocation();
 
         super.onCreate(savedInstanceState);
+        //sets layout to recycler view activity location
         setContentView(R.layout.activity_location);
 
         context = this;
         rV = findViewById(R.id.searchLocationRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
+        //get the shelters from data base
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //Using iterator, loop through the database and constructing shelter object for each shelter stored in there and put it into an Arraylist called arrayList
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
                 arrayList.clear();
                 while(items.hasNext()){
@@ -73,11 +79,15 @@ public class Location extends AppCompatActivity{
                     Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
                     arrayList.add(shelter);
                 }
+                //this for loop stores all the shelters stored in the arrayList and add them to a new arrayList shelters. During the process, the initially distance between user and
+                //shelter (which is 0) is now initialized to the actual amount by getting the user's longitude and latitude.
                 for(int i=0; i<arrayList.size(); i++) {
                     shelters.add(arrayList.get(i));
                     shelters.get(i).calcDistance(latitude, longitude);
                 }
 
+                //By looping through shelter, the minimum distance would be found and added to another arrayList called names. This process repeats until there are no shelters left
+                //in the ArrayList shelters
                 while(shelters.size()>0) {
                     int count = 0;
                     for (int i = 0; i < shelters.size(); i++) {
@@ -88,7 +98,7 @@ public class Location extends AppCompatActivity{
                     names.add(shelters.get(count));
                     shelters.remove(count);
                 }
-
+                //After the shelters are stored in the arrayList in ascending orders, it is now thrown to the adapter.
                 rV.setAdapter(new R_LocationAdapter(getApplicationContext(), names));
                 Log.v("querySearch", "array " + names.size());
 
@@ -103,8 +113,12 @@ public class Location extends AppCompatActivity{
         super.onStart();
     }
 
+    /**
+     * This method gets the location of the user
+     */
     private void getLocation(){
         GpsLocationTracker mGpsLocationTracker = new GpsLocationTracker(Location.this);
+        //if permission for accessing location is not allowed yet, this will request permission
         requestPermission();
 
         /**
@@ -124,6 +138,9 @@ public class Location extends AppCompatActivity{
         }
     }
 
+    /**
+     * Asks for permission if not allowed yet
+     */
     private void requestPermission(){
         ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION}, 1);
     }

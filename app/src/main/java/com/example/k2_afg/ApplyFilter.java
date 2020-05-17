@@ -13,8 +13,11 @@ public class ApplyFilter extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //sets view to filter selection
         setContentView(R.layout.activity_filter_selection);
+        //connects button with search shelters by name
         sName = (Button) findViewById(R.id.shelterNameFilter);
+        //brings user to page when clicked
         sName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -23,8 +26,9 @@ public class ApplyFilter extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        //connects button with search shelters by vacancy
         sVacancy = (Button) findViewById(R.id.shelterVacanciesFilter);
+        // brings user to page when clicked
         sVacancy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +38,9 @@ public class ApplyFilter extends AppCompatActivity {
             }
         });
 
+        //connects button with search shelters by distance
         sDistance = (Button) findViewById(R.id.shelterDistanceFilter);
+        // brings user to page when clicked
         sDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +50,9 @@ public class ApplyFilter extends AppCompatActivity {
             }
         });
 
+        //connects button with search pantry by name
         pName = (Button) findViewById(R.id.pantryNameFilter);
+        // brings user to page when clicked
         pName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +62,9 @@ public class ApplyFilter extends AppCompatActivity {
             }
         });
 
+        //connects button with search pantry by distance
         pDistance = (Button) findViewById(R.id.pantryDistanceFilter);
+        // brings user to page when clicked
         pDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

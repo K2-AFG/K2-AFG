@@ -19,6 +19,10 @@ import com.example.k2_afg.R;
 public class GpsLocationTracker extends Service implements LocationListener
 {
 
+    //code source from Nirav Ranpara (Stackoverflow) also editted by Anas Azeem (StackOverflow)
+    //editted later by William Hung
+
+
     /**
      * context of calling class
      */
@@ -89,6 +93,7 @@ public class GpsLocationTracker extends Service implements LocationListener
 
         try {
 
+            //initializing location
             mLocationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
 
             /*getting status of the gps*/
