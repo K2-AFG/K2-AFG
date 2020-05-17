@@ -44,7 +44,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/nameBox"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameHeader" />
@@ -70,7 +70,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/websiteBox"
         app:layout_constraintTop_toBottomOf="@+id/websiteHeader" />
@@ -82,7 +82,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/websiteBox"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/websiteHeader" />
@@ -108,7 +108,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/specificBox"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +141,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -154,7 +154,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/addressBox"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressHeader" />
@@ -180,7 +180,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -193,7 +193,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/specificHeader" />
@@ -205,7 +205,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/phoneBox"
         app:layout_constraintStart_toStartOf="@+id/phoneBox"
         app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
@@ -231,7 +231,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/phoneBox"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
@@ -256,7 +256,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/specificBox"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintTop_toBottomOf="@+id/VacancyHeader"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -267,9 +267,10 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/VacancyHeader"
-        tools:layout_editor_absoluteX="0dp" />
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/VacancyHeader" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@
         android:ems="10"
         android:hint="@string/pantryNameText"
         android:inputType="textPersonName"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ShelterName" />
@@ -38,7 +38,7 @@
         android:ems="10"
         android:hint="@string/webText"
         android:inputType="textPersonName"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Website" />
@@ -74,7 +74,7 @@
         android:ems="10"
         android:hint="@string/addressText"
         android:inputType="textPersonName"
-        android:textSize="24sp"
+        android:textSize="30sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
         android:ems="10"
         android:hint="@string/phoneText"
         android:inputType="textPersonName"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
@@ -124,7 +124,7 @@
         android:ems="10"
         android:hint="@string/foodTypeText"
         android:inputType="textPersonName"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Specifics" />
