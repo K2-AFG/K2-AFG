@@ -10,13 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SearchView;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -70,7 +63,6 @@ public class PantryLocation extends AppCompatActivity{
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
-                    Log.v("hello", item.child("name").getValue().toString());
                     Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, latitude,  longitude);
                     arrayList.add(pantry);
                 }
@@ -119,8 +111,6 @@ public class PantryLocation extends AppCompatActivity{
         {
             latitude = mGpsLocationTracker.getLatitude();
             longitude = mGpsLocationTracker.getLongitude();
-            Log.v("Latitude", String.format("latitude: %s", latitude));
-            Log.v("Latitude", String.format("longitude: %s", longitude));
 
         }
         else

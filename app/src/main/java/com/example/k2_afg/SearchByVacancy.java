@@ -2,41 +2,27 @@ package com.example.k2_afg;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 
 /**
@@ -64,6 +50,7 @@ public class SearchByVacancy extends AppCompatActivity {
         // sets all the class variables equal to the specific elements from the corresponding layout
         context = this;
         searchField = findViewById(R.id.search);
+        searchField.setHint("Search Shelters by Vacancy");
 
         //if the "For Shelters" button was clicked, then show the "Add Shelter" button and enable it
         addShelter = (Button) findViewById(R.id.addShelter);
@@ -72,7 +59,7 @@ public class SearchByVacancy extends AppCompatActivity {
             addShelter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.v("querySearch", " visible");
+                    //Log.v("querySearch", " visible");
                     Intent intent = new Intent(getApplicationContext(), ShelterInput.class);
                     startActivity(intent);
                 }
@@ -107,7 +94,7 @@ public class SearchByVacancy extends AppCompatActivity {
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
-                    Log.v("hello", item.child("name").getValue().toString());
+                    //Log.v("hello", item.child("name").getValue().toString());
                     Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
                     arrayList.add(shelter);
                 }
@@ -153,16 +140,30 @@ public class SearchByVacancy extends AppCompatActivity {
      */
     private void search(String text) {
         ArrayList<Shelter> cList = new ArrayList<>();
-        searchField.setHint("Search Shelters by Vacancy");
-        searchField.setTextColor(Color.parseColor("#FF0000"));
         for (Shelter item : arrayList) {
-            if (Integer.valueOf(item.getVacancies()) >= Integer.valueOf(text) ) {
-                cList.add(item);
-                rAdapter.filterList(cList);
-            } else {
-                rAdapter.filterList(cList);
+            if(isStringInt(text) == false){
+                searchField.setText("");
+                searchField.setHintTextColor(Color.RED);
+                searchField.setHint("Please enter a number.");
+            } else{
+                if (Integer.valueOf(item.getVacancies()) >= Integer.valueOf(text) ) {
+                    cList.add(item);
+                    rAdapter.filterList(cList);
+                } else {
+                    rAdapter.filterList(cList);
+                }
             }
         } rV.setAdapter(new R_Adapter(getApplicationContext(), cList));
+    }
+
+    //checks if vacancy has non-numerical characters
+    public boolean isStringInt(String vacancy) {
+        try {
+            Integer.parseInt(vacancy);
+            return true;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.k2_afg;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,7 +66,6 @@ public class Pantry_Adapter extends RecyclerView.Adapter<Pantry_Adapter.ViewHold
 
     //gets the name of the shelter
     public String getName() {
-        Log.v("welcome", "getName method" + name);
         return name;
     }
 

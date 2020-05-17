@@ -1,26 +1,17 @@
 package com.example.k2_afg;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
 import android.content.Context;
-import android.widget.Toast;
-
-import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
-
-import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 
 public class Pantry_LocationAdapter extends RecyclerView.Adapter<Pantry_LocationAdapter.ViewHolder> {
     public String name;
@@ -65,12 +56,9 @@ public class Pantry_LocationAdapter extends RecyclerView.Adapter<Pantry_Location
         holder.t2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("welcome", "onClick: clicked on");
                 name = holder.t2.getText().toString();
-                Log.v("welcome", name);
                 Intent intent = new Intent(c, PantryDetails.class);
                 intent.putExtra("name", name);
-                Log.v("welcome", "after intent " + name);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t2.setText(arrayList.get(position).getName());
@@ -80,7 +68,6 @@ public class Pantry_LocationAdapter extends RecyclerView.Adapter<Pantry_Location
     }
 
     public String getName() {
-        Log.v("welcome", "getName method" + name);
         return name;
     }
 

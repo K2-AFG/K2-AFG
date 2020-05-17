@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -139,7 +138,6 @@ public class PantryDetails extends AppCompatActivity {
                             if(nameB == true) {
                                 //throw an error if the name is empty
                                 if (TextUtils.isEmpty(pantryName.getText()) && TextUtils.isEmpty(pantry1.getName())) {
-                                    Log.v("querySearch", "name is empty");
                                     pantryName.setHintTextColor(Color.RED);
                                     pantryName.setHint("Name of shelter is required.");
                                     return;
@@ -198,7 +196,6 @@ public class PantryDetails extends AppCompatActivity {
 
                     Pantry pantry = dataSnapshot1.getValue(Pantry.class);
                     key = dataSnapshot1.getKey();
-                    Log.v("welcome", "pantry is " + pantry.getName());
                     name1.setText(pantry.getName());
                     address1.setText(pantry.getAddress());
                     phone1.setText(pantry.getPhoneNum());

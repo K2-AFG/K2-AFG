@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -162,7 +161,7 @@ public class ShelterDetails extends AppCompatActivity {
                                 //throw an error if the vacancy is not a number
                                 if (isStringInt(vacancyDescription2.getText().toString().trim()) == false && TextUtils.isEmpty(shelter1.getVacancies())){
                                     vacancyDescription2.setText("");
-                                    Log.v("querySearch", "vacancy is not numbers");
+                                    //Log.v("querySearch", "vacancy is not numbers");
                                     vacancyDescription2.setHintTextColor(Color.RED);
                                     vacancyDescription2.setHint("Please enter a number.");
                                     return;

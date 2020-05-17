@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 
 public class welcome extends AppCompatActivity {
@@ -29,10 +27,10 @@ public class welcome extends AppCompatActivity {
     // goes to the shelter input page
     public void performShelterInput(View v) {
         Intent intent = new Intent(this, SearchPage.class);
-        Log.v("querySearch", "clicked Shelter");
+        //Log.v("querySearch", "clicked Shelter");
         ifClickedPantry = false;
         ifClicked = true;
-        Log.v("querySearch", "ifClicked is " + ifClickedPantry);
+        //Log.v("querySearch", "ifClicked is " + ifClickedPantry);
         startActivity(intent);
     }
 

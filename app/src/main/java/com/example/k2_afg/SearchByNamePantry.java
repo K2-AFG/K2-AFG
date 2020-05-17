@@ -2,40 +2,27 @@ package com.example.k2_afg;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 
 /**
@@ -67,7 +54,6 @@ public class SearchByNamePantry extends AppCompatActivity {
         //if the "For Pantries" button was clicked, then show the "Add Pantry" button and enable it
         addPantry = (Button) findViewById(R.id.addPantry);
         if(welcome.ifClickedPantry == true){
-            Log.v("querySearch","clicked pantry");
             addPantry.setVisibility(View.VISIBLE);
             addPantry.setText("Add Pantry");
             addPantry.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +83,6 @@ public class SearchByNamePantry extends AppCompatActivity {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
                 arrayList.clear();
                 while(items.hasNext()){
-                    Log.v("querySearch", "test");
                     DataSnapshot item = items.next();
                     String name; double longitude; double latitude; String description; String website; String phoneNum; String address; String foods;
                     name = item.child("name").getValue().toString();
@@ -107,7 +92,6 @@ public class SearchByNamePantry extends AppCompatActivity {
                     description = item.child("description").getValue().toString();
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
-                    Log.v("hello", item.child("name").getValue().toString());
                     Pantry pantry = new Pantry(name, address ,  phoneNum,  website, description, longitude,  latitude);
                     arrayList.add(pantry);
                 }

@@ -18,10 +18,8 @@ import com.example.k2_afg.R;
 
 public class GpsLocationTracker extends Service implements LocationListener
 {
-
-    //code source from Nirav Ranpara (Stackoverflow) also editted by Anas Azeem (StackOverflow)
-    //editted later by William Hung
-
+    //code source from Nirav Ranpara (Stackoverflow) also edited by Anas Azeem (StackOverflow)
+    //edited later by William Hung
 
     /**
      * context of calling class
@@ -217,7 +215,7 @@ public class GpsLocationTracker extends Service implements LocationListener
 
         mAlertDialog.setTitle("Gps Disabled");
 
-        mAlertDialog.setMessage("gps is not enabled . do you want to enable ?");
+        mAlertDialog.setMessage("gps is not enabled. do you want to enable?");
 
         mAlertDialog.setPositiveButton("settings", new DialogInterface.OnClickListener() {
 
@@ -228,7 +226,7 @@ public class GpsLocationTracker extends Service implements LocationListener
             }
         });
 
-        mAlertDialog.setNegativeButton("cancle", new DialogInterface.OnClickListener() {
+        mAlertDialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub

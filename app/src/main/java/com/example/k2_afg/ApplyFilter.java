@@ -2,7 +2,6 @@ package com.example.k2_afg;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -21,7 +20,6 @@ public class ApplyFilter extends AppCompatActivity {
         sName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", "click search by name");
                 Intent intent = new Intent(getApplicationContext(), SearchPage.class);
                 startActivity(intent);
             }
@@ -32,7 +30,6 @@ public class ApplyFilter extends AppCompatActivity {
         sVacancy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", "click search by vacancy");
                 Intent intent = new Intent(getApplicationContext(), SearchByVacancy.class);
                 startActivity(intent);
             }
@@ -44,7 +41,6 @@ public class ApplyFilter extends AppCompatActivity {
         sDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", "click search by distance");
                 Intent intent = new Intent(getApplicationContext(), Location.class);
                 startActivity(intent);
             }
@@ -56,7 +52,6 @@ public class ApplyFilter extends AppCompatActivity {
         pName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", "click search by distance");
                 Intent intent = new Intent(getApplicationContext(), SearchByNamePantry.class);
                 startActivity(intent);
             }
@@ -68,7 +63,6 @@ public class ApplyFilter extends AppCompatActivity {
         pDistance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("querySearch", "click search by distance");
                 Intent intent = new Intent(getApplicationContext(), PantryLocation.class);
                 startActivity(intent);
             }

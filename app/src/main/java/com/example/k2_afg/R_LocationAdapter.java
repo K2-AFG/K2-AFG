@@ -1,7 +1,6 @@
 package com.example.k2_afg;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,12 +55,9 @@ public class R_LocationAdapter extends RecyclerView.Adapter<R_LocationAdapter.Vi
         holder.t3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.v("welcome", "onClick: clicked on");
                 name = holder.t3.getText().toString();
-                Log.v("welcome", name);
                 Intent intent = new Intent(c, ShelterDetails.class);
                 intent.putExtra("name", name);
-                Log.v("welcome", "after intent " + name);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 c.startActivity(intent);
                 holder.t3.setText(arrayList.get(position).getName());
@@ -71,7 +67,6 @@ public class R_LocationAdapter extends RecyclerView.Adapter<R_LocationAdapter.Vi
     }
 
     public String getName() {
-        Log.v("welcome", "getName method" + name);
         return name;
     }
 
