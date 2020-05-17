@@ -48,7 +48,6 @@ public class ShelterDetails extends AppCompatActivity {
         Intent intent = getIntent();
         //set values for all class variables
         clickName = intent.getStringExtra("name");
-        Toast.makeText(ShelterDetails.this, clickName, Toast.LENGTH_LONG).show();
         name1 = (TextView) findViewById(R.id.nameBox);
         address1 = (TextView) findViewById(R.id.addressBox);
         phone1 = (TextView) findViewById(R.id.phoneBox);
@@ -151,7 +150,6 @@ public class ShelterDetails extends AppCompatActivity {
                             if(nameB == true) {
                                 //throw an error if the name is empty
                                 if (TextUtils.isEmpty(ShelterName2.getText()) && TextUtils.isEmpty(shelter1.getName())) {
-                                    Log.v("querySearch", "name is empty");
                                     ShelterName2.setHintTextColor(Color.RED);
                                     ShelterName2.setHint("Name of shelter is required.");
                                     return;
@@ -175,7 +173,7 @@ public class ShelterDetails extends AppCompatActivity {
                             //set new website
                             if(websiteB == true) {
                                 HashMap map = new HashMap();
-                                map.put("Shelter/" + key + "/" + "website", ShelterName2.getText().toString().trim());
+                                map.put("Shelter/" + key + "/" + "website", WebText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
                             //set new address
@@ -189,7 +187,6 @@ public class ShelterDetails extends AppCompatActivity {
                                 //throw an error if phone number contains letters
                                 if (isNoLetters(phoneInput.getText().toString().trim()) == false && isNoLetters(shelter1.getPhoneNum())) {
                                     phoneInput.setText("");
-                                    Log.v("querySearch", "phoneN has letters");
                                     phoneInput.setHintTextColor(Color.RED);
                                     phoneInput.setHint("This field cannot have letters.");
                                     return;
@@ -203,7 +200,9 @@ public class ShelterDetails extends AppCompatActivity {
                                 map.put("Shelter/" + key + "/" + "description", SpecificText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-                            Toast.makeText(ShelterDetails.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), SearchPage.class);
+                            startActivity(intent);
+                            Toast.makeText(ShelterDetails.this, "Data Inserted Successfully!", Toast.LENGTH_LONG).show();
                         }
                     });
                 }

@@ -40,15 +40,17 @@
         android:padding="4dp"
         android:scrollbarSize="5sp"
         android:text="@string/nameBox"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="@+id/editName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameHeader" />
+
 
     <TextView
         android:id="@+id/addressHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="#04CCFF"
         android:fontFamily="@font/abel"
         android:gravity="center"
@@ -56,6 +58,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editName" />
 
@@ -63,6 +66,7 @@
         android:id="@+id/websiteHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="#04CCFF"
         android:fontFamily="@font/abel"
         android:gravity="center"
@@ -70,14 +74,15 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editAddress" />
-
 
     <TextView
         android:id="@+id/specificHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="#04CCFF"
         android:fontFamily="@font/abel"
         android:gravity="center|center_vertical"
@@ -85,6 +90,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editPhone" />
 
@@ -95,7 +101,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/specificBox"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toStartOf="parent"
@@ -130,7 +136,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +149,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/addressBox"
         app:layout_constraintTop_toBottomOf="@+id/addressHeader" />
@@ -155,7 +161,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/addressBox"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addressHeader" />
@@ -167,7 +173,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/websiteBox" />
@@ -179,8 +185,9 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/websiteBox"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/websiteHeader" />
 
@@ -191,7 +198,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -204,7 +211,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:padding="4dp"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneHeader" />
@@ -213,6 +220,7 @@
         android:id="@+id/phoneHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:background="#04CCFF"
         android:fontFamily="@font/abel"
         android:gravity="center"
@@ -220,6 +228,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editWebsite" />
 
@@ -230,7 +239,7 @@
         android:fontFamily="@font/abel"
         android:padding="4dp"
         android:text="@string/phoneBox"
-        android:textSize="24sp"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editPhone" />

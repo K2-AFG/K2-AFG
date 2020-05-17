@@ -2,6 +2,7 @@ package com.example.k2_afg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -77,7 +78,9 @@ Shelter shelter1;
                 shelter1.setPhoneNum(phoneInput.getText().toString().trim());
                 shelter1.setDescription(SpecificText.getText().toString().trim());
                 reference.push().setValue(shelter1);
-                Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), SearchPage.class);
+                startActivity(intent);
+                Toast.makeText(ShelterInput.this, "Data Inserted Successfully!", Toast.LENGTH_LONG).show();
             }
         });
     }

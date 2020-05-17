@@ -2,6 +2,7 @@ package com.example.k2_afg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -50,7 +51,6 @@ public class PantryInput extends AppCompatActivity {
             public void onClick(View v) {
                 //defines what to do if the name field is empty
                 if (TextUtils.isEmpty(pantryName.getText())) {
-                    Log.v("querySearch", "name is empty");
                     pantryName.setHintTextColor(Color.RED);
                     pantryName.setHint("Name of pantry is required.");
                     return;
@@ -58,7 +58,6 @@ public class PantryInput extends AppCompatActivity {
                 //defines what to do if the phone input field has letter characters
                 if (isNoLetters(phoneInput.getText().toString().trim()) == false) {
                     phoneInput.setText("");
-                    Log.v("querySearch", "phoneN has letters");
                     phoneInput.setHintTextColor(Color.RED);
                     phoneInput.setHint("This field cannot have letters.");
                     return;
@@ -70,7 +69,9 @@ public class PantryInput extends AppCompatActivity {
                 pantry1.setPhoneNum(phoneInput.getText().toString().trim());
                 pantry1.setDescription(SpecificText.getText().toString().trim());
                 reference.push().setValue(pantry1);
-                Toast.makeText(PantryInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), SearchByNamePantry.class);
+                startActivity(intent);
+                Toast.makeText(PantryInput.this, "Data Inserted Successfully!", Toast.LENGTH_LONG).show();
             }
         });
     }

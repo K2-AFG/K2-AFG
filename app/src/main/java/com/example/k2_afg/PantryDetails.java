@@ -49,7 +49,6 @@ public class PantryDetails extends AppCompatActivity {
         Intent intent = getIntent();
         //set values for all class variables
         clickName = intent.getStringExtra("name");
-        Toast.makeText(this, clickName, Toast.LENGTH_LONG).show();
         name1 = (TextView) findViewById(R.id.nameBox);
         address1 = (TextView) findViewById(R.id.addressBox);
         phone1 = (TextView) findViewById(R.id.phoneBox);
@@ -165,7 +164,6 @@ public class PantryDetails extends AppCompatActivity {
                                 //throw an error if phone number contains letters
                                 if (isNoLetters(phoneInput.getText().toString().trim()) == false && isNoLetters(pantry1.getPhoneNum())) {
                                     phoneInput.setText("");
-                                    Log.v("querySearch", "phoneN has letters");
                                     phoneInput.setHintTextColor(Color.RED);
                                     phoneInput.setHint("This field cannot have letters.");
                                     return;
@@ -179,7 +177,9 @@ public class PantryDetails extends AppCompatActivity {
                                 map.put("Pantry/" + key + "/" + "description", SpecificText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-                            Toast.makeText(getApplicationContext(), "data inserted successfully!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), SearchByNamePantry.class);
+                            startActivity(intent);
+                            Toast.makeText(getApplicationContext(), "Data Inserted Successfully!", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
