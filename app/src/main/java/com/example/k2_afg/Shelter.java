@@ -1,7 +1,7 @@
 package com.example.k2_afg;
 
 /**
- * This class constructs a homeless shelter and describes various aspects of it
+ * This class constructs a homeless shelter and describes various aspects of it. It is a subclass of organization.
  */
 public class Shelter extends Organization implements Comparable{
 

@@ -2,7 +2,6 @@ package com.example.k2_afg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,6 +14,9 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * This class describes how the pantry is inputted into the database
+ */
 public class PantryInput extends AppCompatActivity {
     EditText pantryName, WebText, addressInput, phoneInput, SpecificText;
     Button submitData;
@@ -22,6 +24,11 @@ public class PantryInput extends AppCompatActivity {
     DatabaseReference reference = database.getReference();
     Pantry pantry1;
 
+    /**
+     * sets all the class variables equal to the specific elements from the corresponding layout
+     * sets all the inputted data into a new pantry object in Firebase
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +42,20 @@ public class PantryInput extends AppCompatActivity {
         pantry1 = new Pantry();
         reference = FirebaseDatabase.getInstance().getReference().child("Pantry");
         submitData.setOnClickListener(new View.OnClickListener() {
+            /**
+             * defines what happens when a user clicks the submit data button
+             * @param v the inputted View object
+             */
             @Override
             public void onClick(View v) {
+                //defines what to do if the name field is empty
                 if (TextUtils.isEmpty(pantryName.getText())) {
                     Log.v("querySearch", "name is empty");
                     pantryName.setHintTextColor(Color.RED);
                     pantryName.setHint("Name of pantry is required.");
                     return;
                 }
+                //defines what to do if the phone input field has letter characters
                 if (isNoLetters(phoneInput.getText().toString().trim()) == false) {
                     phoneInput.setText("");
                     Log.v("querySearch", "phoneN has letters");
@@ -50,6 +63,7 @@ public class PantryInput extends AppCompatActivity {
                     phoneInput.setHint("This field cannot have letters.");
                     return;
                 }
+                //makes a new pantry in Firebase with all the inputted data
                 pantry1.setName(pantryName.getText().toString().trim());
                 pantry1.setWebsite(WebText.getText().toString().trim());
                 pantry1.setAddress(addressInput.getText().toString().trim());
@@ -61,12 +75,11 @@ public class PantryInput extends AppCompatActivity {
         });
     }
 
-    // goes to the home page
-    public void performWelcome(View v){
-        Intent intent = new Intent(this, welcome.class);
-        startActivity(intent);
-    }
-
+    /**
+     * checks whether a String has letter characters
+     * @param phoneN the String to be parsed
+     * @return whether the String has letter characters
+     */
     public boolean isNoLetters(String phoneN) {
         char[] characters = phoneN.toCharArray();
         for (char c : characters) {

@@ -24,10 +24,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-
+/**
+ * This class allows shelters to update all fields of their profile
+ */
 public class ShelterDetails extends AppCompatActivity {
     String clickName;
-    SearchPage sp = new SearchPage();
     TextView name1, address1, website1, phone1, specifics1, vacancy1;
     Button editShelter, submitChanges;
     EditText ShelterName2, vacancyDescription2, WebText, addressInput, phoneInput, SpecificText;
@@ -36,12 +37,16 @@ public class ShelterDetails extends AppCompatActivity {
     String key;
     boolean nameB = false; boolean vacancyB = false; boolean websiteB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
 
-
+    /**
+     * defines what to do when this page is created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         Intent intent = getIntent();
+        //set values for all class variables
         clickName = intent.getStringExtra("name");
         Toast.makeText(ShelterDetails.this, clickName, Toast.LENGTH_LONG).show();
         name1 = (TextView) findViewById(R.id.nameBox);
@@ -69,15 +74,16 @@ public class ShelterDetails extends AppCompatActivity {
         shelter1 = new Shelter();
         reference = FirebaseDatabase.getInstance().getReference().child("Shelter");
 
+        //if the "For Shelters" button is clicked (if the shelter is the one updating)
         if(welcome.ifClicked == true){
             editShelter.setVisibility(View.VISIBLE);
             editShelter.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     submitChanges.setVisibility(View.VISIBLE);
                     editShelter.setVisibility(View.INVISIBLE);
 
+                    //if the operator attempts to change name
                     name1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -87,6 +93,7 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change vacancy
                     vacancy1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -96,6 +103,7 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change website
                     website1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -105,6 +113,7 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change address
                     address1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -114,6 +123,7 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change phone number
                     phone1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -123,6 +133,7 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change specifics
                     specifics1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -132,10 +143,13 @@ public class ShelterDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the submit changes button is clicked on
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            //set the new name
                             if(nameB == true) {
+                                //throw an error if the name is empty
                                 if (TextUtils.isEmpty(ShelterName2.getText()) && TextUtils.isEmpty(shelter1.getName())) {
                                     Log.v("querySearch", "name is empty");
                                     ShelterName2.setHintTextColor(Color.RED);
@@ -145,8 +159,9 @@ public class ShelterDetails extends AppCompatActivity {
                                 map.put("Shelter/" + key + "/" + "name", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new vacancy
                             if(vacancyB == true) {
+                                //throw an error if the vacancy is not a number
                                 if (isStringInt(vacancyDescription2.getText().toString().trim()) == false && TextUtils.isEmpty(shelter1.getVacancies())){
                                     vacancyDescription2.setText("");
                                     Log.v("querySearch", "vacancy is not numbers");
@@ -157,20 +172,21 @@ public class ShelterDetails extends AppCompatActivity {
                                 map.put("Shelter/" + key + "/" + "vacancies", vacancyDescription2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new website
                             if(websiteB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "website", ShelterName2.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new address
                             if(addressB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "address", addressInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new phone number
                             if(phoneB == true) {
+                                //throw an error if phone number contains letters
                                 if (isNoLetters(phoneInput.getText().toString().trim()) == false && isNoLetters(shelter1.getPhoneNum())) {
                                     phoneInput.setText("");
                                     Log.v("querySearch", "phoneN has letters");
@@ -181,7 +197,7 @@ public class ShelterDetails extends AppCompatActivity {
                                 map.put("Shelter/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new description
                             if(specificsB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Shelter/" + key + "/" + "description", SpecificText.getText().toString().trim());
@@ -196,16 +212,15 @@ public class ShelterDetails extends AppCompatActivity {
             editShelter.setVisibility(View.INVISIBLE);
         }
 
+        //displays all data
         reference = FirebaseDatabase.getInstance().getReference();
         Query query = reference.child("Shelter").orderByChild("name").equalTo(clickName);
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
-
                         Shelter shelter = dataSnapshot1.getValue(Shelter.class);
                         key = dataSnapshot1.getKey();
-                        Log.v("welcome", "shelter is " + shelter.getName());
                         name1.setText(shelter.getName());
                         address1.setText(shelter.getAddress());
                         phone1.setText(shelter.getPhoneNum());
@@ -221,6 +236,7 @@ public class ShelterDetails extends AppCompatActivity {
         });
     }
 
+    //checks if vacancy has non-numerical characters
     public boolean isStringInt(String vacancy) {
         try {
             Integer.parseInt(vacancy);
@@ -230,6 +246,7 @@ public class ShelterDetails extends AppCompatActivity {
         }
     }
 
+    //checks if phone number has characters that are letters
     public boolean isNoLetters(String phoneN) {
         char[] characters = phoneN.toCharArray();
         for (char c : characters) {

@@ -1,7 +1,8 @@
 package com.example.k2_afg;
 
-import java.util.ArrayList;
-
+/**
+ * This class constructs a food pantry and describes various aspects of it. It is a subclass of Organization.
+ */
 public class Pantry extends Organization {
 
 	/**
@@ -19,6 +20,9 @@ public class Pantry extends Organization {
 		super(name, address, phoneNum, website, description, longitude, latitude);
 	}
 
+	/**
+	 * creates a pantry with no inputs
+	 */
 	public Pantry() {
 		super();
 	}

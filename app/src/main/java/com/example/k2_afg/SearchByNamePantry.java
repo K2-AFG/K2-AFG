@@ -38,26 +38,33 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
+/**
+ * this class implements a way to search through all pantries in the database by name
+ */
 public class SearchByNamePantry extends AppCompatActivity {
 
     private EditText searchField;
     private RecyclerView rV;
-    FirebaseRecyclerOptions<Pantry> options;
-    FirebaseRecyclerAdapter<Pantry, ViewHolder> adapter;
     public ArrayList<Pantry> arrayList = new ArrayList<Pantry>();
     private DatabaseReference databaseReference;
     public Context context;
     private Pantry_Adapter pAdapter = new Pantry_Adapter(context, arrayList);
     Button addPantry;
 
+    /**
+     * describes what to do when the search page is first created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchpantry);
 
+        // sets all the class variables equal to the specific elements from the corresponding layout
         context = this;
         searchField = findViewById(R.id.search);
 
+        //if the "For Pantries" button was clicked, then show the "Add Pantry" button and enable it
         addPantry = (Button) findViewById(R.id.addPantry);
         if(welcome.ifClickedPantry == true){
             Log.v("querySearch","clicked pantry");
@@ -70,17 +77,21 @@ public class SearchByNamePantry extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        } else{
+        }
+
+        //if the "For Users" button was clicked, then do not show the "Add Pantry" button
+        else{
             addPantry.setVisibility(View.INVISIBLE);
         }
 
-
+        /**
+         * iterates through Firebase database, gets all pantries, and puts them in an ArrayList
+         */
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Pantry");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
@@ -108,6 +119,9 @@ public class SearchByNamePantry extends AppCompatActivity {
             }
         });
 
+        /**
+         * defines what to do when the user is typing in the search bar
+         */
         searchField = (EditText) findViewById(R.id.search);
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -131,6 +145,10 @@ public class SearchByNamePantry extends AppCompatActivity {
         });
     }
 
+    /**
+     * searches all shelters based on what the user is typing and sends it to the adapter
+     * @param text the String that is going to be searched for
+     */
     private void search(String text) {
         ArrayList<Pantry> cList = new ArrayList<>();
         searchField.setHint("Search Shelters by Name");

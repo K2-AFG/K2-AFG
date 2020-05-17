@@ -39,26 +39,33 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 
+/**
+ * this class implements a way to search through all shelters in the database by vacancy
+ */
 public class SearchByVacancy extends AppCompatActivity {
 
     private EditText searchField;
     private RecyclerView rV;
-    FirebaseRecyclerOptions<Shelter> options;
-    FirebaseRecyclerAdapter<Shelter, ViewHolder> adapter;
     public ArrayList<Shelter> arrayList = new ArrayList<Shelter>();
     private DatabaseReference databaseReference;
     public static Context context;
     private R_Adapter rAdapter = new R_Adapter(context, arrayList);
     Button addShelter;
 
+    /**
+     * describes what to do when the search page is first created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchbyvacancy);
 
+        // sets all the class variables equal to the specific elements from the corresponding layout
         context = this;
         searchField = findViewById(R.id.search);
 
+        //if the "For Shelters" button was clicked, then show the "Add Shelter" button and enable it
         addShelter = (Button) findViewById(R.id.addShelter);
         if(welcome.ifClicked == true){
             addShelter.setVisibility(View.VISIBLE);
@@ -70,16 +77,21 @@ public class SearchByVacancy extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-        } else{
+        }
+
+        //if the "For Users" button was clicked, then do not show the "Add Shelter" button
+        else{
             addShelter.setVisibility(View.INVISIBLE);
         }
 
+        /**
+         * iterates through Firebase database, gets all shelters, and puts them in an ArrayList
+         */
         rV = findViewById(R.id.searchRecycler);
         rV.setLayoutManager(new LinearLayoutManager(this));
         databaseReference = FirebaseDatabase.getInstance().getReference("Shelter");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Iterator<DataSnapshot> items = dataSnapshot.getChildren().iterator();
@@ -96,7 +108,7 @@ public class SearchByVacancy extends AppCompatActivity {
                     website = item.child("website").getValue().toString();
                     phoneNum = item.child("phoneNum").getValue().toString();
                     Log.v("hello", item.child("name").getValue().toString());
-                    Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, 0,  0, vacancies);
+                    Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
                     arrayList.add(shelter);
                 }
                 rV.setAdapter(new R_Adapter(getApplicationContext(), arrayList));
@@ -108,6 +120,9 @@ public class SearchByVacancy extends AppCompatActivity {
             }
         });
 
+        /**
+         * defines what to do when the user is typing in the search bar
+         */
         searchField = (EditText) findViewById(R.id.search);
         searchField.addTextChangedListener(new TextWatcher() {
             @Override
@@ -132,6 +147,10 @@ public class SearchByVacancy extends AppCompatActivity {
         });
     }
 
+    /**
+     * searches all shelters based on what the user is typing and sends it to the adapter
+     * @param text the String that contains the number that will be compared
+     */
     private void search(String text) {
         ArrayList<Shelter> cList = new ArrayList<>();
         searchField.setHint("Search Shelters by Vacancy");

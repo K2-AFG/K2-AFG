@@ -74,15 +74,20 @@ public class Location extends AppCompatActivity{
                     Shelter shelter = new Shelter(name,  address,  phoneNum,  website, description, latitude,  longitude, vacancies);
                     arrayList.add(shelter);
                 }
-                //this for loop stores all the shelters stored in the arrayList and add them to a new arrayList shelters. During the process, the initially distance between user and
-                //shelter (which is 0) is now initialized to the actual amount by getting the user's longitude and latitude.
+                /**
+                 * This for loop stores all the shelters stored in the arrayList and add them to a new arrayList shelters.
+                 * During the process, the initially distance between user and shelter (which is 0) is now initialized to the actual amount by getting the user's longitude and latitude.
+                 */
                 for(int i=0; i<arrayList.size(); i++) {
                     shelters.add(arrayList.get(i));
                     shelters.get(i).calcDistance(latitude, longitude);
                 }
 
-                //By looping through shelter, the minimum distance would be found and added to another arrayList called names. This process repeats until there are no shelters left
-                //in the ArrayList shelters
+                /**
+                 *  By looping through shelter, the minimum distance would be found and added to another arrayList called names.
+                 *  This process repeats until there are no shelters left in the ArrayList shelters.
+                 */
+
                 while(shelters.size()>0) {
                     int count = 0;
                     for (int i = 0; i < shelters.size(); i++) {
@@ -95,7 +100,6 @@ public class Location extends AppCompatActivity{
                 }
                 //After the shelters are stored in the arrayList in ascending orders, it is now thrown to the adapter.
                 rV.setAdapter(new R_LocationAdapter(getApplicationContext(), names));
-                Log.v("querySearch", "array " + names.size());
 
             }
             @Override
@@ -122,8 +126,6 @@ public class Location extends AppCompatActivity{
         if (mGpsLocationTracker.canGetLocation()) {
             latitude = mGpsLocationTracker.getLatitude();
             longitude = mGpsLocationTracker.getLongitude();
-            Log.v("Latitude", String.format("latitude: %s", latitude));
-            Log.v("Latitude", String.format("longitude: %s", longitude));
         } else {
             mGpsLocationTracker.showSettingsAlert();
         }

@@ -24,7 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
-
+/**
+ * This class allows shelters to update all fields of their profile
+ */
 public class PantryDetails extends AppCompatActivity {
     String clickName;
     SearchPage sp = new SearchPage();
@@ -36,12 +38,16 @@ public class PantryDetails extends AppCompatActivity {
     String key;
     boolean nameB = false; boolean vacancyB = false; boolean websiteB = false; boolean addressB = false; boolean phoneB = false; boolean specificsB = false;
 
-
+    /**
+     * defines what to do when this page is created
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantry_details);
         Intent intent = getIntent();
+        //set values for all class variables
         clickName = intent.getStringExtra("name");
         Toast.makeText(this, clickName, Toast.LENGTH_LONG).show();
         name1 = (TextView) findViewById(R.id.nameBox);
@@ -67,17 +73,16 @@ public class PantryDetails extends AppCompatActivity {
         pantry1 = new Pantry();
         reference = FirebaseDatabase.getInstance().getReference().child("Pantry");
 
-
+        //if the "For Pantries" button is clicked (if the pantry is the one updating)
         if(welcome.ifClickedPantry == true){
             editPantry.setVisibility(View.VISIBLE);
-            Log.v("querySearch", "in edit pantry !");
             editPantry.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     submitChanges.setVisibility(View.VISIBLE);
                     editPantry.setVisibility(View.INVISIBLE);
 
+                    //if the operator attempts to change name
                     name1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -87,6 +92,7 @@ public class PantryDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change website
                     website1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -96,6 +102,7 @@ public class PantryDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change address
                     address1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -105,6 +112,7 @@ public class PantryDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change phone number
                     phone1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -114,6 +122,7 @@ public class PantryDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the operator attempts to change specifics
                     specifics1.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -123,34 +132,37 @@ public class PantryDetails extends AppCompatActivity {
                         }
                     });
 
+                    //if the submit changes button is clicked on
                     submitChanges.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            //set the new name
                             if(nameB == true) {
-                                HashMap map = new HashMap();
-                                map.put("Pantry/" + key + "/" + "name", pantryName.getText().toString().trim());
-                                reference.updateChildren(map);
-                            }
-
-                            if(nameB == true) {
+                                //throw an error if the name is empty
                                 if (TextUtils.isEmpty(pantryName.getText()) && TextUtils.isEmpty(pantry1.getName())) {
                                     Log.v("querySearch", "name is empty");
                                     pantryName.setHintTextColor(Color.RED);
                                     pantryName.setHint("Name of shelter is required.");
                                     return;
                                 } HashMap map = new HashMap();
+                                map.put("Pantry/" + key + "/" + "name", pantryName.getText().toString().trim());
+                                reference.updateChildren(map);
+                            }
+                            //set new website
+                            if(websiteB == true) {
+                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "website", pantryName.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
-
+                            //set new address
                             if(addressB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "address", addressInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new phone number
                             if(phoneB == true) {
+                                //throw an error if phone number contains letters
                                 if (isNoLetters(phoneInput.getText().toString().trim()) == false && isNoLetters(pantry1.getPhoneNum())) {
                                     phoneInput.setText("");
                                     Log.v("querySearch", "phoneN has letters");
@@ -161,13 +173,12 @@ public class PantryDetails extends AppCompatActivity {
                                 map.put("Pantry/" + key + "/" + "phoneNum", phoneInput.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
+                            //set new description
                             if(specificsB == true) {
                                 HashMap map = new HashMap();
                                 map.put("Pantry/" + key + "/" + "description", SpecificText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
-
                             Toast.makeText(getApplicationContext(), "data inserted successfully!", Toast.LENGTH_LONG).show();
                         }
                     });
@@ -177,6 +188,7 @@ public class PantryDetails extends AppCompatActivity {
             editPantry.setVisibility(View.INVISIBLE);
         }
 
+        //displays all data
         reference = FirebaseDatabase.getInstance().getReference();
         Query query = reference.child("Pantry").orderByChild("name").equalTo(clickName);
         query.addValueEventListener(new ValueEventListener() {
@@ -202,6 +214,7 @@ public class PantryDetails extends AppCompatActivity {
         });
     }
 
+    //checks if phone number has characters that are letters
     public boolean isNoLetters(String phoneN) {
         char[] characters = phoneN.toCharArray();
         for (char c : characters) {

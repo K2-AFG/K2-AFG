@@ -2,11 +2,9 @@ package com.example.k2_afg;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 /**
- *
+ * This class describes how the shelter is inputted into the database
  */
 public class ShelterInput extends AppCompatActivity {
 EditText ShelterName2, vacancyDescription2, WebText, addressInput, phoneInput, SpecificText;
@@ -24,6 +22,12 @@ Button submitData;
 FirebaseDatabase database = FirebaseDatabase.getInstance();
 DatabaseReference reference = database.getReference();
 Shelter shelter1;
+
+    /**
+     * sets all the class variables equal to the specific elements from the corresponding layout
+     * sets all the inputted data into a new shelter object in Firebase
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,28 +43,33 @@ Shelter shelter1;
         shelter1 = new Shelter();
         reference = FirebaseDatabase.getInstance().getReference().child("Shelter");
         submitData.setOnClickListener(new View.OnClickListener() {
+            /**
+             * defines what happens when a user clicks the submit data button
+             * @param v the inputted View object
+             */
             @Override
             public void onClick(View v) {
+                //defines what to do if the vacancy is not a number
                 if (isStringInt(vacancyDescription2.getText().toString().trim()) == false){
                     vacancyDescription2.setText("");
-                    Log.v("querySearch", "vacancy is not numbers");
                     vacancyDescription2.setHintTextColor(Color.RED);
                     vacancyDescription2.setHint("Please enter a number.");
                     return;
                 }
+                //defines what to do if the name field is empty
                 if (TextUtils.isEmpty(ShelterName2.getText())) {
-                    Log.v("querySearch", "name is empty");
                     ShelterName2.setHintTextColor(Color.RED);
                     ShelterName2.setHint("Name of shelter is required.");
                     return;
                 }
+                //defines what to do if the phone input field has letter characters
                 if (isNoLetters(phoneInput.getText().toString().trim()) == false) {
                     phoneInput.setText("");
-                    Log.v("querySearch", "phoneN has letters");
                     phoneInput.setHintTextColor(Color.RED);
                     phoneInput.setHint("This field cannot have letters.");
                     return;
                 }
+                //makes a new shelter in Firebase with all the inputted data
                 shelter1.setName(ShelterName2.getText().toString().trim());
                 shelter1.setVacancies(vacancyDescription2.getText().toString().trim());
                 shelter1.setWebsite(WebText.getText().toString().trim());
@@ -68,11 +77,16 @@ Shelter shelter1;
                 shelter1.setPhoneNum(phoneInput.getText().toString().trim());
                 shelter1.setDescription(SpecificText.getText().toString().trim());
                 reference.push().setValue(shelter1);
-               Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
+                Toast.makeText(ShelterInput.this, "data inserted successfully!", Toast.LENGTH_LONG).show();
             }
         });
     }
 
+    /**
+     * checks whether a String parameter has characters that are not numbers
+     * @param vacancy the String to be parsed
+     * @return whether the String parameter has characters that are not numbers
+     */
     public boolean isStringInt(String vacancy) {
         try {
             Integer.parseInt(vacancy);
@@ -82,6 +96,11 @@ Shelter shelter1;
         }
     }
 
+    /**
+     * checks whether a String has letter characters
+     * @param phoneN the String to be parsed
+     * @return whether the String has letter characters
+     */
     public boolean isNoLetters(String phoneN) {
         char[] characters = phoneN.toCharArray();
         for (char c : characters) {
@@ -92,9 +111,4 @@ Shelter shelter1;
         return true;
     }
 
-    // goes to the home page
-    public void performWelcome(View v){
-        Intent intent = new Intent(this, welcome.class);
-        startActivity(intent);
-    }
 }
