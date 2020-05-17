@@ -11,10 +11,6 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.SearchView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.firebase.database.DataSnapshot;
@@ -24,7 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -110,16 +105,12 @@ public class Location extends AppCompatActivity{
         /**
          * Set GPS Location fetched address
          */
-        if (mGpsLocationTracker.canGetLocation())
-        {
+        if (mGpsLocationTracker.canGetLocation()) {
             latitude = mGpsLocationTracker.getLatitude();
             longitude = mGpsLocationTracker.getLongitude();
             Log.v("Latitude", String.format("latitude: %s", latitude));
             Log.v("Latitude", String.format("longitude: %s", longitude));
-
-        }
-        else
-        {
+        } else {
             mGpsLocationTracker.showSettingsAlert();
         }
     }

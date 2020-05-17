@@ -1,13 +1,14 @@
 package com.example.k2_afg;
 
+/**
+ * This class constructs a homeless shelter and describes various aspects of it
+ */
 public class Shelter extends Organization implements Comparable{
-
 
 	/**
 	 * the number of vacant rooms a shelter has
 	 */
 	private String vacancies1;
-
 
 	/**
 	 * Creates a new shelter with a name, address, phone number, website, description, longitude, latitude, vacancies, and shelter specifications
@@ -36,24 +37,25 @@ public class Shelter extends Organization implements Comparable{
 		vacancies1 = "";
 	}
 
-
 	/**
 	 * gets the number of vacancies this shelter has
-	 *
 	 * @return the number of vacancies
 	 */
 	public String getVacancies() { return vacancies1; }
 
 	/**
 	 * sets the number of vacancies to the given number
-	 *
 	 * @param vacancies the number to set
 	 */
 	public void setVacancies(String vacancies) {
 		this.vacancies1 = vacancies;
 	}
 
-
+	/**
+	 *
+	 * @param s the Object (shelter) whose vacancy numbers will be compared to others in the list
+	 * @return the difference in number of vacancies between two shelter objects
+	 */
 	@Override
 	public int compareTo(Object s) {
 		if(((Shelter)s).getVacancies().equals("")){

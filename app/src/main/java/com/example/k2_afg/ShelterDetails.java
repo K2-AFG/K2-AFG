@@ -69,7 +69,6 @@ public class ShelterDetails extends AppCompatActivity {
         shelter1 = new Shelter();
         reference = FirebaseDatabase.getInstance().getReference().child("Shelter");
 
-
         if(welcome.ifClicked == true){
             editShelter.setVisibility(View.VISIBLE);
             editShelter.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +214,6 @@ public class ShelterDetails extends AppCompatActivity {
                         website1.setText(shelter.getWebsite());
                     }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
