@@ -73,7 +73,7 @@ public class ShelterDetails extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("Shelter");
 
         //if the "For Shelters" button is clicked (if the shelter is the one updating)
-        if(welcome.ifClicked == true){
+        if(Welcome.ifClicked == true){
             editShelter.setVisibility(View.VISIBLE);
             editShelter.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 
-public class welcome extends AppCompatActivity {
+public class Welcome extends AppCompatActivity {
     public static boolean ifClicked;
     public static boolean ifClickedPantry;
     @Override

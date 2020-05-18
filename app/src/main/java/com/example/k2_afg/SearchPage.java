@@ -51,7 +51,7 @@ public class SearchPage extends AppCompatActivity {
         addShelter = (Button) findViewById(R.id.addShelter);
 
         //if the "For Shelters" button was clicked, then show the "Add Shelter" button and enable it
-        if(welcome.ifClicked == true){
+        if(Welcome.ifClicked == true){
             addShelter.setVisibility(View.VISIBLE);
             addShelter.setOnClickListener(new View.OnClickListener() {
                 @Override

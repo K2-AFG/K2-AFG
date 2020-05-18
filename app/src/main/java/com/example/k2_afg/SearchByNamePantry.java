@@ -53,7 +53,7 @@ public class SearchByNamePantry extends AppCompatActivity {
 
         //if the "For Pantries" button was clicked, then show the "Add Pantry" button and enable it
         addPantry = (Button) findViewById(R.id.addPantry);
-        if(welcome.ifClickedPantry == true){
+        if(Welcome.ifClickedPantry == true){
             addPantry.setVisibility(View.VISIBLE);
             addPantry.setText("Add Pantry");
             addPantry.setOnClickListener(new View.OnClickListener() {

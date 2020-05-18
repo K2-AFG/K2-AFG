@@ -54,7 +54,7 @@ public class SearchByVacancy extends AppCompatActivity {
 
         //if the "For Shelters" button was clicked, then show the "Add Shelter" button and enable it
         addShelter = (Button) findViewById(R.id.addShelter);
-        if(welcome.ifClicked == true){
+        if(Welcome.ifClicked == true){
             addShelter.setVisibility(View.VISIBLE);
             addShelter.setOnClickListener(new View.OnClickListener() {
                 @Override

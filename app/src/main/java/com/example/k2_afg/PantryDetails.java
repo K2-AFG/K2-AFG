@@ -72,7 +72,7 @@ public class PantryDetails extends AppCompatActivity {
         reference = FirebaseDatabase.getInstance().getReference().child("Pantry");
 
         //if the "For Pantries" button is clicked (if the pantry is the one updating)
-        if(welcome.ifClickedPantry == true){
+        if(Welcome.ifClickedPantry == true){
             editPantry.setVisibility(View.VISIBLE);
             editPantry.setOnClickListener(new View.OnClickListener() {
                 @Override
