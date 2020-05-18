@@ -198,6 +198,7 @@ public class PantryDetails extends AppCompatActivity {
                     key = dataSnapshot1.getKey();
                     name1.setText(pantry.getName());
                     address1.setText(pantry.getAddress());
+                    website1.setText(pantry.getWebsite());
                     phone1.setText(pantry.getPhoneNum());
                     specifics1.setText(pantry.getDescription());
                     website1.setText(pantry.getWebsite());
