@@ -148,7 +148,7 @@ public class PantryDetails extends AppCompatActivity {
                             //set new website
                             if(websiteB == true) {
                                  HashMap map = new HashMap();
-                                map.put("Pantry/" + key + "/" + "website", pantryName.getText().toString().trim());
+                                map.put("Pantry/" + key + "/" + "website", WebsiteText.getText().toString().trim());
                                 reference.updateChildren(map);
                             }
                             //set new address
